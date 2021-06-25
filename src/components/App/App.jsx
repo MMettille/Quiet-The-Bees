@@ -6,6 +6,8 @@ import {
   Switch,
 } from 'react-router-dom';
 
+import '@fontsource/roboto'
+
 import { useDispatch } from 'react-redux';
 
 import Nav from '../Nav/Nav';
@@ -64,7 +66,7 @@ function App() {
             exact
             path="/spoon"
           >
-            <UserPage />
+            <SpoonQuery />
           </ProtectedRoute>
 
           <ProtectedRoute

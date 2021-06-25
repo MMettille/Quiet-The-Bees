@@ -19,6 +19,7 @@ import InfoPage from '../InfoPage/InfoPage';
 import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
+import SpoonQuery from '../SpoonQuery/SpoonQuery';
 
 import './App.css';
 
@@ -54,6 +55,14 @@ function App() {
             // logged in shows UserPage else shows LoginPage
             exact
             path="/user"
+          >
+            <UserPage />
+          </ProtectedRoute>
+
+          <ProtectedRoute
+            // logged in shows UserPage else shows LoginPage
+            exact
+            path="/spoon"
           >
             <UserPage />
           </ProtectedRoute>

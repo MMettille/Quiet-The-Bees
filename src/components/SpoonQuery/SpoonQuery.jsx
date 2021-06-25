@@ -4,6 +4,8 @@ import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';
 import Fade from '@material-ui/core/Fade';
+import Slider from '@material-ui/core/Slider';
+import Typography from '@material-ui/core/Typography';
 
 const useStyles = makeStyles((theme) => ({
     modal: {
@@ -17,7 +19,56 @@ const useStyles = makeStyles((theme) => ({
       boxShadow: theme.shadows[5],
       padding: theme.spacing(2, 4, 3),
     },
+    root: {
+        width: 300,
+      },
+      margin: {
+        height: theme.spacing(3),
+      },
 }));
+
+const marks = [
+    {
+      value: 0,
+      label: '0',
+    },
+    {
+        value: 1,
+      },
+    {
+        value: 2,
+    },
+    {
+        value: 3,
+    },
+    {
+        value: 4,
+    },
+    {
+        value: 5,
+        label: '5',
+    },
+    {
+        value: 6,
+    },
+    {
+        value: 7,
+    },
+    {
+        value: 8,
+    },
+    {
+        value: 9,
+    },
+    {
+        value: 10,
+        label: '10',
+    },
+  ];
+  
+  function valuetext(value) {
+    return `${value}`;
+  }
 
 function SpoonQuery() {
   
@@ -62,6 +113,21 @@ function SpoonQuery() {
                 </div>
             </Fade>
         </Modal>
+        <div className={classes.root}>
+            <Typography id="discrete-slider-always" gutterBottom>
+                
+            </Typography>
+            <Slider
+                defaultValue={5}
+                getAriaValueText={valuetext}
+                aria-labelledby="discrete-slider-always"
+                step={1}
+                marks={marks}
+                valueLabelDisplay="on"
+                min={0}
+                max={10}
+            />
+        </div>
     </>
   
   );

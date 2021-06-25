@@ -8,3 +8,32 @@ CREATE TABLE "user" (
     "username" VARCHAR (80) UNIQUE NOT NULL,
     "password" VARCHAR (1000) NOT NULL
 );
+
+CREATE TABLE "user" (
+    "id" SERIAL PRIMARY KEY,
+    "username" VARCHAR (80) UNIQUE NOT NULL,
+    "password" VARCHAR (1000) NOT NULL,
+    "access_level" INT DEFAULT 0
+);
+
+CREATE TABLE "spoon_input" (
+    "id" SERIAL PRIMARY KEY,
+    "spoon" INT NOT NULL,
+    "date" DATE NOT NULL DEFAULT CURRENT_DATE,
+    "user_id" INT REFERENCES "user"
+);
+
+CREATE TABLE "trigger_input" (
+	"id" SERIAL PRIMARY KEY,
+	"trigger" VARCHAR (25),
+	"date" DATE NOT NULL DEFAULT CURRENT_DATE,
+	"user_id" INT REFERENCES "user"
+);
+
+CREATE TABLE "taskList" (
+	"id" SERIAL PRIMARY KEY,
+	"taskName" VARCHAR (255),
+	"isComplete" BOOLEAN DEFAULT FALSE,
+	"priority" VARCHAR (15),
+	"user_id" INT REFERENCES "user"
+);

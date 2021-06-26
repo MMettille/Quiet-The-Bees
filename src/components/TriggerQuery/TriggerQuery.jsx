@@ -5,7 +5,8 @@ import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';
 import Fade from '@material-ui/core/Fade';
-import image from './bee_kind_honeycomb2.png'
+import image from './just_bee_you.png'
+import { PlayCircleFilledWhite } from '@material-ui/icons';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -21,7 +22,8 @@ function TriggerQuery() {
     const dispatch = useDispatch();
     const classes = useStyles();
     const [open, setOpen] = useState(false)
-    const [triggerInput, setTriggerInput] = useState({})
+    const [triggerInput, setTriggerInput] = useState('')
+    const triggerArray = [];
 
     const handleClose = () => {
         setOpen(false)
@@ -31,7 +33,7 @@ function TriggerQuery() {
         setOpen(true)
     }
 
-    const handleSubmit = (event) => {
+    const handleSave = (event) => {
         event.preventDefault();
         console.log(`User's Trigger Input is: `, triggerInput)
         // dispatch({type: 'ADD_TRIGGER_INPUT', payload: {
@@ -48,7 +50,7 @@ function TriggerQuery() {
             <img src={image} />
             <h1>Any Failure Triggers to Be Aware Of?</h1>
             <button onClick={handleOpen}>Interested in Learning More About Failure Triggers?</button>
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSave}>
                 <input type="text" 
                     placeholder="Trigger" 
                     value={triggerInput}

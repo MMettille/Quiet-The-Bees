@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import { useDispatch } from 'react-redux';
 
 import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
@@ -6,6 +7,8 @@ import Backdrop from '@material-ui/core/Backdrop';
 import Fade from '@material-ui/core/Fade';
 import Slider from '@material-ui/core/Slider';
 import Typography from '@material-ui/core/Typography';
+import image from './bee_kind_honeycomb2.png'
+
 
 const useStyles = makeStyles((theme) => ({
     modal: {
@@ -72,9 +75,10 @@ const marks = [
 
 function SpoonQuery() {
   
+    const dispatch = useDispatch();
     const classes = useStyles();
     const [open, setOpen] = useState(false)
-    const [spoonInput, setSpoonInput] = useState(5)
+    const [spoonInput, setSpoonInput] = useState(null)
 
     const handleClose = () => {
         setOpen(false)
@@ -87,18 +91,24 @@ function SpoonQuery() {
     const handleSubmit = (event) => {
         event.preventDefault();
         console.log(`User's Spoon Input is: `, spoonInput)
+        dispatch({type: 'ADD_SPOON_INPUT', payload: {
+            spoon: spoonInput
+        }})
+        // ⬇ Resets the value to 0
+        setSpoonInput(null);
+        // ⬇ Will send user to a new page
     }
 
     return (
       <>
         <div className="container">
-        <img src="./bee_kind_honeycomb2.png" />
+        <img src={image} />
         <h1>It's a New Day!</h1>
         <h3>How many spoons are we working with?</h3>
         <button onClick={handleOpen}>Interested in Learning More About Spoon Theory?</button>
 
         <section className={classes.root}>
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit} required={true}>
                 <Slider
                     defaultValue={5}
                     getAriaValueText={valuetext}

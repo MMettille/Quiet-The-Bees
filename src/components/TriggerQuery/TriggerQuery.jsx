@@ -22,7 +22,7 @@ function TriggerQuery() {
     const dispatch = useDispatch();
     const classes = useStyles();
     const [open, setOpen] = useState(false)
-    const [triggerInput, setTriggerInput] = useState('')
+    const [userInput, setUserInput] = useState([{trigger: null}])
     const triggerArray = [];
 
     const handleClose = () => {
@@ -35,12 +35,26 @@ function TriggerQuery() {
 
     const handleSave = (event) => {
         event.preventDefault();
-        console.log(`User's Trigger Input is: `, triggerInput)
-        // dispatch({type: 'ADD_TRIGGER_INPUT', payload: {
-        //     trigger: triggerInput
-        // }})
-        // // ⬇ Resets the value to 0
-        // setTriggerInput({});
+    }
+
+    const handleAdd = () => {
+        const trigger = [...userInput];
+        trigger.push({ trigger: null });
+        setUserInput(trigger);
+    }
+
+    const handleChange = (i, event) => {
+        const trigger = [...userInput];
+        trigger[i].trigger = event.target.value;
+        setUserInput(trigger);
+    }
+
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        console.log(`User's Trigger Input is: `, userInput)
+        dispatch({type: 'ADD_TRIGGER_INPUT', payload: userInput})
+        // ⬇ Resets the value to 0
+        setUserInput([{trigger: null}]);
         // ⬇ Will send user to a new page
     }
 
@@ -50,16 +64,30 @@ function TriggerQuery() {
             <img src={image} />
             <h1>Any Failure Triggers to Be Aware Of?</h1>
             <button onClick={handleOpen}>Interested in Learning More About Failure Triggers?</button>
-            <form onSubmit={handleSave}>
-                <input type="text" 
-                    placeholder="Trigger" 
-                    value={triggerInput}
-                    onChange={(event) => setTriggerInput(event.target.value)}
-                />
-                 <button type="submit">Submit</button>
-            </form>
-        </div>
 
+        <form onSubmit={handleSave}>
+            {userInput.map((userInput, idx) => {
+                return (
+                <div key={`${userInput}-${idx}`}>
+                    <input
+                    type="text"
+                    placeholder="Enter text"
+                    value={userInput.trigger || ""}
+                    onChange={e => handleChange(idx, e)}
+                    />
+                    <button type="submit">Save</button>
+                </div>
+                );
+            })}
+        </form>
+        <button type="button" onClick={() => handleAdd()}>
+            +
+        </button>
+        <button type="button" onClick={handleSubmit}>
+            Submit
+        </button>
+        </div>
+       
         <Modal
             aria-labelledby="transition-modal-title"
             aria-describedby="transition-modal-description"

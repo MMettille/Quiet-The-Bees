@@ -74,6 +74,7 @@ function SpoonQuery() {
   
     const classes = useStyles();
     const [open, setOpen] = useState(false)
+    const [spoonInput, setSpoonInput] = useState(5)
 
     const handleClose = () => {
         setOpen(false)
@@ -83,6 +84,11 @@ function SpoonQuery() {
         setOpen(true)
     }
 
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        console.log(`User's Spoon Input is: `, spoonInput)
+    }
+
     return (
       <>
         <div className="container">
@@ -90,6 +96,24 @@ function SpoonQuery() {
         <h1>It's a New Day!</h1>
         <h3>How many spoons are we working with?</h3>
         <button onClick={handleOpen}>Interested in Learning More About Spoon Theory?</button>
+
+        <section className={classes.root}>
+            <form onSubmit={handleSubmit}>
+                <Slider
+                    defaultValue={5}
+                    getAriaValueText={valuetext}
+                    aria-labelledby="discrete-slider-always"
+                    step={1}
+                    marks={marks}
+                    valueLabelDisplay="on"
+                    min={0}
+                    max={10}
+                    onChange={(event, newValue) => setSpoonInput(newValue)}
+                />
+                <button type="submit">Submit</button>
+            </form>
+        </section>
+
         </div>
 
         <Modal
@@ -113,21 +137,7 @@ function SpoonQuery() {
                 </div>
             </Fade>
         </Modal>
-        <div className={classes.root}>
-            <Typography id="discrete-slider-always" gutterBottom>
-                
-            </Typography>
-            <Slider
-                defaultValue={5}
-                getAriaValueText={valuetext}
-                aria-labelledby="discrete-slider-always"
-                step={1}
-                marks={marks}
-                valueLabelDisplay="on"
-                min={0}
-                max={10}
-            />
-        </div>
+        
     </>
   
   );

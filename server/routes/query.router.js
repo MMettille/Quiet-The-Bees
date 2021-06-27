@@ -29,13 +29,10 @@ router.post('/spoon', (req, res) => {
 
 router.post('/trigger', (req, res) => {
     // POST route code here
-    console.log(req.body)
-    console.log(req.body[0].trigger)
     const array = req.body;
-    // This is close. What it will do is make ONE query with the separate values of what the user inputs.
-    let sql = array.map(trigger => trigger.trigger)
-    console.log(sql)
-    // What if I loop through everything instead? That would send multiple, wouldn't it?
+    // This works, but the app crashs with an error of Cannot set headers after they are sent to the client
+    //! Why is it allowing me to do this>?
+    //TODO Research this!
     for(let item of array){
             const insertTriggerQuery = `
             INSERT INTO "trigger_input" ("trigger", "user_id")

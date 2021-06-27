@@ -6,7 +6,6 @@ import Modal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';
 import Fade from '@material-ui/core/Fade';
 import image from './just_bee_you.png'
-import { PlayCircleFilledWhite } from '@material-ui/icons';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -23,7 +22,6 @@ function TriggerQuery() {
     const classes = useStyles();
     const [open, setOpen] = useState(false)
     const [userInput, setUserInput] = useState([{trigger: null}])
-    const triggerArray = [];
 
     const handleClose = () => {
         setOpen(false)
@@ -35,6 +33,7 @@ function TriggerQuery() {
 
     const handleSave = (event) => {
         event.preventDefault();
+        console.log(`The user's input(s) are: `, userInput)
     }
 
     const handleAdd = () => {

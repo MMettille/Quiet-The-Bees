@@ -12,7 +12,7 @@ router.get('/', (req, res) => {
 /**
  * POST route template
  */
-router.post('/', (req, res) => {
+router.post('/spoon', (req, res) => {
     // POST route code here
     console.log(req.body)
     console.log(req.body.spoon)
@@ -20,6 +20,21 @@ router.post('/', (req, res) => {
         INSERT INTO "spoon_input" ("spoon", "user_id")
         VALUES ($1, $2)`;
     pool.query(insertSpoonQuery, [req.body.spoon, req.user.id]).then(result => {
+        res.sendStatus(201);
+    }).catch(err => {
+        console.log(err);
+        res.sendStatus(500)
+    })
+});
+
+router.post('/trigger', (req, res) => {
+    // POST route code here
+    console.log(req.body)
+    console.log(req.body[0].trigger)
+    const insertTriggerQuery = `
+        INSERT INTO "trigger_input" ("trigger", "user_id")
+        VALUES ($1, $2)`;
+    pool.query(insertTriggerQuery, [req.body[0].trigger, req.user.id]).then(result => {
         res.sendStatus(201);
     }).catch(err => {
         console.log(err);

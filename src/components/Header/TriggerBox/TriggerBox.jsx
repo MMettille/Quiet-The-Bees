@@ -11,7 +11,11 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function TriggerBox() {
-
+    // Grabbing todays date as YYYY-MM-DD
+    const d = new Date();
+    console.log(d)
+    const date = d.toISOString().substring(0, 10);
+    console.log(date)
     const classes = useStyles();
 
     return (

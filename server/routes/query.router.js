@@ -5,9 +5,26 @@ const router = express.Router();
 /**
  * GET route template
  */
-router.get('/', (req, res) => {
-  // GET route code here
+router.get('/spoon/:date', (req, res) => {
+    // GET route code here
+    console.log(req.params.date)
+    const sqlText = `
+        SELECT "spoon_input".spoon FROM "spoon_input"
+        WHERE "spoon_input".user_id = $1
+        AND "spoon_input".date = $2;`
+    pool.query(sqlText, [req.params, req.user.id]).then( (result) =>{
+        console.log(result.rows)
+        res.send(result.rows);
+      }).catch((error)=>{
+        console.log(`error making database query`, error);
+              res.sendStatus(500);
+    });
 });
+
+router.get('/trigger', (req, res) => {
+    // GET route code here
+    console.log(req.body)
+  });
 
 /**
  * POST route template
@@ -27,22 +44,26 @@ router.post('/spoon', (req, res) => {
     })
 });
 
-router.post('/trigger', (req, res) => {
+router.post('/trigger', async (req, res) => {
     // POST route code here
     const array = req.body;
-    // This works, but the app crashs with an error of Cannot set headers after they are sent to the client
-    //! Why is it allowing me to do this>?
-    //TODO Research this!
-    for(let item of array){
-            const insertTriggerQuery = `
-            INSERT INTO "trigger_input" ("trigger", "user_id")
-            VALUES ($1, $2)`;
-        pool.query(insertTriggerQuery, [item.trigger, req.user.id]).then(result => {
-            res.sendStatus(201);
-        }).catch(err => {
-            console.log(err);
-            res.sendStatus(500)
-        })
+    const connection = await pool.connect();
+    try {
+        await connection.query('BEGIN');
+        for(let item of array){
+                const insertTriggerQuery = `
+                INSERT INTO "trigger_input" ("trigger", "user_id")
+                VALUES ($1, $2)`;
+                await connection.query(insertTriggerQuery, [item.trigger, req.user.id])
+        }
+                await connection.query('COMMIT');
+                res.sendStatus(200);
+    } catch (error) {
+        await connection.query('ROLLBACK')
+        console.log(`Error adding triggers - Rolling back transfer`, error);
+        res.sendStatus(500); 
+    } finally {
+        connection.release()
     }
 });
 

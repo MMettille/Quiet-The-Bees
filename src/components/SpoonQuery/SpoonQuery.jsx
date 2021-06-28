@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import { useDispatch } from 'react-redux';
+import {useHistory} from 'react-router-dom'
 
 import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
@@ -75,6 +76,7 @@ const marks = [
 
 function SpoonQuery() {
   
+    const history = useHistory('');
     const dispatch = useDispatch();
     const classes = useStyles();
     const [open, setOpen] = useState(false)
@@ -97,6 +99,7 @@ function SpoonQuery() {
         // ⬇ Resets the value to 0
         setSpoonInput(null);
         // ⬇ Will send user to a new page
+        history.push('/trigger')
     }
 
     return (

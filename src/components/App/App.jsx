@@ -23,6 +23,7 @@ import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
 import SpoonQuery from '../SpoonQuery/SpoonQuery';
 import TriggerQuery from '../TriggerQuery/TriggerQuery'
+import Main from '../Main/Main'
 
 import './App.css';
 
@@ -76,6 +77,14 @@ function App() {
             path="/trigger"
           >
             <TriggerQuery />
+          </ProtectedRoute>
+
+          <ProtectedRoute
+            // logged in shows UserPage else shows LoginPage
+            exact
+            path="/main"
+          >
+            <Main />
           </ProtectedRoute>
 
           <ProtectedRoute

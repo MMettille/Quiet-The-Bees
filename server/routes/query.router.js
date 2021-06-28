@@ -5,9 +5,26 @@ const router = express.Router();
 /**
  * GET route template
  */
-router.get('/', (req, res) => {
-  // GET route code here
+router.get('/spoon/:date', (req, res) => {
+    // GET route code here
+    console.log(req.params.date)
+    const sqlText = `
+        SELECT "spoon_input".spoon FROM "spoon_input"
+        WHERE "spoon_input".user_id = $1
+        AND "spoon_input".date = $2;`
+    pool.query(sqlText, [req.params, req.user.id]).then( (result) =>{
+        console.log(result.rows)
+        res.send(result.rows);
+      }).catch((error)=>{
+        console.log(`error making database query`, error);
+              res.sendStatus(500);
+    });
 });
+
+router.get('/trigger', (req, res) => {
+    // GET route code here
+    console.log(req.body)
+  });
 
 /**
  * POST route template

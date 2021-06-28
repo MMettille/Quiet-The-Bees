@@ -25,18 +25,18 @@ function Header() {
     const dispatch = useDispatch();
     const userInput = useSelector(store => store.userInput);
     
-    useEffect(() => {
-        fetchUserInput()
-    }, [])
+    // useEffect(() => {
+    //     fetchUserInput()
+    // }, [])
 
-    const fetchUserInput = () => {
-        // Grabbing todays date as YYYY-MM-DD
-        const date = new Date().toISOString().substring(0, 10);
-        console.log(date)
-        // Fetching the user inputs by date
-        dispatch({ type: 'FETCH_USER_SPOON', payload: date})
-        // dispatch({ type: 'FETCH_USER_TRIGGER', payload: date})
-    }
+    // const fetchUserInput = () => {
+    //     // Grabbing todays date as YYYY-MM-DD
+    //     const date = new Date().toISOString().substring(0, 10);
+    //     console.log(date)
+    //     // Fetching the user inputs by date
+    //     dispatch({ type: 'FETCH_USER_SPOON', payload: date})
+    //     // dispatch({ type: 'FETCH_USER_TRIGGER', payload: date})
+    // }
 
     const classes = useStyles();
 

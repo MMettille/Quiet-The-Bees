@@ -12,7 +12,7 @@ import Box from '@material-ui/core/Box';
 function Main() {
 
   const dispatch = useDispatch();
-  const task = useSelector (store => store.task)
+  const task = useSelector (store => store.task);
 
   useEffect(() => {
     dispatch({type: 'FETCH_TASK'})

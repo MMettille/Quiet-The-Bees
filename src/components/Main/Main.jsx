@@ -33,22 +33,41 @@ function Main() {
             p={2}
             m={2}
           >
-            {/* {task.map(item => {
+            {task.map(item => {
               if (item.priority === 'NOW'){
-                return <StickyNote key={item.id}/>
+                return <StickyNote key={item.id} item={item}/>
               }
-            })} */}
-
-           
-
+            })}
           </Box>
         </div>
         <h1>Soon-ish</h1>
         <h4>These tasks don't need to happen immediately, but do need to happen soon. Can you set a due date?</h4>
-
+          <Box 
+            display="flex"
+            flexWrap="wrap"
+            p={2}
+            m={2}
+          >
+            {task.map(item => {
+              if (item.priority === 'soonish'){
+                return <StickyNote key={item.id} item={item}/>
+              }
+            })}
+          </Box>
         <h1>Later</h1>
         <h4>These tasks are on your radar for later.</h4>
-
+          <Box 
+            display="flex"
+            flexWrap="wrap"
+            p={2}
+            m={2}
+          >
+            {task.map(item => {
+              if (item.priority === 'later'){
+                return <StickyNote key={item.id} item={item}/>
+              }
+            })}
+          </Box>
       </>
   );
 }

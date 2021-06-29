@@ -8,11 +8,12 @@ function StickyNote(item) {
 
   const dispatch = useDispatch();
 
+  console.log (item)
     return (
       <>
         <div className="note-box">
             <section className="note-body">
-                <p>{item.taskName}</p>
+                <p>{item.item.taskName}</p>
             </section>
             <section className="note-btns">
                 <button>

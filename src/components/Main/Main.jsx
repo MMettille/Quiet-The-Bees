@@ -2,9 +2,10 @@ import React, {useState, useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {useHistory} from 'react-router-dom'
 
-// ⬇ 
+// ⬇ What Components we need to import
 import Header from '../Header/Header';
 import StickyNote from '../StickyNote/StickyNote';
+
 
 import Box from '@material-ui/core/Box';
 
@@ -18,7 +19,7 @@ function Main() {
   }, []);
 
   console.log(`Your tasks are:`, task);
-
+  
     return (
       <>
         <Header />
@@ -32,22 +33,14 @@ function Main() {
             p={2}
             m={2}
           >
-            {task.map(item => {
+            {/* {task.map(item => {
               if (item.priority === 'NOW'){
-                return (
-                  <div className="note-box">
-                    <section className="note-title">
-                        <p>{item.taskName}</p>
-                    </section>
-                    <section className="note-edit-btn">
-                        <button >
-                            Edit
-                        </button>
-                    </section>
-                  </div>
-                );
+                return <StickyNote key={item.id}/>
               }
-            })}
+            })} */}
+
+           
+
           </Box>
         </div>
         <h1>Soon-ish</h1>

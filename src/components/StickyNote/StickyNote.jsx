@@ -35,9 +35,9 @@ function StickyNote(item) {
   } 
 
   const handleEdit = () => {
-    console.log('Task to edit:', editTask)
-    dispatch({type: 'TASK_TO_EDIT', payload: editTask})
-    setOpen(true);
+    console.log('Task to edit:', item)
+    // dispatch({type: 'TASK_TO_EDIT', payload: editTask})
+    // setOpen(true);
   }
   
   const handleChange = (event) => { 

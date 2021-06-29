@@ -7,8 +7,8 @@ const router = express.Router();
  */
 router.get('/', (req, res) => {
   // GET route code here
-  const query = `SELECT * FROM "taskList";`;
-  pool.query(query)
+  const query = `SELECT * FROM "taskList" WHERE "user_id" = $1;`;
+  pool.query(query, [req.user.id])
     .then( result => {
       res.send(result.rows);
     })
@@ -23,6 +23,22 @@ router.get('/', (req, res) => {
  */
 router.post('/', (req, res) => {
   // POST route code here
+});
+
+/**
+ * PUT route template
+ */
+ router.put('/:id', (req, res) => {
+  // Update this single title
+  const sqlText = `UPDATE "taskList" SET "taskName" = $1 WHERE id = $2 AND "user_id" = $3; `;
+  pool.query(sqlText, [req.body.taskName, req.params.id, req.user.id])
+      .then((result) => {
+          res.sendStatus(200);
+      })
+      .catch((error) => {
+          console.log(`Error making database query ${sqlText}`, error);
+          res.sendStatus(500);
+      });
 });
 
 module.exports = router;

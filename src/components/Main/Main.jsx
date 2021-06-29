@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import { useDispatch} from 'react-redux';
 import {useHistory} from 'react-router-dom'
 
@@ -8,10 +8,14 @@ import Header from '../Header/Header'
 
 function Main() {
 
+  useEffect(() => {
+    dispatchEvent({ type: 'FETCH_TASK'})
+  }, []);
+
     return (
       <>
         <Header />
-        // Blank Add Card
+        
         <h1>NOW</h1>
         <h4>These are the most important tasks. What are the consequences of not completing these things?</h4>
 

@@ -2,13 +2,9 @@ import React, {useState, useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {useHistory} from 'react-router-dom'
 
-// ⬇ 
-import Header from '../Header/Header';
-import StickyNote from '../StickyNote/StickyNote';
-
 import Box from '@material-ui/core/Box';
 
-function Main() {
+function StickyNote() {
 
   const dispatch = useDispatch();
   const task = useSelector (store => store.task)
@@ -60,4 +56,4 @@ function Main() {
   );
 }
 
-export default Main;
+export default StickyNote;

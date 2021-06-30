@@ -12,9 +12,18 @@ function* fetchTask() {
     }
 }
 
-function addNewTask(){
-  
+// ⬇ Adding a new task in the database
+function* addNewTask(action){
+  try {
+    const newTask = action.payload;
+    console.log(newTask);
+    yield axios.post('/api/task', newTask)
+    yield put({type: 'FETCH_TASK'})
+  } catch (err){
+    console.log(err)
+  }
 }
+
 // ⬇ Editing the task in the database
 function* editTask(action) {
   const taskId = action.payload.id;

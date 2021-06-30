@@ -12,18 +12,22 @@ import FormLabel from '@material-ui/core/FormLabel';
 
 function AddNewTask() {
 
+    const dispatch = useDispatch();
+    
     const [newTask, setNewTask] = useState('');
-    const [value, setValue] = useState('')
+    const [value, setValue] = useState('');
 
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        console.log('clicked -> new task is: ', newTask)
-        setNewTask({...newTask, priority: value})
-        console.log(newTask)
-        // dispatch({type: 'ADD_NEW_TASK', payload: newTask})
-        // setNewTask({})
-        console.log(value)
+        dispatch({
+            type: 'ADD_NEW_TASK',
+            payload: {
+                taskName: newTask,
+                priority: value
+            }});
+        setNewTask('');
+        setValue('');
     }
 
     return (

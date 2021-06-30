@@ -23,6 +23,16 @@ router.get('/', (req, res) => {
  */
 router.post('/', (req, res) => {
   // POST route code here
+    console.log(req.body)
+    const insertNewTask = 
+        `INSERT INTO "taskList" ("taskName", "priority", "user_id")
+        VALUES ($1, $2, $3);`;
+    pool.query(insertNewTask, [req.body.taskName, req.body.priority, req.user.id]).then(result => {
+        res.sendStatus(201);
+    }).catch(err => {
+        console.log(err);
+        res.sendStatus(500)
+    })
 });
 
 /**

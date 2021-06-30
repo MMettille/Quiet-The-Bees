@@ -28,15 +28,16 @@ function StickyNote(item) {
   const classes = useStyles();
   const dispatch = useDispatch();
   const [open, setOpen] = useState(false)
-  const editTask = useSelector(store => store.editTask)
+  const taskToEdit = useSelector(store => store.taskToEdit)
 
   const handleClose = () => {
     setOpen(false)
   } 
 
   const handleEdit = () => {
-    console.log('Task to edit:', item)
-    dispatch({type: 'TASK_TO_EDIT', payload: item})
+    console.log('Task to edit:', item.item)
+    dispatch({type: 'TASK_TO_EDIT', payload: item.item})
+    
     setOpen(true);
   }
   
@@ -50,7 +51,7 @@ function StickyNote(item) {
   const handleSubmit = (event) => {
     event.preventDefault();
     // ⬇ PUT REQUEST to /task/:id
-    dispatch({type: 'EDIT_TASK', payload: editTask})
+    dispatch({type: 'EDIT_TASK', payload: taskToEdit})
     // ⬇ clean up reducer data            
     dispatch({ type: 'EDIT_CLEAR' });
     // ⬇ Close the Modal 
@@ -94,11 +95,9 @@ function StickyNote(item) {
           <input
             onChange={(event) => handleChange(event)}
             value={item.item.taskName}
+            //! I know this should actually be value={taskToEdit}
           />
           <input type='submit' value='Update Task'/>
-          </section>
-          <section className="note-btns">
-          
           </section>
         </div>
       </form>

@@ -1,4 +1,4 @@
-const editTask = (state = {}, action) => {
+const taskToEdit = (state = {}, action) => {
     switch (action.type) {
         case 'TASK_TO_EDIT':
             return action.payload;
@@ -9,8 +9,9 @@ const editTask = (state = {}, action) => {
         default:
         return state;
     }
+    return state
   };
   
   // user will be on the redux state at:
   // state.user
-  export default editTask;
+  export default taskToEdit;

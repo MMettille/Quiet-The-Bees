@@ -12,6 +12,9 @@ function* fetchTask() {
     }
 }
 
+function addNewTask(){
+  
+}
 // ⬇ Editing the task in the database
 function* editTask(action) {
   const taskId = action.payload.id;
@@ -44,6 +47,7 @@ function* taskSaga() {
   yield takeLatest('FETCH_TASK', fetchTask);
   yield takeEvery('EDIT_TASK', editTask)
   yield takeEvery('DELETE_TASK', deleteTask)
+  yield takeEvery('ADD_NEW_TASK', addNewTask)
 }
 
 export default taskSaga;

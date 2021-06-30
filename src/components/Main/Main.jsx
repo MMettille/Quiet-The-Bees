@@ -4,9 +4,11 @@ import {useHistory} from 'react-router-dom'
 
 // ⬇ What Components we need to import
 import Header from '../Header/Header';
+import AddNewTask from '../AddNewTask/AddNewTask';
 import StickyNote from '../StickyNote/StickyNote';
 
-
+import Button from '@material-ui/core/Button';
+import ButtonGroup from '@material-ui/core/ButtonGroup';
 import Box from '@material-ui/core/Box';
 
 function Main() {
@@ -17,12 +19,12 @@ function Main() {
   useEffect(() => {
     dispatch({type: 'FETCH_TASK'})
   }, []);
-
-  console.log(`Your tasks are:`, task);
   
-    return (
+      return (
       <>
         <Header />
+        
+        <AddNewTask />
         
         <h1>NOW</h1>
         <h4>These are the most important tasks. What are the consequences of not completing these things?</h4>

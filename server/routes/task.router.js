@@ -29,9 +29,7 @@ router.post('/', (req, res) => {
  * PUT route template
  */
  router.put('/:id', (req, res) => {
-  console.log(req.params)
-  console.log(req.body)
-  // Update this single title
+  // Update this single task
   const sqlText = `UPDATE "taskList" SET "taskName" = $1 WHERE id = $2 AND "user_id" = $3; `;
   pool.query(sqlText, [req.body.taskName, req.body.id, req.user.id])
       .then((result) => {
@@ -41,6 +39,27 @@ router.post('/', (req, res) => {
           console.log(`Error making database query ${sqlText}`, error);
           res.sendStatus(500);
       });
+});
+
+/**
+ * DELETE route template
+ */
+ router.delete('/delete/:id', (req, res) => {
+  // ⬇ This will grab the id of the task that we would like to delete
+  const taskToDelete = req.params.id;
+  console.log(taskToDelete)
+  // ⬇ This tell the database what we'd like to delete and where
+  const queryText = `DELETE FROM "taskList" WHERE "taskList".id = $1 AND "user_id" = $2;`;
+  // ⬇ Delete sanitized user input from the database
+  pool.query(queryText, [taskToDelete, req.user.id])
+  // ⬇ Sending back a 'ok' code to the user
+  .then( response => {
+      console.log(`You deleted...`, taskToDelete);
+      res.sendStatus(200);
+  }).catch( err => {
+      console.log(`error deleting on server side`);
+      res.sendStatus(500);
+  });
 });
 
 module.exports = router;

@@ -51,16 +51,19 @@ function StickyNote(item) {
   const handleSubmit = (event) => {
     event.preventDefault();
     // ⬇ PUT REQUEST to /task/:id
-    console.log('what we want to send to database', taskToEdit)
     dispatch({type: 'EDIT_TASK', payload: taskToEdit})
     // ⬇ clean up reducer data            
     dispatch({ type: 'EDIT_CLEAR' });
     // ⬇ Close the Modal 
     setOpen(false);
-    // ⬇ Refresh the tasks
-    dispatch({type: 'FETCH_TASK'})
   }
   
+  const handleDelete = (event) => {
+    event.preventDefault();
+    console.log('task we would like to delete:', item.item)
+    dispatch({type: 'DELETE_TASK', payload: item.item})
+
+  }
   return (
     <>
       <div className="note-box">
@@ -71,7 +74,7 @@ function StickyNote(item) {
               <button onClick={handleEdit}>
                   Edit
               </button>
-              <button>
+              <button onClick={handleDelete}>
                   Delete
               </button>
           </section>

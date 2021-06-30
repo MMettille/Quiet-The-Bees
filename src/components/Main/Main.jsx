@@ -48,11 +48,11 @@ function Main() {
             p={2}
             m={2}
           >
-            {task.map(item => {
+            {/* {task.map(item => {
               if (item.priority === 'soonish'){
                 return <StickyNote key={item.id} item={item}/>
               }
-            })}
+            })} */}
           </Box>
         <h1>Later</h1>
         <h4>These tasks are on your radar for later.</h4>
@@ -62,11 +62,11 @@ function Main() {
             p={2}
             m={2}
           >
-            {task.map(item => {
+            {/* {task.map(item => {
               if (item.priority === 'later'){
                 return <StickyNote key={item.id} item={item}/>
               }
-            })}
+            })} */}
           </Box>
       </>
   );

@@ -13,13 +13,13 @@ function* fetchTask() {
 }
 
 function* editTask(action) {
-  const taskId = action.payload.item.id;
+  const taskId = action.payload.id;
   console.log('task to edit', taskId);
-  try {
-      yield axios.put(`/api/task/{taskId}`, action.payload);
-  } catch {
-  console.log('error in put task', error);
-  }
+   try {
+       yield axios.put(`/api/task/{taskId}`, action.payload);
+   } catch {
+   console.log('error in put task');
+   }
 }
 
 function* taskSaga() {

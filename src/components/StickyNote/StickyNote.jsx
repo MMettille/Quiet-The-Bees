@@ -51,6 +51,7 @@ function StickyNote(item) {
   const handleSubmit = (event) => {
     event.preventDefault();
     // ⬇ PUT REQUEST to /task/:id
+    console.log('what we want to send to database', taskToEdit)
     dispatch({type: 'EDIT_TASK', payload: taskToEdit})
     // ⬇ clean up reducer data            
     dispatch({ type: 'EDIT_CLEAR' });
@@ -94,7 +95,7 @@ function StickyNote(item) {
           <section className="note-body">
           <input
             onChange={(event) => handleChange(event)}
-            value={item.item.taskName}
+            value={taskToEdit.taskName}
             //! I know this should actually be value={taskToEdit}
           />
           <input type='submit' value='Update Task'/>

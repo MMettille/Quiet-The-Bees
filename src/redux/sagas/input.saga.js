@@ -47,7 +47,9 @@ function* fetchUserTrigger(action){
     try{
         const today = action.payload;
         console.log(today)
-        yield axios.get('/api/trigger', today)
+        const response = yield axios.get('/api/query/trigger/?q={today}')
+        console.log(response.data)
+        yield put({type: 'SET_TODAY_TRIGGER', payload: response.data})
     } catch (err){
         console.log(err)
     }

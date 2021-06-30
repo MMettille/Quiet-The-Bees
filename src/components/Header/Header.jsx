@@ -32,12 +32,13 @@ function Header() {
         const date = new Date().toISOString().substring(0, 10);
         console.log(date)
         // Fetching the user inputs by date
-        dispatch({ type: 'FETCH_USER_SPOON', payload: date})
-        // dispatch({ type: 'FETCH_USER_TRIGGER', payload: date})
+        // dispatch({ type: 'FETCH_USER_SPOON', payload: date})
+        dispatch({ type: 'FETCH_USER_TRIGGER', payload: date})
+        
     }
 
     const classes = useStyles();
-
+    
     return (
         <div className={classes.root}>
         <Grid container spacing={3}>
@@ -54,11 +55,8 @@ function Header() {
           <Grid item xs={12} sm={6}>
           <Paper className={classes.paper}>
             <h3>Energy</h3>
-            <p>{userInput[0].spoon}</p>
-             {/* something.map(somethingTwo => {
-                return spoon for each number
-            })
-             */}
+            // We have an async bug!
+            {/* <p>{userInput[0].spoon}</p> */}
             <Button variant="contained">Graph</Button>
         </Paper>
           </Grid>

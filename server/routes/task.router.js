@@ -32,6 +32,7 @@ router.post('/', (req, res) => {
   // Update this single task
   const sqlText = `UPDATE "taskList" SET "taskName" = $1 WHERE id = $2 AND "user_id" = $3; `;
   pool.query(sqlText, [req.body.taskName, req.body.id, req.user.id])
+  // ⬇ Sending back a 'ok' code to the user
       .then((result) => {
           res.sendStatus(200);
       })

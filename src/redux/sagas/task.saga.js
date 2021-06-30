@@ -12,6 +12,7 @@ function* fetchTask() {
     }
 }
 
+// ⬇ Editing the task in the database
 function* editTask(action) {
   const taskId = action.payload.id;
   console.log('task to edit', taskId);
@@ -19,16 +20,20 @@ function* editTask(action) {
        yield axios.put(`/api/task/{taskId}`, action.payload);
        // ⬇ Refresh the tasks
       yield put({ type: 'FETCH_TASK'})
+      // ⬇ clean up reducer data 
+      yield put({ type: 'EDIT_CLEAR'})
    } catch {
    console.log('error in put task');
    }
 }
 
+// ⬇ Deleting the task in the database
 function* deleteTask(action) {
   const task = action.payload.id;
   console.log('task to delete', task);
    try {
        yield axios.delete(`/api/task/delete/${task}`, action.payload);
+       // ⬇ Refresh the tasks
        yield put({type: 'FETCH_TASK'})
    } catch {
    console.log('error in delete task');

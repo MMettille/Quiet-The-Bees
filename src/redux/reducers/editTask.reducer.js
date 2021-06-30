@@ -1,4 +1,5 @@
 const taskToEdit = (state = {}, action) => {
+    // ⬇ Identify which task the user would like to edit
     if(action.type === 'TASK_TO_EDIT'){
         return action.payload
     } else if(action.type === 'EDIT_ONCHANGE') {
@@ -8,6 +9,7 @@ const taskToEdit = (state = {}, action) => {
         // change this one in particular
         [action.payload.property]: action.payload.value,
         }
+    // ⬇ Clearing redux
     } else if(action.type === 'CLEAR_EDIT') {
         return { };
     }

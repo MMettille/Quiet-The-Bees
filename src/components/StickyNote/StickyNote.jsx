@@ -25,15 +25,18 @@ const useStyles = makeStyles((theme) => ({
 
 function StickyNote(item) {
 
+  // ⬇ Declaring the functions we want to use.
   const classes = useStyles();
   const dispatch = useDispatch();
   const [open, setOpen] = useState(false)
   const taskToEdit = useSelector(store => store.taskToEdit)
 
+  // ⬇ Opens and closes the modal
   const handleClose = () => {
     setOpen(false)
   } 
 
+  // ⬇ Sets which task the user would like to edit and sends that to redux
   const handleEdit = () => {
     console.log('Task to edit:', item.item)
     dispatch({type: 'TASK_TO_EDIT', payload: item.item})
@@ -41,6 +44,7 @@ function StickyNote(item) {
     setOpen(true);
   }
   
+  // ⬇ Dispatches the changes to redux after each change
   const handleChange = (event) => { 
     dispatch({ 
       type: 'EDIT_ONCHANGE', 
@@ -48,22 +52,20 @@ function StickyNote(item) {
     });
   }
 
+  // ⬇ 
   const handleSubmit = (event) => {
     event.preventDefault();
     // ⬇ PUT REQUEST to /task/:id
     dispatch({type: 'EDIT_TASK', payload: taskToEdit})
-    // ⬇ clean up reducer data            
-    dispatch({ type: 'EDIT_CLEAR' });
     // ⬇ Close the Modal 
     setOpen(false);
   }
   
   const handleDelete = (event) => {
     event.preventDefault();
-    console.log('task we would like to delete:', item.item)
     dispatch({type: 'DELETE_TASK', payload: item.item})
-
   }
+
   return (
     <>
       <div className="note-box">

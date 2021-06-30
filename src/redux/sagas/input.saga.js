@@ -8,6 +8,7 @@ function* inputSaga() {
     yield takeEvery('FETCH_USER_TRIGGER', fetchUserTrigger)
 }
 
+// ⬇ Adding new input to the database
 function* addSpoonInput(action){
     try{
         const newSpoon = action.payload;
@@ -18,6 +19,7 @@ function* addSpoonInput(action){
     }
 }
 
+// ⬇ Adding new input to the database
 function* addTriggerInput(action){
     try{
         const newTrigger = action.payload;
@@ -28,6 +30,7 @@ function* addTriggerInput(action){
     }
 }
 
+// ⬇ Getting the user input to display in the header
 function* fetchUserSpoon(action){
     try{
         const today = action.payload;
@@ -39,6 +42,7 @@ function* fetchUserSpoon(action){
     }
 }
 
+// ⬇ Getting the user input to display in the header
 function* fetchUserTrigger(action){
     try{
         const today = action.payload;

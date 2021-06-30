@@ -103,6 +103,14 @@ function StickyNote(item) {
             value={taskToEdit.taskName}
             //! I know this should actually be value={taskToEdit}
           />
+          {/* <FormControl component="fieldset">
+            <FormLabel component="legend">Priority</FormLabel>
+            <RadioGroup aria-label="priorityStatus" value={value} onChange={(event) => setValue(event.target.value)}>
+              <FormControlLabel value="NOW" control={<Radio />} label="NOW" />
+              <FormControlLabel value="soonish" control={<Radio />} label="soon-ish" />
+              <FormControlLabel value="later" control={<Radio />} label="later" />
+            </RadioGroup>
+          </FormControl> */}
           <input type='submit' value='Update Task'/>
           </section>
         </div>

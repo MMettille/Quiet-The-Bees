@@ -17,26 +17,24 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-
-
-
 function Header() {
 
     const dispatch = useDispatch();
-    const userInput = useSelector(store => store.userInput);
+    const userInput = useSelector(store => store.input);
     
-    // useEffect(() => {
-    //     fetchUserInput()
-    // }, [])
+    useEffect(() => {
+        fetchUserInput()
+    }, [])
 
-    // const fetchUserInput = () => {
-    //     // Grabbing todays date as YYYY-MM-DD
-    //     const date = new Date().toISOString().substring(0, 10);
-    //     console.log(date)
-    //     // Fetching the user inputs by date
-    //     dispatch({ type: 'FETCH_USER_SPOON', payload: date})
-    //     // dispatch({ type: 'FETCH_USER_TRIGGER', payload: date})
-    // }
+    
+    const fetchUserInput = () => {
+        // Grabbing todays date as YYYY-MM-DD
+        const date = new Date().toISOString().substring(0, 10);
+        console.log(date)
+        // Fetching the user inputs by date
+        dispatch({ type: 'FETCH_USER_SPOON', payload: date})
+        // dispatch({ type: 'FETCH_USER_TRIGGER', payload: date})
+    }
 
     const classes = useStyles();
 
@@ -56,6 +54,7 @@ function Header() {
           <Grid item xs={12} sm={6}>
           <Paper className={classes.paper}>
             <h3>Energy</h3>
+            <p>{userInput[0].spoon}</p>
              {/* something.map(somethingTwo => {
                 return spoon for each number
             })

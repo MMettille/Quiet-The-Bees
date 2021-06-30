@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { put, takeLatest } from 'redux-saga/effects';
+import { put, takeEvery, takeLatest } from 'redux-saga/effects';
 
 // worker Saga: will be fired on "FETCH_TASK" actions
 function* fetchTask() {
@@ -12,8 +12,19 @@ function* fetchTask() {
     }
 }
 
+function* editTask(action) {
+  const taskId = action.payload.item.id;
+  console.log('task to edit', taskId);
+  try {
+      yield axios.put(`/api/task/{taskId}`, action.payload);
+  } catch {
+  console.log('error in put task', error);
+  }
+}
+
 function* taskSaga() {
   yield takeLatest('FETCH_TASK', fetchTask);
+  yield takeEvery('EDIT_TASK', editTask)
 }
 
 export default taskSaga;

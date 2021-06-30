@@ -29,9 +29,11 @@ router.post('/', (req, res) => {
  * PUT route template
  */
  router.put('/:id', (req, res) => {
+  console.log(req.params)
+  console.log(req.body)
   // Update this single title
   const sqlText = `UPDATE "taskList" SET "taskName" = $1 WHERE id = $2 AND "user_id" = $3; `;
-  pool.query(sqlText, [req.body.taskName, req.params.id, req.user.id])
+  pool.query(sqlText, [req.body.item.taskName, req.body.item.id, req.user.id])
       .then((result) => {
           res.sendStatus(200);
       })

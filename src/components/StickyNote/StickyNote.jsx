@@ -36,8 +36,8 @@ function StickyNote(item) {
 
   const handleEdit = () => {
     console.log('Task to edit:', item)
-    // dispatch({type: 'TASK_TO_EDIT', payload: editTask})
-    // setOpen(true);
+    dispatch({type: 'TASK_TO_EDIT', payload: item})
+    setOpen(true);
   }
   
   const handleChange = (event) => { 
@@ -50,20 +50,15 @@ function StickyNote(item) {
   const handleSubmit = (event) => {
     event.preventDefault();
     // ⬇ PUT REQUEST to /task/:id
-    axios.put(`/books/${editTask.id}`, editTask)
-    .then( response => {
-      // ⬇ clean up reducer data            
-      dispatch({ type: 'EDIT_CLEAR' });
-      // ⬇ Close the Modal 
-      setOpen(false);
-      // ⬇ Refresh the tasks
-      dispatch({type: 'FETCH_TASK'})
-    })
-    .catch(error => {
-      console.log('error on PUT: ', error);
-    })
+    dispatch({type: 'EDIT_TASK', payload: editTask})
+    // ⬇ clean up reducer data            
+    dispatch({ type: 'EDIT_CLEAR' });
+    // ⬇ Close the Modal 
+    setOpen(false);
+    // ⬇ Refresh the tasks
+    dispatch({type: 'FETCH_TASK'})
   }
-
+  
   return (
     <>
       <div className="note-box">
@@ -100,9 +95,10 @@ function StickyNote(item) {
             onChange={(event) => handleChange(event)}
             value={item.item.taskName}
           />
+          <input type='submit' value='Update Task'/>
           </section>
           <section className="note-btns">
-          <input type='submit' value='Update Task'/>
+          
           </section>
         </div>
       </form>

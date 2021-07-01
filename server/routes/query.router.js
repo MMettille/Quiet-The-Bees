@@ -21,6 +21,21 @@ router.get('/spoon/:date', (req, res) => {
     });
 });
 
+router.get('/spoon', (req, res) => {
+    // GET route code here
+    console.log(req.params)
+    const sqlText = `
+        SELECT "spoon_input".spoon, "spoon_input".date FROM "spoon_input"
+        WHERE "spoon_input".user_id = $1;`
+    pool.query(sqlText, [req.user.id]).then( (result) =>{
+        console.log(result.rows)
+        res.send(result.rows);
+      }).catch((error)=>{
+        console.log(`error making database query`, error);
+              res.sendStatus(500);
+    });
+});
+
 router.get('/trigger', (req, res) => {
     // GET route code here
     console.log(req.body)

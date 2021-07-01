@@ -29,6 +29,7 @@ function WordCloud() {
             series.data = words;
             series.dataFields.word = "tag";
             series.dataFields.value = "weight";
+            series.labels.template.tooltipText = "{word}:\n[bold]{value}[/]";
             // ⬇ Customizing the color
             series.colors = new am4core.ColorSet()
             series.colors.passOptions = {};

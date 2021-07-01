@@ -19,9 +19,9 @@ function SpoonGraph() {
   // ⬇ This gets my data from the database and sets it to feedback
   const getUserSpoonInput = () =>
     axios
-      .get("/api/query/spoon")
+      .get("/api/query/spoongraph")
       .then((response) => {
-        const userSpoonInput = response.data;
+        const spoonData = response.data;
 
         // ⬇ This creates the kind of chart that I would like from am4charts
         let x = am4core.create("chartdiv", am4charts.XYChart);
@@ -32,7 +32,8 @@ function SpoonGraph() {
         x.dateFormatter.dateFormat = "yyyy-MM-dd";
 
         // ⬇ Adding from the data that I set in the getFeedback function
-        let data = getDataArray(feedbackData);
+        let data = getDataArray(spoonData);
+        console.log(data)
         // ⬇ Making the data tied to the chart, called x.
         x.data = data;
         // ⬇ creating xAxes (the horizontal axis)
@@ -61,12 +62,13 @@ function SpoonGraph() {
         console.log(`We have a server error`, error);
       });
 
-  const getDataArray = (spoonData) =>
-  console.log(spoonData)
-     spoonData.map((feedback) => ({
-       date: feedback.date,
-       spoon: feedback.spoon
-    }));
+    const getDataArray = (spoonData) => {
+        console.log(spoonData)
+        spoonData.map((thing) => ({
+            date: thing.date,
+            spoon: thing.spoon
+          }));
+    }
 
   return <div id="chartdiv"></div>;
 }

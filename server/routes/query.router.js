@@ -23,7 +23,7 @@ router.get('/spoon/', (req, res) => {
     });
 });
 
-router.get('/spoon', (req, res) => {
+router.get('/spoongraph', (req, res) => {
     // GET route code here
     console.log(req.params)
     const sqlText = `

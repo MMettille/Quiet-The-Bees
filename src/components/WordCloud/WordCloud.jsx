@@ -30,8 +30,16 @@ function WordCloud() {
             series.dataFields.word = "tag";
             series.dataFields.value = "weight";
             // ⬇ Customizing the color
-            series.colors = new am4core.ColorSet();
+            series.colors = new am4core.ColorSet()
             series.colors.passOptions = {};
+            series.colors.list = [
+                am4core.color("#0096a5"),
+                am4core.color("#56c7d6"),
+                am4core.color("#7e57c2"),
+                am4core.color("#8e0000"),
+                am4core.color("#388e3c"),
+            ]
+            
         }).catch((error) => {
             console.log(`We have a server error`, error);
           });

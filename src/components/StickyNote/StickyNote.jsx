@@ -113,13 +113,16 @@ function StickyNote(item) {
           />
           <FormControl component="fieldset">
             <FormLabel component="legend">Priority</FormLabel>
-            <RadioGroup aria-label="priorityStatus" value={value} onChange={(event) => dispatch({ 
+            <RadioGroup
+              aria-label="priorityStatus"
+              value={taskToEdit.priority} 
+              onChange={(event) => dispatch({ 
                 type: 'EDIT_ONCHANGE', 
                 payload: { property: 'priority', value: event.target.value }
-                })}>
-              <FormControlLabel value="NOW" control={<Radio />} label="NOW" />
-              <FormControlLabel value="soonish" control={<Radio />} label="soon-ish" />
-              <FormControlLabel value="later" control={<Radio />} label="later" />
+              })}>
+                <FormControlLabel value="NOW" control={<Radio />} label="NOW" />
+                <FormControlLabel value="soonish" control={<Radio />} label="soon-ish" />
+                <FormControlLabel value="later" control={<Radio />} label="later" />
             </RadioGroup>
           </FormControl>
           <input type='submit' value='Update Task'/>

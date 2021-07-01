@@ -33,7 +33,7 @@ function Header() {
         console.log(date)
         // Fetching the user inputs by date
         // dispatch({ type: 'FETCH_USER_SPOON', payload: date})
-        dispatch({ type: 'FETCH_USER_TRIGGER', payload: date})
+        // dispatch({ type: 'FETCH_USER_TRIGGER', payload: date})
         
     }
 

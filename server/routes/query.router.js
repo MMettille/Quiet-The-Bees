@@ -28,7 +28,8 @@ router.get('/spoongraph', (req, res) => {
     console.log(req.params)
     const sqlText = `
         SELECT "spoon_input".spoon, "spoon_input".date FROM "spoon_input"
-        WHERE "spoon_input".user_id = $1;`
+        WHERE "spoon_input".user_id = $1
+        ORDER BY "spoon_input".date ASC;`
     pool.query(sqlText, [req.user.id]).then( (result) =>{
         console.log(result.rows)
         res.send(result.rows);

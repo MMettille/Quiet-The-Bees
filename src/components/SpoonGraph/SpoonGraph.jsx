@@ -4,9 +4,8 @@ import './SpoonGraph.css'
 import React, { useRef, useState, useEffect } from "react";
 import axios from "axios";
 
-// Basic functional component structure for React with default state
-// value setup. When making a new component be sure to replace the
-// component name TemplateFunction with the name for the new component.
+import Header from '../Header/Header';
+
 function SpoonGraph() {
   // ⬇ Creating the chart
   const chart = useRef(null);
@@ -69,7 +68,12 @@ function SpoonGraph() {
 
   }
 
-    return <div id="chartdiv"></div>;
+    return (
+        <>
+            <Header />
+            <div id="chartdiv"></div>
+        </>
+    )
 }
 
 export default SpoonGraph;

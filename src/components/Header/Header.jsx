@@ -44,6 +44,11 @@ function Header() {
       history.push('/spoongraph')
     }
 
+    const goToCloud = (event) => {
+      event.preventDefault();
+      history.push('/wordcloud')
+    }
+
     const classes = useStyles();
     
     return (
@@ -56,7 +61,7 @@ function Header() {
                 return list for each trigger
             })
              */}
-            <Button variant="contained">Word Cloud</Button>
+            <Button variant="contained" onClick={goToCloud}>Word Cloud</Button>
         </Paper>
           </Grid>
           <Grid item xs={12} sm={6}>

@@ -24,6 +24,7 @@ import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
 import SpoonGraph from '../SpoonGraph/SpoonGraph'
 import SpoonQuery from '../SpoonQuery/SpoonQuery';
+import WordCloud from '../WordCloud/WordCloud'
 import TriggerQuery from '../TriggerQuery/TriggerQuery'
 import Main from '../Main/Main'
 
@@ -71,7 +72,7 @@ function App() {
             path="/spoongraph"
           >
             <SpoonGraph />
-          </ProtectedRoute>'
+          </ProtectedRoute>
 
           <ProtectedRoute
             // logged in shows UserPage else shows LoginPage
@@ -81,6 +82,14 @@ function App() {
             <SpoonQuery />
           </ProtectedRoute>'
           
+          <ProtectedRoute
+            // logged in shows UserPage else shows LoginPage
+            exact
+            path="/wordCloud"
+          >
+            <WordCloud />
+          </ProtectedRoute>
+
           <ProtectedRoute
             // logged in shows UserPage else shows LoginPage
             exact

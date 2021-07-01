@@ -6,6 +6,7 @@ import * as am4charts from "@amcharts/amcharts4/charts";
 import * as am4plugins_wordCloud from "@amcharts/amcharts4/plugins/wordCloud"; 
 
 import Header from '../Header/Header'
+import { stringifyRequest } from "loader-utils";
 function WordCloud() {
 
     // ⬇ Creating the chart
@@ -17,6 +18,8 @@ function WordCloud() {
     getStringOfWords()
     }, []);
   
+    
+    const array = []
     const getStringOfWords = () => {
         axios.get("/api/query/wordcloud")
         .then((response) => {
@@ -36,8 +39,17 @@ function WordCloud() {
                 // {trigger: 'Joe'},
                 // {trigger: 'Multitasking'},
                 // {trigger: 'food'}
+                console.log(item.trigger)
+                // Will display each word on separate lines
+                // Food
+                // Joe
+                // Multitasking
+                // Food
+                array.push(item.trigger)
                 
             })
+            console.log(array)
+            // This will now display all of the words, as strings in one single array!
         })
     }
 

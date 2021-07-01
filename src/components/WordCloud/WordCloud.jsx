@@ -19,21 +19,26 @@ function WordCloud() {
     }, []);
   
     
-    const array = []
+    const dataArray = []
     const getStringOfWords = () => {
         axios.get("/api/query/wordcloud")
         .then((response) => {
             const words = response.data;
             getStringArray(words)
-            console.log(array)
-        })
+            console.log(dataArray)
+
+            // ⬇ This creates the kind of chart that I would like from am4charts
+            const x = am4core.create("chartdiv", am4plugins_wordCloud.WordCloud ); 
+        }).catch((error) => {
+            console.log(`We have a server error`, error);
+          });
     }
 
     const getStringArray = (words)=> {
         words.map(data => {
-            array.push(data.trigger)
+            dataArray.push(data.trigger)
         })
-        return array;
+        return dataArray;
     }
 
 
@@ -48,7 +53,7 @@ function WordCloud() {
     //       const spoonData = response.data;
           
   
-    //       // ⬇ This creates the kind of chart that I would like from am4charts
+    // //       // ⬇ This creates the kind of chart that I would like from am4charts
     //       let x = am4core.create("chartdiv", am4charts.XYChart);
     //       // ⬇ Padding to the right of the graph
     //       x.paddingRight = 20;
@@ -87,9 +92,6 @@ function WordCloud() {
     //       chart.current = x;
   
     //     })
-    //     .catch((error) => {
-    //       console.log(`We have a server error`, error);
-    //     });
   
     // }
 

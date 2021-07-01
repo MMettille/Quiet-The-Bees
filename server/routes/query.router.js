@@ -5,14 +5,16 @@ const router = express.Router();
 /**
  * GET route template
  */
-router.get('/spoon/:date', (req, res) => {
+
+// CANNOT SEND A DATE ON THE BODY
+router.get('/spoon/', (req, res) => {
     // GET route code here
-    console.log(req.params.date)
+    console.log(req.query.q)
     const sqlText = `
         SELECT "spoon_input".spoon FROM "spoon_input"
         WHERE "spoon_input".user_id = $1
         AND "spoon_input".date = $2;`
-    pool.query(sqlText, [req.params, req.user.id]).then( (result) =>{
+    pool.query(sqlText, [req.user.id, req.query.q]).then( (result) =>{
         console.log(result.rows)
         res.send(result.rows);
       }).catch((error)=>{
@@ -38,7 +40,18 @@ router.get('/spoon', (req, res) => {
 
 router.get('/trigger', (req, res) => {
     // GET route code here
-    console.log(req.body)
+    console.log(req.query.q)
+    const sqlText = `
+        SELECT "trigger_input".trigger FROM "trigger_input"
+        WHERE "trigger_input".user_id = $1
+        AND "trigger_input".date = $2;`
+    pool.query(sqlText, [req.user.id, req.query.q]).then( (result) =>{
+        console.log(result.rows)
+        res.send(result.rows);
+      }).catch((error)=>{
+        console.log(`error making database query`, error);
+              res.sendStatus(500);
+    });
   });
 
 /**

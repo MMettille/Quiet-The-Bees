@@ -1,8 +1,8 @@
-const task = (state = [], action) => {
+const input = (state = [], action) => {
     switch (action.type) {
-      case 'SET_TASK':
+      case 'SET_TODAY_SPOON':
         return action.payload;
-      case 'SET_SPOON':
+      case 'SET_TODAY_TRIGGER':
         return action.payload
       default:
         return state;
@@ -11,4 +11,4 @@ const task = (state = [], action) => {
   
   // user will be on the redux state at:
   // state.user
-  export default task;
+  export default input;

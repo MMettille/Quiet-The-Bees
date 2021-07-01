@@ -2,6 +2,7 @@ import { combineReducers } from 'redux';
 import errors from './errors.reducer';
 import user from './user.reducer';
 import task from './task.reducer';
+import input from './input.reducer'
 import taskToEdit from './editTask.reducer';
 
 // rootReducer is the primary reducer for our entire project
@@ -15,6 +16,7 @@ const rootReducer = combineReducers({
   user, // will have an id and username if someone is logged in
   task, // will contain all the tasks and the delete task functionality
   taskToEdit, // will contain all the edit functions
+  input, // will contain todays inputs
 });
 
 export default rootReducer;

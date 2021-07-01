@@ -40,8 +40,11 @@ router.get('/spoongraph', (req, res) => {
 router.get('/wordcloud', (req, res) => {
     // GET route code here
     const sqlText = `
-        SELECT "trigger_input".trigger FROM "trigger_input"
-        WHERE "trigger_input".user_id = $1`
+        SELECT trigger AS tag,
+        COUNT(trigger) AS weight
+        FROM "trigger_input"
+        WHERE "trigger_input".user_id = $1
+        GROUP BY "trigger"`
     pool.query(sqlText, [req.user.id]).then( (result) =>{
         res.send(result.rows);
       }).catch((error)=>{

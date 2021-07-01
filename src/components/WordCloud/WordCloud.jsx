@@ -17,33 +17,22 @@ function WordCloud() {
     //   getWordCloud();
     getStringOfWords()
     }, []);
-  
-    
-    const dataArray = []
+
     const getStringOfWords = () => {
         axios.get("/api/query/wordcloud")
         .then((response) => {
             const words = response.data;
-            getStringArray(words)
-            console.log(dataArray)
+            console.log(words)
 
-            // ⬇ This creates the kind of chart that I would like from am4charts
-            const x = am4core.create("chartdiv", am4plugins_wordCloud.WordCloud ); 
+            // // ⬇ This creates the kind of chart that I would like from am4charts
+            // const x = am4core.create("chartdiv", am4plugins_wordCloud.WordCloud );
+            // // ⬇ Creating the series for a word cloud
+            // const series = chart.series.push(new am4plugins_wordCloud.WordCloudSeries());
+
         }).catch((error) => {
             console.log(`We have a server error`, error);
           });
     }
-
-    const getStringArray = (words)=> {
-        words.map(data => {
-            dataArray.push(data.trigger)
-        })
-        return dataArray;
-    }
-
-
-
-
 
     // ⬇ This gets my data from the database and sets it to feedback
     // const getWordCloud = () => {
@@ -91,9 +80,9 @@ function WordCloud() {
   
     //       chart.current = x;
   
-    //     })
+    // //     })
   
-    // }
+    // // }
 
 
   return (

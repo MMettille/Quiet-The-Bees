@@ -45,6 +45,7 @@ function Header() {
           <Grid item xs={12} sm={6}>
           <Paper className={classes.paper}>
             <h3>Failure Triggers</h3>
+            We have an async bug!
              {/* something.map(somethingTwo => {
                 return list for each trigger
             })
@@ -55,7 +56,7 @@ function Header() {
           <Grid item xs={12} sm={6}>
           <Paper className={classes.paper}>
             <h3>Energy</h3>
-            // We have an async bug!
+            We have an async bug!
             {/* <p>{userInput[0].spoon}</p> */}
             <Button variant="contained">Graph</Button>
         </Paper>

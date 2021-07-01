@@ -29,6 +29,15 @@ function WordCloud() {
             //     {trigger: 'Multitasking'},
             //     {trigger: 'food'}
             // ]
+            words.map(item => {
+                console.log(item)
+                // Will loop through each item and return separate objects like:
+                // {trigger: 'food'},
+                // {trigger: 'Joe'},
+                // {trigger: 'Multitasking'},
+                // {trigger: 'food'}
+                
+            })
         })
     }
 

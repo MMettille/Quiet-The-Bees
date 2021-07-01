@@ -1,5 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import React, {useEffect} from 'react'
+import {useHistory} from 'react-router-dom'
 
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
@@ -22,6 +23,7 @@ const useStyles = makeStyles((theme) => ({
 
 function Header() {
 
+    const history = useHistory();
     const dispatch = useDispatch();
     const userInput = useSelector(store => store.userInput);
     
@@ -37,6 +39,11 @@ function Header() {
     //     dispatch({ type: 'FETCH_USER_SPOON', payload: date})
     //     // dispatch({ type: 'FETCH_USER_TRIGGER', payload: date})
     // }
+
+    const goToGraph = (event) => {
+      event.preventDefault();
+      history.push('/spoongraph')
+    }
 
     const classes = useStyles();
 
@@ -60,7 +67,7 @@ function Header() {
                 return spoon for each number
             })
              */}
-            <Button variant="contained">Graph</Button>
+            <Button variant="contained" onClick={goToGraph}>Graph</Button>
         </Paper>
           </Grid>
         </Grid>

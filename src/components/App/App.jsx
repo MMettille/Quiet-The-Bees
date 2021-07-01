@@ -22,6 +22,7 @@ import InfoPage from '../InfoPage/InfoPage';
 import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
+import SpoonGraph from '../SpoonGraph/SpoonGraph'
 import SpoonQuery from '../SpoonQuery/SpoonQuery';
 import TriggerQuery from '../TriggerQuery/TriggerQuery'
 import Main from '../Main/Main'
@@ -63,6 +64,14 @@ function App() {
           >
             <UserPage />
           </ProtectedRoute>
+
+          <ProtectedRoute
+            // logged in shows UserPage else shows LoginPage
+            exact
+            path="/spoongraph"
+          >
+            <SpoonGraph />
+          </ProtectedRoute>'
 
           <ProtectedRoute
             // logged in shows UserPage else shows LoginPage

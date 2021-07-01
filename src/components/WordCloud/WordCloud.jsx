@@ -24,33 +24,16 @@ function WordCloud() {
         axios.get("/api/query/wordcloud")
         .then((response) => {
             const words = response.data;
-            console.log('your words are:', words)
-            // will display an array of objects like: 
-            // [
-            //     {trigger: 'food'},
-            //     {trigger: 'Joe'},
-            //     {trigger: 'Multitasking'},
-            //     {trigger: 'food'}
-            // ]
-            words.map(item => {
-                console.log(item)
-                // Will loop through each item and return separate objects like:
-                // {trigger: 'food'},
-                // {trigger: 'Joe'},
-                // {trigger: 'Multitasking'},
-                // {trigger: 'food'}
-                console.log(item.trigger)
-                // Will display each word on separate lines
-                // Food
-                // Joe
-                // Multitasking
-                // Food
-                array.push(item.trigger)
-                
-            })
+            getStringArray(words)
             console.log(array)
-            // This will now display all of the words, as strings in one single array!
         })
+    }
+
+    const getStringArray = (words)=> {
+        words.map(data => {
+            array.push(data.trigger)
+        })
+        return array;
     }
 
 

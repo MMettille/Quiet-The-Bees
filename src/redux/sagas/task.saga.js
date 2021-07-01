@@ -5,7 +5,6 @@ import { put, takeEvery, takeLatest } from 'redux-saga/effects';
 function* fetchTask() {
     try {
         const task = yield axios.get('/api/task');
-        console.log('get all: ', task.data)
         yield put({ type: 'SET_TASK', payload: task.data })
     } catch {
     console.log('get all error');
@@ -16,7 +15,6 @@ function* fetchTask() {
 function* addNewTask(action){
   try {
     const newTask = action.payload;
-    console.log(newTask);
     yield axios.post('/api/task', newTask)
     yield put({type: 'FETCH_TASK'})
   } catch (err){
@@ -27,7 +25,6 @@ function* addNewTask(action){
 // ⬇ Editing the task in the database
 function* editTask(action) {
   const taskId = action.payload.id;
-  console.log('task to edit', taskId);
    try {
        yield axios.put(`/api/task/{taskId}`, action.payload);
        // ⬇ Refresh the tasks
@@ -42,7 +39,6 @@ function* editTask(action) {
 // ⬇ Deleting the task in the database
 function* deleteTask(action) {
   const task = action.payload.id;
-  console.log('task to delete', task);
    try {
        yield axios.delete(`/api/task/delete/${task}`, action.payload);
        // ⬇ Refresh the tasks

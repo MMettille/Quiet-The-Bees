@@ -9,6 +9,13 @@ import Modal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';
 import Fade from '@material-ui/core/Fade';
 
+import Button from '@material-ui/core/Button'
+import Radio from '@material-ui/core/Radio';
+import RadioGroup from '@material-ui/core/RadioGroup';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import FormControl from '@material-ui/core/FormControl';
+import FormLabel from '@material-ui/core/FormLabel';
+
 const useStyles = makeStyles((theme) => ({
   modal: {
     display: 'flex',
@@ -29,6 +36,7 @@ function StickyNote(item) {
   const classes = useStyles();
   const dispatch = useDispatch();
   const [open, setOpen] = useState(false)
+  const [value, setValue] = useState('')
   const taskToEdit = useSelector(store => store.taskToEdit)
 
   // ⬇ Opens and closes the modal
@@ -103,14 +111,17 @@ function StickyNote(item) {
             value={taskToEdit.taskName}
             //! I know this should actually be value={taskToEdit}
           />
-          {/* <FormControl component="fieldset">
+          <FormControl component="fieldset">
             <FormLabel component="legend">Priority</FormLabel>
-            <RadioGroup aria-label="priorityStatus" value={value} onChange={(event) => setValue(event.target.value)}>
+            <RadioGroup aria-label="priorityStatus" value={value} onChange={(event) => dispatch({ 
+                type: 'EDIT_ONCHANGE', 
+                payload: { property: 'priority', value: event.target.value }
+                })}>
               <FormControlLabel value="NOW" control={<Radio />} label="NOW" />
               <FormControlLabel value="soonish" control={<Radio />} label="soon-ish" />
               <FormControlLabel value="later" control={<Radio />} label="later" />
             </RadioGroup>
-          </FormControl> */}
+          </FormControl>
           <input type='submit' value='Update Task'/>
           </section>
         </div>

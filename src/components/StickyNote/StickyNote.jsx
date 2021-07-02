@@ -77,6 +77,11 @@ function StickyNote({item}) {
   return (
     <>
       <div className="note-box">
+          <section className="note-checkbox">
+            <button onClick={handleDelete}>
+                Delete
+            </button>
+          </section>
           <section className="note-body">
               <p>{item.taskName}</p>
           </section>
@@ -84,9 +89,7 @@ function StickyNote({item}) {
               <button onClick={handleEdit}>
                   Edit
               </button>
-              <button onClick={handleDelete}>
-                  Delete
-              </button>
+              
           </section>
       </div>
 

@@ -16,14 +16,16 @@
     background-color: lavender;
 }
 
+.note-checkbox{
+    text-align: right;
+    min-height: 40px;
+}
 .note-body{
-    min-height: 30px;
+    min-height: 100px;
+    vertical-align: center;
 }
 
 .note-btns {
-    /* position: absolute;
-    bottom: 0;
-    vertical-align: bottom;
-    text-align: center !important; */
+    min-height: 40px;
     vertical-align: bottom;
 }

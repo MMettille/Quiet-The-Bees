@@ -102,14 +102,17 @@ function StickyNote({item}) {
             />
           </section>
           <section className="note-body">
-              <p>{item.taskName}</p>
+            {item.isComplete ?
+              (<p className="strikethrough">{item.taskName}</p>) : (<p>{item.taskName}</p>)
+            }
+              
           </section>
           <section className="note-btns">
               <button onClick={handleEdit}>
                   Edit
               </button>
           </section>
-          <section className="note-btns">
+          <section className="delete-note-btn">
             {item.isComplete ?
               (<button onClick={handleDelete}>
                   Delete

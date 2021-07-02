@@ -9,6 +9,10 @@
     background-color: lavender;
 }
 
+.strikethrough{
+    text-decoration: line-through;
+}
+
 .edit-note-box{
     min-width: 400px;
     min-height: 400px;
@@ -16,7 +20,8 @@
     background-color: lavender;
 }
 
-.note-checkbox{
+.note-checkbox,
+.delete-note-btn {
     text-align: right;
     min-height: 40px;
 }

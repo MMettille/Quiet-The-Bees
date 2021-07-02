@@ -7,7 +7,7 @@ const router = express.Router();
  */
 router.get('/', (req, res) => {
   // GET route code here
-  const query = `SELECT * FROM "taskList" WHERE "user_id" = $1;`;
+  const query = `SELECT * FROM "taskList" WHERE "user_id" = $1 ORDER BY "taskList".id DESC;`;
   pool.query(query, [req.user.id])
     .then( result => {
       res.send(result.rows);

@@ -78,7 +78,7 @@ function StickyNote({item}) {
     <>
       <div className="note-box">
           <section className="note-body">
-              <p>{item.item.taskName}</p>
+              <p>{item.taskName}</p>
           </section>
           <section className="note-btns">
               <button onClick={handleEdit}>

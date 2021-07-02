@@ -17,7 +17,6 @@ import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 
 // ⬇ What Components we need to import
 import AboutPage from '../AboutPage/AboutPage';
-import UserPage from '../UserPage/UserPage';
 import InfoPage from '../InfoPage/InfoPage';
 import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
@@ -43,7 +42,7 @@ function App() {
         <Nav />
         <Switch>
           {/* Visiting localhost:3000 will redirect to localhost:3000/home */}
-          <Redirect exact from="/" to="/home" />
+          <Redirect exact from="/" to="/main" />
 
           {/* Visiting localhost:3000/about will show the about page. */}
           <Route
@@ -53,18 +52,6 @@ function App() {
           >
             <AboutPage />
           </Route>
-
-          {/* For protected routes, the view could show one of several things on the same route.
-            Visiting localhost:3000/user will show the UserPage if the user is logged in.
-            If the user is not logged in, the ProtectedRoute will show the LoginPage (component).
-            Even though it seems like they are different pages, the user is always on localhost:3000/user */}
-          <ProtectedRoute
-            // logged in shows UserPage else shows LoginPage
-            exact
-            path="/user"
-          >
-            <UserPage />
-          </ProtectedRoute>
 
           <ProtectedRoute
             // logged in shows SpoonGraph else shows LoginPage
@@ -123,7 +110,7 @@ function App() {
             // - else shows LoginPage at /login
             exact
             path="/login"
-            authRedirect="/user"
+            authRedirect="/spoon"
           >
             <LoginPage />
           </ProtectedRoute>
@@ -134,7 +121,7 @@ function App() {
             // - else shows RegisterPage at "/registration"
             exact
             path="/registration"
-            authRedirect="/user"
+            authRedirect="/spoon"
           >
             <RegisterPage />
           </ProtectedRoute>
@@ -144,8 +131,8 @@ function App() {
             // - if logged in, redirects to "/user"
             // - else shows LandingPage at "/home"
             exact
-            path="/home"
-            authRedirect="/user"
+            path="/spoon"
+            authRedirect="/about"
           >
             <LoginPage />
           </ProtectedRoute>

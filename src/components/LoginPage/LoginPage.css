@@ -1,0 +1,5 @@
+.image2{
+    float: right;
+    transform: scaleX(-1);
+    width: 25%
+}

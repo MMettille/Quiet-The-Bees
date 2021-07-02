@@ -67,7 +67,7 @@ function App() {
           </ProtectedRoute>
 
           <ProtectedRoute
-            // logged in shows UserPage else shows LoginPage
+            // logged in shows SpoonGraph else shows LoginPage
             exact
             path="/spoongraph"
           >
@@ -147,7 +147,7 @@ function App() {
             path="/home"
             authRedirect="/user"
           >
-            <LandingPage />
+            <LoginPage />
           </ProtectedRoute>
 
           {/* If none of the other routes matched, we will show a 404. */}
@@ -156,7 +156,7 @@ function App() {
           </Route>
         </Switch>
         <Footer />
-      </div>
+      </div>   
     </Router>
   );
 }

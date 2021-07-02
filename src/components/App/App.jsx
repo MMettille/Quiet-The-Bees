@@ -42,7 +42,7 @@ function App() {
         <Nav />
         <Switch>
           {/* Visiting localhost:3000 will redirect to localhost:3000/home */}
-          <Redirect exact from="/" to="/main" />
+          <Redirect exact from="/" to="/spoon" />
 
           {/* Visiting localhost:3000/about will show the about page. */}
           <Route

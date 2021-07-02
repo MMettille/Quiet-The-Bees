@@ -9,6 +9,7 @@ import Modal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';
 import Fade from '@material-ui/core/Fade';
 
+import Checkbox from '@material-ui/core/Checkbox';
 import Button from '@material-ui/core/Button'
 import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
@@ -37,6 +38,7 @@ function StickyNote({item}) {
   const dispatch = useDispatch();
   const [open, setOpen] = useState(false)
   const [value, setValue] = useState('')
+  const [checked, setChecked] = useState(false);
   const taskToEdit = useSelector(store => store.taskToEdit)
 
   // ⬇ Opens and closes the modal
@@ -71,16 +73,20 @@ function StickyNote({item}) {
   
   const handleDelete = (event) => {
     event.preventDefault();
-    dispatch({type: 'DELETE_TASK', payload: item})
+    setChecked(event.target.checked)
+    // dispatch({type: 'DELETE_TASK', payload: item})
   }
 
   return (
     <>
       <div className="note-box">
           <section className="note-checkbox">
-            <button onClick={handleDelete}>
-                Delete
-            </button>
+            <Checkbox
+            checked={checked}
+            color="default"
+            onChange={handleDelete}
+            inputProps={{ 'aria-label': 'primary checkbox' }}
+            />
           </section>
           <section className="note-body">
               <p>{item.taskName}</p>

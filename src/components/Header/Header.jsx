@@ -61,14 +61,14 @@ function Header() {
              {triggerInput.map(item => {
                 return <li key={item.trigger}>{item.trigger}</li>
             })}
-            <Button variant="contained">Word Cloud</Button>
+            <Button variant="contained" onClick={goToCloud}>Word Cloud</Button>
         </Paper>
           </Grid>
           <Grid item xs={12} sm={6}>
           <Paper className={classes.paper}>
             <h3>Energy</h3>
             <p>{spoonInput.spoon}</p>
-            <Button variant="contained">Graph</Button>
+            <Button variant="contained" onClick={goToGraph}>Graph</Button>
         </Paper>
           </Grid>
         </Grid>

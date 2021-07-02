@@ -105,7 +105,7 @@ function SpoonQuery() {
     return (
       <>
         <div className="container">
-        <img src={image} />
+        <img src={image} width='50%'/>
         <h1>It's a New Day!</h1>
         <h3>How many spoons are we working with?</h3>
         <button onClick={handleOpen}>Interested in Learning More About Spoon Theory?</button>

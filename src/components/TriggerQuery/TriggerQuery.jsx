@@ -63,7 +63,7 @@ function TriggerQuery() {
     return (
       <>
         <div className="container">
-            <img src={image} />
+            <img src={image} width='50%'/>
             <h1>Any Failure Triggers to Be Aware Of?</h1>
             <button onClick={handleOpen}>Interested in Learning More About Failure Triggers?</button>
 

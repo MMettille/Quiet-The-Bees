@@ -37,7 +37,6 @@ function StickyNote({item}) {
   const classes = useStyles();
   const dispatch = useDispatch();
   const [open, setOpen] = useState(false)
-  const [value, setValue] = useState('')
   const taskToEdit = useSelector(store => store.taskToEdit)
 
   // ⬇ Opens and closes the modal
@@ -72,15 +71,11 @@ function StickyNote({item}) {
   
   const handleDelete = (event) => {
     event.preventDefault();
-    console.log(item)
-   
-    // dispatch({type: 'DELETE_TASK', payload: item})
+    dispatch({type: 'DELETE_TASK', payload: item})
   }
 
   const [stickyCheckbox, setStickyCheckbox] = useState(item.isComplete)
   const handleCheck = (item) => {
-    
-    // dispatch({type: 'DELETE_TASK', payload: item})
     dispatch({type: 'TASK_TO_EDIT', payload: item})
     dispatch({ 
       type: 'EDIT_ONCHANGE', 
@@ -105,7 +100,6 @@ function StickyNote({item}) {
             {item.isComplete ?
               (<p className="strikethrough">{item.taskName}</p>) : (<p>{item.taskName}</p>)
             }
-              
           </section>
           <section className="note-btns">
               <button onClick={handleEdit}>
@@ -115,7 +109,7 @@ function StickyNote({item}) {
           <section className="delete-note-btn">
             {item.isComplete ?
               (<button onClick={handleDelete}>
-                  Delete
+                Delete
               </button>) : ('')
             }
           </section>

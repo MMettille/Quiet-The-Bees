@@ -21,6 +21,10 @@
   margin: 0;
 }
 
+.header-bee{
+  height: 100px;
+}
+
 .navLink {
   display: inline-block;
   color: #f2f2f2;

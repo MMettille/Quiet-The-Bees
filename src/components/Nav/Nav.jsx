@@ -4,6 +4,8 @@ import LogOutButton from '../LogOutButton/LogOutButton';
 import './Nav.css';
 import {useSelector} from 'react-redux';
 
+import image from './Bee_5.png';
+
 function Nav() {
   const user = useSelector((store) => store.user);
 
@@ -13,15 +15,18 @@ function Nav() {
   };
 
   if (user.id != null) {
-    loginLinkData.path = '/user';
+    loginLinkData.path = '/main';
     loginLinkData.text = 'Home';
   }
 
   return (
     <div className="nav">
-      <Link to="/home">
-        <h2 className="nav-title">Prime Solo Project</h2>
-      </Link>
+      <h2 className="nav-title">Quiet The Bees</h2>
+      
+      <section className="nav-center">
+        <img className="header-bee" src={image} />  
+      </section>
+
       <div>
         <Link className="navLink" to={loginLinkData.path}>
           {loginLinkData.text}

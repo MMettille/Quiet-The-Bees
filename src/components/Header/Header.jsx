@@ -20,7 +20,8 @@ const useStyles = makeStyles((theme) => ({
 function Header() {
 
     const dispatch = useDispatch();
-    const userInput = useSelector(store => store.input);
+    const spoonInput = useSelector(store => store.spoonInput);
+    const triggerInput = useSelector(store => store.triggerInput)
     
     useEffect(() => {
         fetchUserInput()
@@ -32,7 +33,7 @@ function Header() {
         const date = new Date().toISOString().substring(0, 10);
         console.log(date)
         // Fetching the user inputs by date
-        // dispatch({ type: 'FETCH_USER_SPOON', payload: date})
+        dispatch({ type: 'FETCH_USER_SPOON', payload: date})
         dispatch({ type: 'FETCH_USER_TRIGGER', payload: date})
         
     }
@@ -45,19 +46,16 @@ function Header() {
           <Grid item xs={12} sm={6}>
           <Paper className={classes.paper}>
             <h3>Failure Triggers</h3>
-            We have an async bug!
-             {/* something.map(somethingTwo => {
-                return list for each trigger
-            })
-             */}
+             {triggerInput.map(item => {
+                return <li key={item.trigger}>{item.trigger}</li>
+            })}
             <Button variant="contained">Word Cloud</Button>
         </Paper>
           </Grid>
           <Grid item xs={12} sm={6}>
           <Paper className={classes.paper}>
             <h3>Energy</h3>
-            We have an async bug!
-            {/* <p>{userInput[0].spoon}</p> */}
+            <p>{spoonInput.spoon}</p>
             <Button variant="contained">Graph</Button>
         </Paper>
           </Grid>

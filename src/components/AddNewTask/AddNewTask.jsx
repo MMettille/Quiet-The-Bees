@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 import React, {useEffect, useState} from 'react'
 
+import './AddNewTask.css'
 
 import Button from '@material-ui/core/Button'
 import Radio from '@material-ui/core/Radio';
@@ -32,7 +33,7 @@ function AddNewTask() {
 
     return (
         <>
-            <div className="note-box">
+            <div className="add-box">
                 <form onSubmit={handleSubmit}>
                     <section className="note-body">
                         <input

@@ -30,7 +30,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function StickyNote(item) {
+function StickyNote({item}) {
 
   // ⬇ Declaring the functions we want to use.
   const classes = useStyles();
@@ -46,8 +46,8 @@ function StickyNote(item) {
 
   // ⬇ Sets which task the user would like to edit and sends that to redux
   const handleEdit = () => {
-    console.log('Task to edit:', item.item)
-    dispatch({type: 'TASK_TO_EDIT', payload: item.item})
+    console.log('Task to edit:', item)
+    dispatch({type: 'TASK_TO_EDIT', payload: item})
     
     setOpen(true);
   }
@@ -71,7 +71,7 @@ function StickyNote(item) {
   
   const handleDelete = (event) => {
     event.preventDefault();
-    dispatch({type: 'DELETE_TASK', payload: item.item})
+    dispatch({type: 'DELETE_TASK', payload: item})
   }
 
   return (

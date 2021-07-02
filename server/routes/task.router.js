@@ -39,9 +39,10 @@ router.post('/', (req, res) => {
  * PUT route template
  */
  router.put('/:id', (req, res) => {
+   console.log(req.body.isComplete)
   // Update this single task
-  const sqlText = `UPDATE "taskList" SET "taskName" = $1, "priority" = $2 WHERE id = $3 AND "user_id" = $4; `;
-  pool.query(sqlText, [req.body.taskName, req.body.priority, req.body.id, req.user.id])
+  const sqlText = `UPDATE "taskList" SET "taskName" = $1, "priority" = $2, "isComplete" = $3 WHERE id = $4 AND "user_id" = $5; `;
+  pool.query(sqlText, [req.body.taskName, req.body.priority, req.body.isComplete, req.body.id, req.user.id])
   // ⬇ Sending back a 'ok' code to the user
       .then((result) => {
           res.sendStatus(200);

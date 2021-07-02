@@ -38,7 +38,6 @@ function StickyNote({item}) {
   const dispatch = useDispatch();
   const [open, setOpen] = useState(false)
   const [value, setValue] = useState('')
-  const [checked, setChecked] = useState(false);
   const taskToEdit = useSelector(store => store.taskToEdit)
 
   // ⬇ Opens and closes the modal
@@ -73,8 +72,22 @@ function StickyNote({item}) {
   
   const handleDelete = (event) => {
     event.preventDefault();
-    setChecked(event.target.checked)
+    console.log(item)
+   
     // dispatch({type: 'DELETE_TASK', payload: item})
+  }
+
+  const [stickyCheckbox, setStickyCheckbox] = useState(item.isComplete)
+  const handleCheck = (item) => {
+    
+    // dispatch({type: 'DELETE_TASK', payload: item})
+    dispatch({type: 'TASK_TO_EDIT', payload: item})
+    dispatch({ 
+      type: 'EDIT_ONCHANGE', 
+      payload: { property: 'isComplete', value: !item.isComplete }
+    });
+    dispatch({type: 'EDIT_TASK', payload: taskToEdit})
+    setStickyCheckbox(true)
   }
 
   return (
@@ -82,9 +95,9 @@ function StickyNote({item}) {
       <div className="note-box">
           <section className="note-checkbox">
             <Checkbox
-            checked={checked}
+            checked={item.isComplete}
             color="default"
-            onChange={handleDelete}
+            onClick={() => handleCheck(item)}
             inputProps={{ 'aria-label': 'primary checkbox' }}
             />
           </section>
@@ -95,7 +108,13 @@ function StickyNote({item}) {
               <button onClick={handleEdit}>
                   Edit
               </button>
-              
+          </section>
+          <section className="note-btns">
+            {item.isComplete ?
+              (<button onClick={handleDelete}>
+                  Delete
+              </button>) : ('')
+            }
           </section>
       </div>
 
@@ -118,7 +137,6 @@ function StickyNote({item}) {
           <input
             onChange={(event) => handleChange(event)}
             value={taskToEdit.taskName}
-            //! I know this should actually be value={taskToEdit}
           />
           <FormControl component="fieldset">
             <FormLabel component="legend">Priority</FormLabel>

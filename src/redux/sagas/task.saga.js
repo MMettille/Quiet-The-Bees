@@ -24,6 +24,7 @@ function* addNewTask(action){
 
 // ⬇ Editing the task in the database
 function* editTask(action) {
+  console.log(action.payload)
   const taskId = action.payload.id;
    try {
        yield axios.put(`/api/task/{taskId}`, action.payload);

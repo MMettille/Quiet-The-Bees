@@ -7,7 +7,7 @@ const router = express.Router();
  */
 
 // CANNOT SEND A DATE ON THE BODY
-router.get('/spoon/', (req, res) => {
+router.get('/spoon', (req, res) => {
     // GET route code here
     console.log(req.query.q)
     const sqlText = `
@@ -15,7 +15,6 @@ router.get('/spoon/', (req, res) => {
         WHERE "spoon_input".user_id = $1
         AND "spoon_input".date = $2;`
     pool.query(sqlText, [req.user.id, req.query.q]).then( (result) =>{
-        console.log(result.rows)
         res.send(result.rows);
       }).catch((error)=>{
         console.log(`error making database query`, error);
@@ -61,7 +60,6 @@ router.get('/trigger', (req, res) => {
         WHERE "trigger_input".user_id = $1
         AND "trigger_input".date = $2;`
     pool.query(sqlText, [req.user.id, req.query.q]).then( (result) =>{
-        console.log(result.rows)
         res.send(result.rows);
       }).catch((error)=>{
         console.log(`error making database query`, error);

@@ -1,9 +1,7 @@
-const input = (state = [], action) => {
+const spoonInput = (state = {}, action) => {
     switch (action.type) {
       case 'SET_TODAY_SPOON':
-        return action.payload;
-      case 'SET_TODAY_TRIGGER':
-        return action.payload
+        return action.payload[0];
       default:
         return state;
     }
@@ -11,4 +9,4 @@ const input = (state = [], action) => {
   
   // user will be on the redux state at:
   // state.user
-  export default input;
+  export default spoonInput;

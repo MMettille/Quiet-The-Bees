@@ -44,7 +44,6 @@ const RedRadio = withStyles({
     root: {
       color: "#aed581",
     },
-    checked: {},
   })((props) => <Radio color="default" {...props} />);
   
   const PurpleRadio = withStyles({

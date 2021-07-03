@@ -7,12 +7,18 @@ import Header from '../Header/Header';
 import AddNewTask from '../AddNewTask/AddNewTask';
 import StickyNote from '../StickyNote/StickyNote';
 
-import Button from '@material-ui/core/Button';
-import ButtonGroup from '@material-ui/core/ButtonGroup';
-import Box from '@material-ui/core/Box';
+import { makeStyles } from '@material-ui/core/styles';
+import Grid from '@material-ui/core/Grid';
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    flexGrow: 1,
+  },
+}));
 
 function Main() {
 
+  const classes = useStyles();
   const dispatch = useDispatch();
   const task = useSelector (store => store.task);
 
@@ -27,46 +33,31 @@ function Main() {
         
         <h1>NOW</h1>
         <h4>These are the most important tasks. What are the consequences of not completing these things?</h4>
-          <Box 
-            display="flex"
-            flexWrap="wrap"
-            p={2}
-            m={2}
-          >
+          <Grid container spacing={3}>
             {task.map(item => {
               if (item.priority === 'NOW'){
                 return <StickyNote key={item.id} item={item}/>
               }
             })}
-          </Box>
+          </Grid>
         <h1>Soon-ish</h1>
         <h4>These tasks don't need to happen immediately, but do need to happen soon. Can you set a due date?</h4>
-          <Box 
-            display="flex"
-            flexWrap="wrap"
-            p={2}
-            m={2}
-          >
+          <Grid container spacing={3}>
             {task.map(item => {
               if (item.priority === 'soonish'){
                 return <StickyNote key={item.id} item={item}/>
               }
             })}
-          </Box>
+          </Grid>
         <h1>Later</h1>
         <h4>These tasks are on your radar for later.</h4>
-          <Box 
-            display="flex"
-            flexWrap="wrap"
-            p={2}
-            m={2}
-          >
+          <Grid container spacing={3}>
             {task.map(item => {
               if (item.priority === 'later'){
                 return <StickyNote key={item.id} item={item}/>
               }
             })}
-          </Box>
+          </Grid>
       </>
   );
 }

@@ -1,5 +1,6 @@
 .note-box{
     min-width: 200px;
+    max-width: 200px;
     min-height: 200px;
     padding: 10px;
     border-radius: 10px;

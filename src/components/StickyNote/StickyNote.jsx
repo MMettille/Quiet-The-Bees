@@ -9,6 +9,7 @@ import Modal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';
 import Fade from '@material-ui/core/Fade';
 
+import Grid from '@material-ui/core/Grid';
 import Checkbox from '@material-ui/core/Checkbox';
 import Button from '@material-ui/core/Button'
 import Radio from '@material-ui/core/Radio';
@@ -22,12 +23,6 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-  },
-  paper: {
-    backgroundColor: theme.palette.background.paper,
-    border: '2px solid #000',
-    boxShadow: theme.shadows[5],
-    padding: theme.spacing(2, 4, 3),
   },
 }));
 
@@ -87,6 +82,7 @@ function StickyNote({item}) {
 
   return (
     <>
+    <Grid item>
       <div className={`note-box ${item.priority}`}>
           <section className="note-checkbox">
             <Checkbox
@@ -114,6 +110,7 @@ function StickyNote({item}) {
             }
           </section>
       </div>
+    </Grid>
 
       <Modal
         aria-labelledby="transition-modal-title"

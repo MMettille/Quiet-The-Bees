@@ -35,3 +35,16 @@
     min-height: 40px;
     vertical-align: bottom;
 }
+
+/* Setting the colors of each sticky note, based on it's priority/category status */
+.NOW{
+    background-color: #ef9a9a;
+}
+
+.soonish{
+    background-color: #ffcc80;
+}
+
+.later{
+    background-color: #fff59d;
+}

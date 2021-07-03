@@ -1,0 +1,21 @@
+.note-box{
+    min-width: 200px;
+    min-height: 200px;
+    padding: 10px;
+    border-radius: 10px;
+    margin: 10px;
+    display: table;
+    background-color: lavender;
+}
+
+.add-note-body{
+    min-height: 30px;
+}
+
+.add-note-btns {
+    /* position: absolute;
+    bottom: 0;
+    vertical-align: bottom;
+    text-align: center !important; */
+    vertical-align: bottom;
+}

@@ -87,7 +87,7 @@ function StickyNote({item}) {
 
   return (
     <>
-      <div className="note-box">
+      <div className={`note-box ${item.priority}`}>
           <section className="note-checkbox">
             <Checkbox
             checked={item.isComplete}

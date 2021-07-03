@@ -17,6 +17,7 @@ import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 
 // ⬇ What Components we need to import
 import AboutPage from '../AboutPage/AboutPage';
+import BrainDump from '../BrainDump/BrainDump';
 import InfoPage from '../InfoPage/InfoPage';
 import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
@@ -91,6 +92,14 @@ function App() {
             path="/main"
           >
             <Main />
+          </ProtectedRoute>
+
+          <ProtectedRoute
+            // logged in shows UserPage else shows LoginPage
+            exact
+            path="/braindump"
+          >
+            <BrainDump />
           </ProtectedRoute>
 
           <ProtectedRoute

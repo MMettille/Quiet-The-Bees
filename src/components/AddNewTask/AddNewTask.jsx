@@ -106,6 +106,7 @@ function AddNewTask() {
     return (
         <>
             <div className="add-box">
+                <h1>Create Your Reminder Here!</h1>
                 <form onSubmit={handleSubmit}>
                     <section className="add-body">
                         <TextField
@@ -119,7 +120,7 @@ function AddNewTask() {
                     
                     <section className="note-radio-group">
                         <FormControl component="fieldset">
-                            <FormLabel component="legend">Priority</FormLabel>
+                            <h3>When Does It Need to Happen?</h3>
                                 <RadioGroup row aria-label="priorityStatus" value={value} onChange={(event) => setValue(event.target.value)}>
                                     <FormControlLabel value="NOW" control={<RedRadio />} label="NOW" labelPlacement="top"/>
                                     <FormControlLabel value="soonish" control={<OrangeRadio />} label="soon-ish" labelPlacement="top"/>

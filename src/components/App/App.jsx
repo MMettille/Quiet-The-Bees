@@ -18,7 +18,6 @@ import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 // ⬇ What Components we need to import
 import AboutPage from '../AboutPage/AboutPage';
 import BrainDump from '../BrainDump/BrainDump';
-import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
 import SpoonGraph from '../SpoonGraph/SpoonGraph'

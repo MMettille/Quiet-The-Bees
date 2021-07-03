@@ -112,16 +112,16 @@ function AddNewTask() {
                         <FormControl component="fieldset">
                             <h3>When Does It Need to Happen?</h3>
                                 <RadioGroup row aria-label="priorityStatus" value={value} onChange={(event) => setValue(event.target.value)}>
-                                    <FormControlLabel value="NOW" control={<RedRadio />} label="NOW" labelPlacement="top"/>
-                                    <FormControlLabel value="soonish" control={<OrangeRadio />} label="Soon-ish" labelPlacement="top"/>
-                                    <FormControlLabel value="later" control={<YellowRadio />} label="Later" labelPlacement="top"/>
-                                    <FormControlLabel value="Light Green" control={<LightGreenRadio />} label="Light Green" labelPlacement="top"/>
-                                    <FormControlLabel value="Green" control={<GreenRadio />} label="Green" labelPlacement="top"/>
-                                    <FormControlLabel value="Blue" control={<BlueRadio />} label="Blue" labelPlacement="top"/>
-                                    <FormControlLabel value="Purple" control={<PurpleRadio />} label="Purple" labelPlacement="top"/>
-                                    <FormControlLabel value="Purple" control={<DarkPurpleRadio />} label="Purple" labelPlacement="top"/>
-                                    <FormControlLabel value="Brown" control={<BrownRadio />} label="Brown" labelPlacement="top"/>
-                                    <FormControlLabel value="Grey" control={<GreyRadio />} label="Grey" labelPlacement="top"/>
+                                    <FormControlLabel value="1" control={<RedRadio />} label="NOW" labelPlacement="top"/>
+                                    <FormControlLabel value="2" control={<OrangeRadio />} label="Soon-ish" labelPlacement="top"/>
+                                    <FormControlLabel value="3" control={<YellowRadio />} label="Later" labelPlacement="top"/>
+                                    <FormControlLabel value="4" control={<LightGreenRadio />} label="Light Green" labelPlacement="top"/>
+                                    <FormControlLabel value="5" control={<GreenRadio />} label="Green" labelPlacement="top"/>
+                                    <FormControlLabel value="6" control={<BlueRadio />} label="Blue" labelPlacement="top"/>
+                                    <FormControlLabel value="7" control={<PurpleRadio />} label="Purple" labelPlacement="top"/>
+                                    <FormControlLabel value="8" control={<DarkPurpleRadio />} label="Purple" labelPlacement="top"/>
+                                    <FormControlLabel value="9" control={<BrownRadio />} label="Brown" labelPlacement="top"/>
+                                    <FormControlLabel value="10" control={<GreyRadio />} label="Grey" labelPlacement="top"/>
                                 </RadioGroup>
                         </FormControl>
                     </section>

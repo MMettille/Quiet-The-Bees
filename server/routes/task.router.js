@@ -7,7 +7,11 @@ const router = express.Router();
  */
 router.get('/', (req, res) => {
   // GET route code here
-  const query = `SELECT * FROM "taskList" WHERE "user_id" = $1 ORDER BY "taskList".id DESC;`;
+  const query = `SELECT * from "taskList"
+  JOIN "priority_list"
+  ON "taskList".id = "priority_list".id
+  WHERE "taskList".user_id = $1
+  ORDER BY "taskList".id DESC;`;
   pool.query(query, [req.user.id])
     .then( result => {
       res.send(result.rows);
@@ -25,7 +29,7 @@ router.post('/', (req, res) => {
   // POST route code here
     console.log(req.body)
     const insertNewTask = 
-        `INSERT INTO "taskList" ("taskName", "priority", "user_id")
+        `INSERT INTO "taskList" ("taskName", "priority_id", "user_id")
         VALUES ($1, $2, $3);`;
     pool.query(insertNewTask, [req.body.taskName, req.body.priority, req.user.id]).then(result => {
         res.sendStatus(201);
@@ -41,7 +45,7 @@ router.post('/', (req, res) => {
  router.put('/:id', (req, res) => {
    console.log(req.body.isComplete)
   // Update this single task
-  const sqlText = `UPDATE "taskList" SET "taskName" = $1, "priority" = $2, "isComplete" = $3 WHERE id = $4 AND "user_id" = $5; `;
+  const sqlText = `UPDATE "taskList" SET "taskName" = $1, "priority_id" = $2, "isComplete" = $3 WHERE id = $4 AND "user_id" = $5; `;
   pool.query(sqlText, [req.body.taskName, req.body.priority, req.body.isComplete, req.body.id, req.user.id])
   // ⬇ Sending back a 'ok' code to the user
       .then((result) => {

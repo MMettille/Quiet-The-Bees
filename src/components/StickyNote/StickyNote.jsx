@@ -4,7 +4,7 @@ import {useDispatch, useSelector} from 'react-redux';
 // ⬇ What Components we need to import
 import './StickyNote.css'
 // ⬇ What we need from material ui 
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles, withStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';
 import Fade from '@material-ui/core/Fade';
@@ -25,6 +25,65 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'center',
   },
 }));
+const RedRadio = withStyles({
+  root: {
+    color: "#e53935",
+  },
+})((props) => <Radio color="default" {...props} />);
+
+const OrangeRadio = withStyles({
+  root: {
+    color: "#ff9800",
+  },
+})((props) => <Radio color="default" {...props} />);
+
+const YellowRadio = withStyles({
+  root: {
+    color: "#ffeb3b",
+  },
+})((props) => <Radio color="default" {...props} />);
+
+const GreenRadio = withStyles({
+  root: {
+    color: "#80cbc4",
+  },
+})((props) => <Radio color="default" {...props} />);
+
+const LightGreenRadio = withStyles({
+  root: {
+    color: "#aed581",
+  },
+})((props) => <Radio color="default" {...props} />);
+
+const PurpleRadio = withStyles({
+  root: {
+    color: "#b39ddb",
+  },
+})((props) => <Radio color="default" {...props} />);
+
+const BrownRadio = withStyles({
+  root: {
+    color: "#a1887f",
+  },
+})((props) => <Radio color="default" {...props} />);
+
+const BlueRadio = withStyles({
+  root: {
+    color: "#90caf9",
+  },
+})((props) => <Radio color="default" {...props} />);
+
+const DarkPurpleRadio = withStyles({
+  root: {
+    color: "#9575cd",
+  },
+})((props) => <Radio color="default" {...props} />);
+
+const GreyRadio = withStyles({
+  root: {
+    color: "#9e9e9e",
+  },
+})((props) => <Radio color="default" {...props} />);
 
 function StickyNote({item}) {
 
@@ -83,7 +142,7 @@ function StickyNote({item}) {
   return (
     <>
     <Grid item>
-      <div className={`note-box ${item.priority}`}>
+      <div className={`note-box ${item.color_name}`}>
           <section className="note-checkbox">
             <Checkbox
             checked={item.isComplete}
@@ -126,7 +185,7 @@ function StickyNote({item}) {
       >
       <Fade in={open}>
       <form onSubmit={handleSubmit}>
-        <div className="edit-note-box">
+      <div className="edit-note-box">
           <section className="note-body">
           <input
             onChange={(event) => handleChange(event)}
@@ -141,11 +200,18 @@ function StickyNote({item}) {
                 type: 'EDIT_ONCHANGE', 
                 payload: { property: 'priority', value: event.target.value }
               })}>
-                <FormControlLabel value="NOW" control={<Radio />} label="NOW" />
-                <FormControlLabel value="soonish" control={<Radio />} label="soon-ish" />
-                <FormControlLabel value="later" control={<Radio />} label="later" />
-            </RadioGroup>
-          </FormControl>
+          <FormControlLabel value="1" control={<RedRadio />} label="NOW" labelPlacement="top"/>
+          <FormControlLabel value="2" control={<OrangeRadio />} label="Soon-ish" labelPlacement="top"/>
+          <FormControlLabel value="3" control={<YellowRadio />} label="Later" labelPlacement="top"/>
+          <FormControlLabel value="4" control={<LightGreenRadio />} label="Light Green" labelPlacement="top"/>
+          <FormControlLabel value="5" control={<GreenRadio />} label="Green" labelPlacement="top"/>
+          <FormControlLabel value="6" control={<BlueRadio />} label="Blue" labelPlacement="top"/>
+          <FormControlLabel value="7" control={<PurpleRadio />} label="Purple" labelPlacement="top"/>
+          <FormControlLabel value="8" control={<DarkPurpleRadio />} label="Purple" labelPlacement="top"/>
+          <FormControlLabel value="9" control={<BrownRadio />} label="Brown" labelPlacement="top"/>
+          <FormControlLabel value="10" control={<GreyRadio />} label="Grey" labelPlacement="top"/>
+        </RadioGroup>
+        </FormControl>
           <input type='submit' value='Update Task'/>
           </section>
         </div>

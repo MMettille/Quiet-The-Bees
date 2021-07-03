@@ -11,6 +11,7 @@
 
 .strikethrough{
     text-decoration: line-through;
+    background-image: './red_cross.png';
 }
 
 .edit-note-box{

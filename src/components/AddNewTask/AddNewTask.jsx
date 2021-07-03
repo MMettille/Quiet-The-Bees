@@ -15,74 +15,74 @@ import TextField from '@material-ui/core/TextField';
 const RedRadio = withStyles({
     root: {
       color: "#e53935",
-      '&$checked': {
-        color: "#c62828",
-      },
+    },
+    checked: {},
+  })((props) => <Radio color="default" {...props} />);
+  
+  const OrangeRadio = withStyles({
+    root: {
+      color: "#ff9800",
+    },
+    checked: {},
+  })((props) => <Radio color="default" {...props} />);
+  
+  const YellowRadio = withStyles({
+    root: {
+      color: "#ffeb3b",
+    },
+    checked: {},
+  })((props) => <Radio color="default" {...props} />);
+  
+  const GreenRadio = withStyles({
+    root: {
+      color: "#80cbc4",
     },
     checked: {},
   })((props) => <Radio color="default" {...props} />);
 
-const OrangeRadio = withStyles({
+  const LightGreenRadio = withStyles({
     root: {
-      color: "#ff9800",
-      '&$checked': {
-        color: "#f57c00",
-      },
+      color: "#aed581",
     },
     checked: {},
-})((props) => <Radio color="default" {...props} />);
-
-const YellowRadio = withStyles({
-    root: {
-      color: "#ffeb3b",
-      '&$checked': {
-        color: "#ffeb3b",
-      },
-    },
-    checked: {},
-})((props) => <Radio color="default" {...props} />);
-
-const GreenRadio = withStyles({
-    root: {
-      color: "#80cbc4",
-      '&$checked': {
-        color: "#009688",
-      },
-    },
-    checked: {},
-})((props) => <Radio color="default" {...props} />);
-
-const PurpleRadio = withStyles({
+  })((props) => <Radio color="default" {...props} />);
+  
+  const PurpleRadio = withStyles({
     root: {
       color: "#b39ddb",
-      '&$checked': {
-        color: "#7e57c2",
-      },
     },
     checked: {},
-})((props) => <Radio color="default" {...props} />);
-
-const BrownRadio = withStyles({
+  })((props) => <Radio color="default" {...props} />);
+  
+  const BrownRadio = withStyles({
     root: {
-      color: "#bcaaa4",
-      '&$checked': {
-        color: "#8d6e63",
-      },
+      color: "#a1887f",
     },
     checked: {},
-})((props) => <Radio color="default" {...props} />);
-
-const BlueRadio = withStyles({
+  })((props) => <Radio color="default" {...props} />);
+  
+  const BlueRadio = withStyles({
     root: {
       color: "#90caf9",
-      '&$checked': {
-        color: "#42a5f5",
-      },
     },
     checked: {},
-})((props) => <Radio color="default" {...props} />);
+  })((props) => <Radio color="default" {...props} />);
 
+  const DarkPurpleRadio = withStyles({
+    root: {
+      color: "#9575cd",
+    },
+    checked: {},
+  })((props) => <Radio color="default" {...props} />);
 
+  const GreyRadio = withStyles({
+    root: {
+      color: "#9e9e9e",
+    },
+    checked: {},
+  })((props) => <Radio color="default" {...props} />);
+
+  
 function AddNewTask() {
 
     const dispatch = useDispatch();
@@ -123,12 +123,15 @@ function AddNewTask() {
                             <h3>When Does It Need to Happen?</h3>
                                 <RadioGroup row aria-label="priorityStatus" value={value} onChange={(event) => setValue(event.target.value)}>
                                     <FormControlLabel value="NOW" control={<RedRadio />} label="NOW" labelPlacement="top"/>
-                                    <FormControlLabel value="soonish" control={<OrangeRadio />} label="soon-ish" labelPlacement="top"/>
-                                    <FormControlLabel value="later" control={<YellowRadio />} label="later" labelPlacement="top"/>
-                                    <FormControlLabel value="something" control={<GreenRadio />} label="something" labelPlacement="top"/>
-                                    <FormControlLabel value="something2" control={<PurpleRadio />} label="something2" labelPlacement="top"/>
-                                    <FormControlLabel value="something3" control={<BlueRadio />} label="something3" labelPlacement="top"/>
-                                    <FormControlLabel value="something4" control={<BrownRadio />} label="something4" labelPlacement="top"/>
+                                    <FormControlLabel value="soonish" control={<OrangeRadio />} label="Soon-ish" labelPlacement="top"/>
+                                    <FormControlLabel value="later" control={<YellowRadio />} label="Later" labelPlacement="top"/>
+                                    <FormControlLabel value="Light Green" control={<LightGreenRadio />} label="Light Green" labelPlacement="top"/>
+                                    <FormControlLabel value="Green" control={<GreenRadio />} label="Green" labelPlacement="top"/>
+                                    <FormControlLabel value="Blue" control={<BlueRadio />} label="Blue" labelPlacement="top"/>
+                                    <FormControlLabel value="Purple" control={<PurpleRadio />} label="Purple" labelPlacement="top"/>
+                                    <FormControlLabel value="Purple" control={<DarkPurpleRadio />} label="Purple" labelPlacement="top"/>
+                                    <FormControlLabel value="Brown" control={<BrownRadio />} label="Brown" labelPlacement="top"/>
+                                    <FormControlLabel value="Grey" control={<GreyRadio />} label="Grey" labelPlacement="top"/>
                                 </RadioGroup>
                         </FormControl>
                     </section>

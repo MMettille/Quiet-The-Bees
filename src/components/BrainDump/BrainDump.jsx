@@ -36,7 +36,6 @@ function Main() {
                   return <StickyNote key={item.id} item={item}/>
             })}
           </Grid>
-        
         </div>
         
         

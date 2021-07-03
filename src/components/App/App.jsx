@@ -18,7 +18,6 @@ import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 // ⬇ What Components we need to import
 import AboutPage from '../AboutPage/AboutPage';
 import BrainDump from '../BrainDump/BrainDump';
-import InfoPage from '../InfoPage/InfoPage';
 import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
@@ -100,14 +99,6 @@ function App() {
             path="/braindump"
           >
             <BrainDump />
-          </ProtectedRoute>
-
-          <ProtectedRoute
-            // logged in shows InfoPage else shows LoginPage
-            exact
-            path="/info"
-          >
-            <InfoPage />
           </ProtectedRoute>
 
           {/* When a value is supplied for the authRedirect prop the user will

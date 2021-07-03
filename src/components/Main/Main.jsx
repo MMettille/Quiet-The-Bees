@@ -20,6 +20,7 @@ function Main() {
     dispatch({type: 'FETCH_TASK'})
   }, []);
   
+  console.log(task)
       return (
       <>
         <Header />
@@ -29,7 +30,7 @@ function Main() {
         <h4>These are the most important tasks. What are the consequences of not completing these things?</h4>
           <Grid container spacing={3}>
             {task.map(item => {
-              if (item.priority === 'NOW'){
+              if (item.priority_id === 1){
                 return <StickyNote key={item.id} item={item}/>
               }
             })}
@@ -38,7 +39,7 @@ function Main() {
         <h4>These tasks don't need to happen immediately, but do need to happen soon. Can you set a due date?</h4>
           <Grid container spacing={3}>
             {task.map(item => {
-              if (item.priority === 'soonish'){
+              if (item.priority_id === 2){
                 return <StickyNote key={item.id} item={item}/>
               }
             })}
@@ -47,7 +48,7 @@ function Main() {
         <h4>These tasks are on your radar for later.</h4>
           <Grid container spacing={3}>
             {task.map(item => {
-              if (item.priority === 'later'){
+              if (item.priority_id === 3){
                 return <StickyNote key={item.id} item={item}/>
               }
             })}

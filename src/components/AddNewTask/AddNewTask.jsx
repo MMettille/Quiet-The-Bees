@@ -16,28 +16,24 @@ const RedRadio = withStyles({
     root: {
       color: "#e53935",
     },
-    checked: {},
   })((props) => <Radio color="default" {...props} />);
   
   const OrangeRadio = withStyles({
     root: {
       color: "#ff9800",
     },
-    checked: {},
   })((props) => <Radio color="default" {...props} />);
   
   const YellowRadio = withStyles({
     root: {
       color: "#ffeb3b",
     },
-    checked: {},
   })((props) => <Radio color="default" {...props} />);
   
   const GreenRadio = withStyles({
     root: {
       color: "#80cbc4",
     },
-    checked: {},
   })((props) => <Radio color="default" {...props} />);
 
   const LightGreenRadio = withStyles({
@@ -50,35 +46,30 @@ const RedRadio = withStyles({
     root: {
       color: "#b39ddb",
     },
-    checked: {},
   })((props) => <Radio color="default" {...props} />);
   
   const BrownRadio = withStyles({
     root: {
       color: "#a1887f",
     },
-    checked: {},
   })((props) => <Radio color="default" {...props} />);
   
   const BlueRadio = withStyles({
     root: {
       color: "#90caf9",
     },
-    checked: {},
   })((props) => <Radio color="default" {...props} />);
 
   const DarkPurpleRadio = withStyles({
     root: {
       color: "#9575cd",
     },
-    checked: {},
   })((props) => <Radio color="default" {...props} />);
 
   const GreyRadio = withStyles({
     root: {
       color: "#9e9e9e",
     },
-    checked: {},
   })((props) => <Radio color="default" {...props} />);
 
   

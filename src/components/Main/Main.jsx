@@ -10,15 +10,9 @@ import StickyNote from '../StickyNote/StickyNote';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    flexGrow: 1,
-  },
-}));
-
 function Main() {
 
-  const classes = useStyles();
+  
   const dispatch = useDispatch();
   const task = useSelector (store => store.task);
 

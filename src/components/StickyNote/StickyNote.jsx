@@ -94,7 +94,7 @@ function StickyNote({item}) {
           </section>
           <section className="note-body">
             {item.isComplete ?
-              (<p className="strikethrough">{item.taskName}</p>) : (<p>{item.taskName}</p>)
+              (<p className="strikethrough font-size">{item.taskName}</p>) : (<p className="font-size">{item.taskName}</p>)
             }
           </section>
           <section className="note-btns">

@@ -130,6 +130,7 @@ function StickyNote({item}) {
   }
 
   const [stickyCheckbox, setStickyCheckbox] = useState(item.isComplete)
+
   const handleCheck = (item) => {
     dispatch({type: 'TASK_TO_EDIT', payload: item})
     dispatch({ 
@@ -137,7 +138,7 @@ function StickyNote({item}) {
       payload: { property: 'isComplete', value: !item.isComplete }
     });
     dispatch({type: 'EDIT_TASK', payload: taskToEdit})
-    setStickyCheckbox(true)
+    
   }
 
   return (
@@ -148,7 +149,7 @@ function StickyNote({item}) {
             <Checkbox
             checked={item.isComplete}
             color="default"
-            onClick={() => handleCheck(item)}
+            onChange={() => handleCheck(item)}
             inputProps={{ 'aria-label': 'primary checkbox' }}
             />
           </section>

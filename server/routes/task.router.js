@@ -46,7 +46,7 @@ router.post('/', (req, res) => {
    console.log(req.body.isComplete)
   // Update this single task
   const sqlText = `UPDATE "taskList" SET "taskName" = $1, "priority_id" = $2, "isComplete" = $3 WHERE id = $4 AND "user_id" = $5; `;
-  pool.query(sqlText, [req.body.taskName, req.body.priority, req.body.isComplete, req.body.id, req.user.id])
+  pool.query(sqlText, [req.body.taskName, req.body.priority_id, req.body.isComplete, req.body.id, req.user.id])
   // ⬇ Sending back a 'ok' code to the user
       .then((result) => {
           res.sendStatus(200);

@@ -6,9 +6,10 @@ import './StickyNote.css'
 // ⬇ What we need from material ui 
 import { makeStyles, withStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
+import Dialog from '@material-ui/core/Dialog';
 import Backdrop from '@material-ui/core/Backdrop';
 import Fade from '@material-ui/core/Fade';
-
+import TextField from '@material-ui/core/TextField';
 import Grid from '@material-ui/core/Grid';
 import Checkbox from '@material-ui/core/Checkbox';
 import Button from '@material-ui/core/Button'
@@ -173,9 +174,8 @@ function StickyNote({item}) {
       </div>
     </Grid>
 
-      <Modal
-        aria-labelledby="transition-modal-title"
-        aria-describedby="transition-modal-description"
+      <Dialog
+        aria-labelledby="edit-dialog"
         className={classes.modal}
         open={open}
         onClose={handleClose}
@@ -186,40 +186,51 @@ function StickyNote({item}) {
         }}
       >
       <Fade in={open}>
-      <form onSubmit={handleSubmit}>
-      <div className="edit-note-box">
+      
+      <div className={`edit-note-box ${taskToEdit.color_name}`}>
+      <h2>Update Task Here</h2>
+        <form onSubmit={handleSubmit}>
           <section className="note-body">
-          <input
-            onChange={(event) => handleChange(event)}
-            value={taskToEdit.taskName}
-          />
-          <FormControl component="fieldset">
-            <FormLabel component="legend">Priority</FormLabel>
-            <RadioGroup
-              aria-label="priorityStatus"
-              value={taskToEdit.priority} 
-              onChange={(event) => dispatch({ 
-                type: 'EDIT_ONCHANGE', 
-                payload: { property: 'priority', value: event.target.value }
-              })}>
-          <FormControlLabel value="1" control={<RedRadio />} label="NOW" labelPlacement="top"/>
-          <FormControlLabel value="2" control={<OrangeRadio />} label="Soon-ish" labelPlacement="top"/>
-          <FormControlLabel value="3" control={<YellowRadio />} label="Later" labelPlacement="top"/>
-          <FormControlLabel value="4" control={<LightGreenRadio />} label="Light Green" labelPlacement="top"/>
-          <FormControlLabel value="5" control={<GreenRadio />} label="Green" labelPlacement="top"/>
-          <FormControlLabel value="6" control={<BlueRadio />} label="Blue" labelPlacement="top"/>
-          <FormControlLabel value="7" control={<PurpleRadio />} label="Purple" labelPlacement="top"/>
-          <FormControlLabel value="8" control={<DarkPurpleRadio />} label="Purple" labelPlacement="top"/>
-          <FormControlLabel value="9" control={<BrownRadio />} label="Brown" labelPlacement="top"/>
-          <FormControlLabel value="10" control={<GreyRadio />} label="Grey" labelPlacement="top"/>
-        </RadioGroup>
-        </FormControl>
-          <input type='submit' value='Update Task'/>
+            <TextField
+              type="text"
+              multiline
+              variant="outlined"
+              value={taskToEdit.taskName}
+              onChange={(event) => handleChange(event)}
+            />
           </section>
-        </div>
-      </form>
+          <section className="note-radio-group">
+            <FormControl component="fieldset">
+              <RadioGroup
+                aria-label="priorityStatus"
+                row
+                value={taskToEdit.priority_id} 
+                onChange={(event) => dispatch({ 
+                  type: 'EDIT_ONCHANGE', 
+                  payload: { property: 'priority_id', value: event.target.value }
+                })}>
+                <FormControlLabel value="1" control={<RedRadio />} label="NOW" labelPlacement="top"/>
+                <FormControlLabel value="2" control={<OrangeRadio />} label="Soon-ish" labelPlacement="top"/>
+                <FormControlLabel value="3" control={<YellowRadio />} label="Later" labelPlacement="top"/>
+                <FormControlLabel value="4" control={<LightGreenRadio />} label="Light Green" labelPlacement="top"/>
+                <FormControlLabel value="5" control={<GreenRadio />} label="Green" labelPlacement="top"/>
+                <FormControlLabel value="6" control={<BlueRadio />} label="Blue" labelPlacement="top"/>
+                <FormControlLabel value="7" control={<PurpleRadio />} label="Purple" labelPlacement="top"/>
+                <FormControlLabel value="8" control={<DarkPurpleRadio />} label="Purple" labelPlacement="top"/>
+                <FormControlLabel value="9" control={<BrownRadio />} label="Brown" labelPlacement="top"/>
+                <FormControlLabel value="10" control={<GreyRadio />} label="Grey" labelPlacement="top"/>
+              </RadioGroup>
+            </FormControl>
+          </section>
+          <section className="add-btn">
+            <Button variant="outlined" type="submit">
+              Update Note
+            </Button>
+          </section> 
+        </form>
+      </div>
       </Fade>
-      </Modal>
+      </Dialog>
     </>
   );
 }

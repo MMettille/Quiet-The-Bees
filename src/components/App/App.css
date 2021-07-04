@@ -111,3 +111,39 @@ input {
   margin: 5px;
   margin-bottom: 10px;
 }
+
+
+/* --------------------------------------------------------------------------------
+Setting the colors of each sticky note, based on it's priority/category status
+-------------------------------------------------------------------------------- */
+
+.red{
+  background-color: #ef9a9a;
+}
+.orange{
+  background-color: #ffcc80;
+}
+.yellow{
+  background-color: #fff59d;
+}
+.green{
+  background-color: #80cbc4
+}
+.light-green{
+  background-color: "#aed581";
+}
+.purple{
+  background-color: "#b39ddb";
+}
+.dark-purple{
+  background-color: "#9575cd";
+}
+.blue{
+  background-color: "#90caf9";
+}
+.brown{
+  background-color: "#a1887f";
+}
+.grey{
+  background-color: "#9e9e9e";
+}

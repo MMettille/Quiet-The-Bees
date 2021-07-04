@@ -96,16 +96,16 @@ function Main() {
         <div className="container">
           <h2>SORT HERE</h2>
           <FormControlLabel value="*" control={<Radio color="default"/>} label="ALL" labelPlacement="end"/>
-          <FormControlLabel value="NOW" control={<RedRadio />} label="NOW" labelPlacement="end"/>
-          <FormControlLabel value="soonish" control={<OrangeRadio />} label="Soon-ish" labelPlacement="end"/>
-          <FormControlLabel value="later" control={<YellowRadio />} label="Later" labelPlacement="end"/>
-          <FormControlLabel value="Light Green" control={<LightGreenRadio />} label="Light Green" labelPlacement="end"/>
-          <FormControlLabel value="Green" control={<GreenRadio />} label="Green" labelPlacement="end"/>
-          <FormControlLabel value="Blue" control={<BlueRadio />} label="Blue" labelPlacement="end"/>
-          <FormControlLabel value="Purple" control={<PurpleRadio />} label="Purple" labelPlacement="end"/>
-          <FormControlLabel value="Dark Purple" control={<DarkPurpleRadio />} label="Purple" labelPlacement="end"/>
-          <FormControlLabel value="Brown" control={<BrownRadio />} label="Brown" labelPlacement="end"/>
-          <FormControlLabel value="Grey" control={<GreyRadio />} label="Grey" labelPlacement="end"/>
+          <FormControlLabel value="1" control={<RedRadio />} label="NOW" labelPlacement="end"/>
+          <FormControlLabel value="2" control={<OrangeRadio />} label="Soon-ish" labelPlacement="end"/>
+          <FormControlLabel value="3" control={<YellowRadio />} label="Later" labelPlacement="end"/>
+          <FormControlLabel value="4" control={<LightGreenRadio />} label="Light Green" labelPlacement="end"/>
+          <FormControlLabel value="5" control={<GreenRadio />} label="Green" labelPlacement="end"/>
+          <FormControlLabel value="6" control={<BlueRadio />} label="Blue" labelPlacement="end"/>
+          <FormControlLabel value="7" control={<PurpleRadio />} label="Purple" labelPlacement="end"/>
+          <FormControlLabel value="8" control={<DarkPurpleRadio />} label="Purple" labelPlacement="end"/>
+          <FormControlLabel value="9" control={<BrownRadio />} label="Brown" labelPlacement="end"/>
+          <FormControlLabel value="10" control={<GreyRadio />} label="Grey" labelPlacement="end"/>
         </div>
         <div className={classes.root}>
           <Grid container spacing={3}>

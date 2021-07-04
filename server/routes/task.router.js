@@ -9,7 +9,7 @@ router.get('/', (req, res) => {
   // GET route code here
   const query = `SELECT * from "taskList"
   JOIN "priority_list"
-  ON "taskList".id = "priority_list".id
+  ON "taskList".priority_id = "priority_list".id
   WHERE "taskList".user_id = $1
   ORDER BY "taskList".id DESC;`;
   pool.query(query, [req.user.id])

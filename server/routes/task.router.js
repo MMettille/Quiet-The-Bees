@@ -24,22 +24,19 @@ router.get('/', (req, res) => {
     })
 });
 
-router.get('/', (req, res) => {
+router.get('/category', (req, res) => {
   // GET route code here
   const query = `
-    SELECT "taskList".id, "taskName", "isComplete", "priority_id", "taskList".user_id, "priority_list".color_name from "priority_list"
-    JOIN "taskList"
-    ON "priority_list".id = "taskList".priority_id
-    WHERE "taskList".user_id = $1
-    ORDER BY "taskList".id DESC;
+    SELECT "color_id", "category_name", "isActive" FROM "category_names"
+    WHERE "user_id" = $1;
     `;
   pool.query(query, [req.user.id])
     .then( result => {
-      console.log('tasks from the database', result.rows)
+      console.log('categories from the database', result.rows)
       res.send(result.rows);
     })
     .catch(err => {
-      console.log('ERROR: Get all tasks', err);
+      console.log('ERROR: Get all categories', err);
       res.sendStatus(500)
     })
 });

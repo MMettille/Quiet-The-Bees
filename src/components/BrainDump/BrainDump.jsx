@@ -90,6 +90,7 @@ import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
+import { setContext } from 'redux-saga/effects';
 
 function Main() {
 
@@ -100,9 +101,9 @@ function Main() {
   const [value, setValue] = useState('')
   const [open, setOpen] = useState(false);
   const [newCategory, setNewCategory] = useState({
-
   })
 
+  console.log(category)
   const handleClickOpen = () => {
     setOpen(true);
   };
@@ -120,9 +121,12 @@ function Main() {
     console.log(value)
     setOpen(true)
   }
-  console.log(task)
+  const handleSave = (event) => {
+    event.preventDefault()
+    console.log(newCategory)
+  }
+ 
   const [checked, setChecked] = useState(true)
-  const [catOne, setCatOne] = useState('')
       return (
       <>
         <Header />
@@ -202,11 +206,16 @@ function Main() {
               />
               <TextField
                 id="name"
-                label="Later"
+                label="Customize Category"
                 variant="outlined"
                 disabled={checked}
+                onChange={(event) => setNewCategory({
+                  color_id: 4,
+                  category_name: event.target.value,
+                  isActive: checked
+                })}
               />
-              <Button disabled={checked} variant="outlined">
+              <Button disabled={checked} variant="outlined" onClick={handleSave}>
                 Save
               </Button>
             </ListItem>

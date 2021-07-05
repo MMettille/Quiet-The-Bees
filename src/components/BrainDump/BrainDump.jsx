@@ -127,6 +127,25 @@ function Main() {
   }
  
   const [checked, setChecked] = useState(true)
+  const [userInput, setUserInput] = useState([{
+    color_id: null,
+    category_name: null,
+    isActive: false
+  }])
+  const handleAdd = () => {
+    const category = [...userInput];
+    category.push({ 
+      color_id: null,
+      category_name: null,
+    });
+    setUserInput(category);
+}
+
+const handleChange = (i, event) => {
+  const category = [...userInput];
+  category[i].category_name = event.target.value;
+  setUserInput(category);
+}
       return (
       <>
         <Header />
@@ -167,58 +186,49 @@ function Main() {
           </DialogContentText>
           <List>
             <ListItem alignItems="center">
-              <Checkbox 
-                checked={true}
-              />
                 <TextField
-                id="name"
                 label="NOW"
                 variant="outlined"
                 disabled={true}
                 />
             </ListItem>
             <ListItem alignItems="center" className="soonish-category">
-              <Checkbox 
-                checked={true}
-              />
                 <TextField
-                id="name"
                 label="Soon-ish"
                 variant="outlined"
                 disabled={true}
                 />
             </ListItem>
             <ListItem alignItems="center" className="later-category">
-              <Checkbox 
-                checked={true}
-              />
                 <TextField
-                id="name"
                 label="Later"
                 variant="outlined"
                 disabled={true}
                 />
             </ListItem>
-            <ListItem alignItems="center" className="light-green-category">
-              <Checkbox 
-                checked={checked}
-                onChange={(event) => setChecked(!checked)}
-              />
-              <TextField
-                id="name"
-                label="Customize Category"
-                variant="outlined"
-                disabled={checked}
-                onChange={(event) => setNewCategory({
-                  color_id: 4,
-                  category_name: event.target.value,
-                  isActive: checked
-                })}
-              />
-              <Button disabled={checked} variant="outlined" onClick={handleSave}>
-                Save
-              </Button>
-            </ListItem>
+            <button onClick={() => handleAdd()}>
+              +
+            </button><form onSubmit={handleSave}>
+            {userInput.map((userInput, idx) => {
+                return (
+                <ListItem alignItems="center" key={`${userInput}-${idx}`}>
+                <TextField
+                  id="name"
+                  label={category.category_name || "Customize Category"}
+                  variant="outlined"
+                  disabled={category.isActive || false}
+                  onChange={e => handleChange(idx, e)}
+                />
+                <Button disabled={category.isActive || false} variant="outlined" onClick={handleSave}>
+                  Save
+                </Button>
+                </ListItem>
+
+                );
+            })}
+        </form>
+            
+              
           </List>
    
         </DialogContent>

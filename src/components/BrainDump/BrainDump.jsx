@@ -158,11 +158,27 @@ function Main() {
           </DialogContentText>
           <List>
             <ListItem alignItems="center">
-              <Checkbox />
+              <Checkbox 
+                checked={checked}
+                onChange={(event) => setChecked(event.target.checked)}
+              />
                 <TextField
                 id="name"
                 label="Soon-ish"
                 variant="outlined"
+                disabled={checked}
+                />
+            </ListItem>
+            <ListItem alignItems="center" className="soonish-category">
+              <Checkbox 
+                checked={checked}
+                onChange={(event) => setChecked(event.target.checked)}
+              />
+                <TextField
+                id="name"
+                label="Soon-ish"
+                variant="outlined"
+                disabled={checked}
                 />
             </ListItem>
           </List>
@@ -174,14 +190,7 @@ function Main() {
             label="NOW"
             variant="outlined"
             />
-          </div>
-          <div className="category">
-          {/* <input id="redCategory" type="checkbox"/>
-          <label class="red" for="redCategory"></label>
-          <input/> */}
-          
-          </div>
-          
+              
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose} color="primary">

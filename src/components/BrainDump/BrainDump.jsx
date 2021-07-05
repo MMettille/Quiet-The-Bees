@@ -6,7 +6,9 @@ import {useHistory} from 'react-router-dom'
 import Header from '../Header/Header';
 import AddNewTask from '../AddNewTask/AddNewTask';
 import StickyNote from '../StickyNote/StickyNote';
-
+import ColorLensIcon from '@material-ui/icons/ColorLens';
+import IconButton from '@material-ui/core/IconButton';
+import RadioGroup from '@material-ui/core/RadioGroup';
 import { makeStyles, withStyles } from '@material-ui/core/styles';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Radio from '@material-ui/core/Radio';
@@ -83,11 +85,14 @@ function Main() {
   const dispatch = useDispatch();
   const classes = useStyles();
   const task = useSelector (store => store.task);
-
+  const [value, setValue] = useState('')
   useEffect(() => {
     dispatch({type: 'FETCH_TASK'})
   }, []);
   
+  const handleClick = () => {
+    console.log(value)
+  }
       return (
       <>
         <Header />
@@ -95,17 +100,22 @@ function Main() {
         <AddNewTask />
         <div className="container">
           <h2>SORT HERE</h2>
-          <FormControlLabel value="*" control={<Radio color="default"/>} label="ALL" labelPlacement="end"/>
-          <FormControlLabel value="1" control={<RedRadio />} label="NOW" labelPlacement="end"/>
-          <FormControlLabel value="2" control={<OrangeRadio />} label="Soon-ish" labelPlacement="end"/>
-          <FormControlLabel value="3" control={<YellowRadio />} label="Later" labelPlacement="end"/>
-          <FormControlLabel value="4" control={<LightGreenRadio />} label="Light Green" labelPlacement="end"/>
-          <FormControlLabel value="5" control={<GreenRadio />} label="Green" labelPlacement="end"/>
-          <FormControlLabel value="6" control={<BlueRadio />} label="Blue" labelPlacement="end"/>
-          <FormControlLabel value="7" control={<PurpleRadio />} label="Purple" labelPlacement="end"/>
-          <FormControlLabel value="8" control={<DarkPurpleRadio />} label="Purple" labelPlacement="end"/>
-          <FormControlLabel value="9" control={<BrownRadio />} label="Brown" labelPlacement="end"/>
-          <FormControlLabel value="10" control={<GreyRadio />} label="Grey" labelPlacement="end"/>
+          <RadioGroup row aria-label="sort-by-category" value={value} onChange={(event) => setValue(event.target.value)}>
+            <FormControlLabel value="*" control={<Radio color="default"/>} label="ALL" labelPlacement="end"/>
+            <FormControlLabel value="1" control={<RedRadio />} label="NOW" labelPlacement="end"/>
+            <FormControlLabel value="2" control={<OrangeRadio />} label="Soon-ish" labelPlacement="end"/>
+            <FormControlLabel value="3" control={<YellowRadio />} label="Later" labelPlacement="end"/>
+            <FormControlLabel value="4" control={<LightGreenRadio />} label="Light Green" labelPlacement="end"/>
+            <FormControlLabel value="5" control={<GreenRadio />} label="Green" labelPlacement="end"/>
+            <FormControlLabel value="6" control={<BlueRadio />} label="Blue" labelPlacement="end"/>
+            <FormControlLabel value="7" control={<PurpleRadio />} label="Purple" labelPlacement="end"/>
+            <FormControlLabel value="8" control={<DarkPurpleRadio />} label="Purple" labelPlacement="end"/>
+            <FormControlLabel value="9" control={<BrownRadio />} label="Brown" labelPlacement="end"/>
+            <FormControlLabel value="10" control={<GreyRadio />} label="Grey" labelPlacement="end"/>
+            <IconButton aria-label="color-pallete-button" onClick={handleClick}>
+              <ColorLensIcon fontSize="large"/>
+            </IconButton>
+          </RadioGroup>
         </div>
         <div className={classes.root}>
           <Grid container spacing={3}>

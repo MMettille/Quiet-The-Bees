@@ -34,7 +34,13 @@ CREATE TABLE "taskList" (
 
 CREATE TABLE "priority_list" (
 	"id" SERIAL PRIMARY KEY,
-	"name" VARCHAR (255),
-	"color" VARCHAR (255),
-	"priority_list" ADD "user_id" INT REFERENCES "user"
+	"color_name" VARCHAR (255),
+);
+
+create table "priority_task_category" (
+	"id" SERIAL primary key,
+	"user_id" INT REFERENCES "user",
+	"color_id" INT REFERENCES "priority_list",
+	"category_name" VARCHAR (25),
+	"isActive" BOOLEAN DEFAULT TRUE
 );

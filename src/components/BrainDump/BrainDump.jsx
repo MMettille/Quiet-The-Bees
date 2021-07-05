@@ -182,15 +182,7 @@ function Main() {
                 />
             </ListItem>
           </List>
-
-          <Checkbox />
-          <TextField
-            
-            id="name"
-            label="NOW"
-            variant="outlined"
-            />
-              
+   
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose} color="primary">

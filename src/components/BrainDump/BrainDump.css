@@ -13,10 +13,6 @@
 }
 
 .add-note-btns {
-    /* position: absolute;
-    bottom: 0;
-    vertical-align: bottom;
-    text-align: center !important; */
     vertical-align: bottom;
 }
 
@@ -26,4 +22,10 @@
     padding: 10px;
     margin: auto;
     margin-bottom: 25px;
+}
+
+/* This isn't working and I don't know why */
+.category{
+    margin-top: 10px ;
+    align-items: center;
 }

@@ -13,6 +13,9 @@ import { makeStyles, withStyles } from '@material-ui/core/styles';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Radio from '@material-ui/core/Radio';
 import Grid from '@material-ui/core/Grid';
+import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button';
+import Checkbox from '@material-ui/core/Checkbox';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -80,19 +83,41 @@ const GreyRadio = withStyles({
   },
 })((props) => <Radio color="default" {...props} />);
 
+import Dialog from '@material-ui/core/Dialog';
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogContentText from '@material-ui/core/DialogContentText';
+import DialogTitle from '@material-ui/core/DialogTitle';
+import List from "@material-ui/core/List";
+import ListItem from "@material-ui/core/ListItem";
+
 function Main() {
 
   const dispatch = useDispatch();
   const classes = useStyles();
   const task = useSelector (store => store.task);
   const [value, setValue] = useState('')
+  const [open, setOpen] = useState(false);
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+  
   useEffect(() => {
     dispatch({type: 'FETCH_TASK'})
   }, []);
   
   const handleClick = () => {
     console.log(value)
+    setOpen(true)
   }
+
+  const [checked, setChecked] = useState(false)
+  const [catOne, setCatOne] = useState('')
       return (
       <>
         <Header />
@@ -125,7 +150,48 @@ function Main() {
           </Grid>
         </div>
         
-        
+        <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
+        <DialogTitle id="form-dialog-title">Custom Categories</DialogTitle>
+        <DialogContent>
+          <DialogContentText>
+            Customize your categories below. Check the colors to hide and show those colors. Change the title of the category by typing the name in the text box.
+          </DialogContentText>
+          <List>
+            <ListItem alignItems="center">
+              <Checkbox />
+                <TextField
+                id="name"
+                label="Soon-ish"
+                variant="outlined"
+                />
+            </ListItem>
+          </List>
+
+          <Checkbox />
+          <TextField
+            
+            id="name"
+            label="NOW"
+            variant="outlined"
+            />
+          </div>
+          <div className="category">
+          {/* <input id="redCategory" type="checkbox"/>
+          <label class="red" for="redCategory"></label>
+          <input/> */}
+          
+          </div>
+          
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleClose} color="primary">
+            Cancel
+          </Button>
+          <Button onClick={handleClose} color="primary">
+            Subscribe
+          </Button>
+        </DialogActions>
+      </Dialog>
       </>
   );
 }

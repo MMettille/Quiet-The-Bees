@@ -20,58 +20,15 @@ const RedRadio = withStyles({
   
   const OrangeRadio = withStyles({
     root: {
-      color: "#ff9800",
+      color: "#f57c00",
     },
   })((props) => <Radio color="default" {...props} />);
   
   const YellowRadio = withStyles({
     root: {
-      color: "#ffeb3b",
+      color: "#fdd835",
     },
   })((props) => <Radio color="default" {...props} />);
-  
-  const GreenRadio = withStyles({
-    root: {
-      color: "#80cbc4",
-    },
-  })((props) => <Radio color="default" {...props} />);
-
-  const LightGreenRadio = withStyles({
-    root: {
-      color: "#aed581",
-    },
-  })((props) => <Radio color="default" {...props} />);
-  
-  const PurpleRadio = withStyles({
-    root: {
-      color: "#b39ddb",
-    },
-  })((props) => <Radio color="default" {...props} />);
-  
-  const BrownRadio = withStyles({
-    root: {
-      color: "#a1887f",
-    },
-  })((props) => <Radio color="default" {...props} />);
-  
-  const BlueRadio = withStyles({
-    root: {
-      color: "#90caf9",
-    },
-  })((props) => <Radio color="default" {...props} />);
-
-  const DarkPurpleRadio = withStyles({
-    root: {
-      color: "#9575cd",
-    },
-  })((props) => <Radio color="default" {...props} />);
-
-  const GreyRadio = withStyles({
-    root: {
-      color: "#9e9e9e",
-    },
-  })((props) => <Radio color="default" {...props} />);
-
   
 function AddNewTask() {
 
@@ -115,13 +72,6 @@ function AddNewTask() {
                                     <FormControlLabel value="1" control={<RedRadio />} label="NOW" labelPlacement="top"/>
                                     <FormControlLabel value="2" control={<OrangeRadio />} label="Soon-ish" labelPlacement="top"/>
                                     <FormControlLabel value="3" control={<YellowRadio />} label="Later" labelPlacement="top"/>
-                                    <FormControlLabel value="4" control={<LightGreenRadio />} label="Light Green" labelPlacement="top"/>
-                                    <FormControlLabel value="5" control={<GreenRadio />} label="Green" labelPlacement="top"/>
-                                    <FormControlLabel value="6" control={<BlueRadio />} label="Blue" labelPlacement="top"/>
-                                    <FormControlLabel value="7" control={<PurpleRadio />} label="Purple" labelPlacement="top"/>
-                                    <FormControlLabel value="8" control={<DarkPurpleRadio />} label="Purple" labelPlacement="top"/>
-                                    <FormControlLabel value="9" control={<BrownRadio />} label="Brown" labelPlacement="top"/>
-                                    <FormControlLabel value="10" control={<GreyRadio />} label="Grey" labelPlacement="top"/>
                                 </RadioGroup>
                         </FormControl>
                     </section>

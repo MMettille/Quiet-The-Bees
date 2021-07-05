@@ -113,6 +113,7 @@ function Main() {
   
   useEffect(() => {
     dispatch({type: 'FETCH_TASK'})
+    dispatch({type: 'FETCH_CATEGORY'})
   }, []);
   
   const handleClick = () => {
@@ -120,7 +121,7 @@ function Main() {
     setOpen(true)
   }
   console.log(task)
-  const [checked, setChecked] = useState(false)
+  const [checked, setChecked] = useState(true)
   const [catOne, setCatOne] = useState('')
       return (
       <>
@@ -196,18 +197,18 @@ function Main() {
             </ListItem>
             <ListItem alignItems="center" className="light-green-category">
               <Checkbox 
-                checked={}
-                // onChange={(event) => setNewCategory({
-                //   color_id: 4,
-                //   isActive
-                // })}
+                checked={checked}
+                onChange={(event) => setChecked(!checked)}
               />
-                <TextField
+              <TextField
                 id="name"
                 label="Later"
                 variant="outlined"
-                disabled={true}
-                />
+                disabled={checked}
+              />
+              <Button disabled={checked} variant="outlined">
+                Save
+              </Button>
             </ListItem>
           </List>
    

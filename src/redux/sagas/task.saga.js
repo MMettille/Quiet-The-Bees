@@ -11,6 +11,15 @@ function* fetchTask() {
     }
 }
 
+function* fetchCategory() {
+  try {
+      const category = yield axios.get('/api/task/category');
+      yield put({ type: 'SET_CATEGORY', payload: category.data })
+  } catch {
+  console.log('get all error');
+  }
+}
+
 // ⬇ Adding a new task in the database
 function* addNewTask(action){
   try {
@@ -51,6 +60,7 @@ function* deleteTask(action) {
 
 function* taskSaga() {
   yield takeLatest('FETCH_TASK', fetchTask);
+  yield takeLatest('FETCH_CATEGORY', fetchCategory);
   yield takeEvery('EDIT_TASK', editTask)
   yield takeEvery('DELETE_TASK', deleteTask)
   yield takeEvery('ADD_NEW_TASK', addNewTask)

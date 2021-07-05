@@ -128,7 +128,7 @@ function Main() {
           <RadioGroup row aria-label="sort-by-category" value={value} onChange={(event) => setValue(event.target.value)}>
             <FormControlLabel value="*" control={<Radio color="default"/>} label="ALL" labelPlacement="end"/>
             <FormControlLabel value="1" control={<RedRadio />} label="NOW" labelPlacement="end"/>
-            <FormControlLabel value="2" control={<OrangeRadio />} label="Soon-ish" labelPlacement="end"/>
+            <FormControlLabel value="2" control={<OrangeRadio />} label="Soon-ish" labelPlacement="end" />
             <FormControlLabel value="3" control={<YellowRadio />} label="Later" labelPlacement="end"/>
             <FormControlLabel value="4" control={<LightGreenRadio />} label="Light Green" labelPlacement="end"/>
             <FormControlLabel value="5" control={<GreenRadio />} label="Green" labelPlacement="end"/>
@@ -164,19 +164,31 @@ function Main() {
               />
                 <TextField
                 id="name"
-                label="Soon-ish"
+                label="NOW"
                 variant="outlined"
                 disabled={checked}
                 />
             </ListItem>
             <ListItem alignItems="center" className="soonish-category">
               <Checkbox 
-                checked={checked}
+                checked={true}
                 onChange={(event) => setChecked(event.target.checked)}
               />
                 <TextField
                 id="name"
                 label="Soon-ish"
+                variant="outlined"
+                disabled={checked}
+                />
+            </ListItem>
+            <ListItem alignItems="center" className="later-category">
+              <Checkbox 
+                checked={checked}
+                onChange={(event) => setChecked(event.target.checked)}
+              />
+                <TextField
+                id="name"
+                label="Later"
                 variant="outlined"
                 disabled={checked}
                 />

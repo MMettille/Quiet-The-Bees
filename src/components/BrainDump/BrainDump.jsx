@@ -115,7 +115,7 @@ function Main() {
     console.log(value)
     setOpen(true)
   }
-
+  console.log(task)
   const [checked, setChecked] = useState(false)
   const [catOne, setCatOne] = useState('')
       return (

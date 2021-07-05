@@ -96,8 +96,12 @@ function Main() {
   const dispatch = useDispatch();
   const classes = useStyles();
   const task = useSelector (store => store.task);
+  const category = useSelector (store => store.category)
   const [value, setValue] = useState('')
   const [open, setOpen] = useState(false);
+  const [newCategory, setNewCategory] = useState({
+
+  })
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -159,38 +163,50 @@ function Main() {
           <List>
             <ListItem alignItems="center">
               <Checkbox 
-                checked={task.isActive}
-                onChange={(event) => setChecked(event.target.checked)}
+                checked={true}
               />
                 <TextField
                 id="name"
                 label="NOW"
                 variant="outlined"
-                disabled={checked}
+                disabled={true}
                 />
             </ListItem>
             <ListItem alignItems="center" className="soonish-category">
               <Checkbox 
                 checked={true}
-                onChange={(event) => setChecked(event.target.checked)}
               />
                 <TextField
                 id="name"
                 label="Soon-ish"
                 variant="outlined"
-                disabled={checked}
+                disabled={true}
                 />
             </ListItem>
             <ListItem alignItems="center" className="later-category">
               <Checkbox 
-                checked={checked}
-                onChange={(event) => setChecked(event.target.checked)}
+                checked={true}
               />
                 <TextField
                 id="name"
                 label="Later"
                 variant="outlined"
-                disabled={checked}
+                disabled={true}
+                />
+            </ListItem>
+            <ListItem alignItems="center" className="light-green-category">
+              <Checkbox 
+                checked={}
+                // onChange={(event) => setNewCategory({
+                //   color_id: 4,
+                //   isActive
+                // })}
+              />
+                <TextField
+                id="name"
+                label="Later"
+                variant="outlined"
+                disabled={true}
                 />
             </ListItem>
           </List>

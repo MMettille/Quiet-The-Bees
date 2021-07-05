@@ -159,7 +159,7 @@ function Main() {
           <List>
             <ListItem alignItems="center">
               <Checkbox 
-                checked={checked}
+                checked={task.isActive}
                 onChange={(event) => setChecked(event.target.checked)}
               />
                 <TextField

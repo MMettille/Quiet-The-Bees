@@ -24,8 +24,7 @@
     margin-bottom: 25px;
 }
 
-/* This isn't working and I don't know why */
-.category{
-    margin-top: 10px ;
-    align-items: center;
+.color-box{
+    height: 24px;
+    width: 24px;
 }

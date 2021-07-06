@@ -15,11 +15,25 @@ import Radio from '@material-ui/core/Radio';
 import Grid from '@material-ui/core/Grid';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
-import Checkbox from '@material-ui/core/Checkbox';
+import Dialog from '@material-ui/core/Dialog';
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogContentText from '@material-ui/core/DialogContentText';
+import DialogTitle from '@material-ui/core/DialogTitle';
+import List from "@material-ui/core/List";
+import ListItem from "@material-ui/core/ListItem";
+import Checkbox from "@material-ui/core/Checkbox";
 
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
+  },
+  formControl: {
+    margin: theme.spacing(1),
+    minWidth: 120,
+  },
+  selectEmpty: {
+    marginTop: theme.spacing(2),
   },
 }));
 
@@ -83,16 +97,7 @@ const GreyRadio = withStyles({
   },
 })((props) => <Radio color="default" {...props} />);
 
-import Dialog from '@material-ui/core/Dialog';
-import DialogActions from '@material-ui/core/DialogActions';
-import DialogContent from '@material-ui/core/DialogContent';
-import DialogContentText from '@material-ui/core/DialogContentText';
-import DialogTitle from '@material-ui/core/DialogTitle';
-import List from "@material-ui/core/List";
-import ListItem from "@material-ui/core/ListItem";
-import { setContext } from 'redux-saga/effects';
-
-function Main() {
+function BrainDump() {
 
   const dispatch = useDispatch();
   const classes = useStyles();
@@ -121,31 +126,25 @@ function Main() {
     console.log(value)
     setOpen(true)
   }
+
   const handleSave = (event) => {
     event.preventDefault()
     console.log(newCategory)
   }
  
-  const [checked, setChecked] = useState(true)
-  const [userInput, setUserInput] = useState([{
+  const [color, setColor] = useState(null)
+  const [userInput, setUserInput] = useState({
     color_id: null,
     category_name: null,
-    isActive: false
-  }])
-  const handleAdd = () => {
-    const category = [...userInput];
-    category.push({ 
-      color_id: null,
-      category_name: null,
-    });
-    setUserInput(category);
-}
+  })
+
+
 
 const handleChange = (i, event) => {
-  const category = [...userInput];
-  category[i].category_name = event.target.value;
-  setUserInput(category);
+  
 }
+
+
       return (
       <>
         <Header />
@@ -186,49 +185,54 @@ const handleChange = (i, event) => {
           </DialogContentText>
           <List>
             <ListItem alignItems="center">
+              <Checkbox className="red" disabled={true}/>
+              <p>Red</p>
+
                 <TextField
                 label="NOW"
                 variant="outlined"
                 disabled={true}
                 />
             </ListItem>
-            <ListItem alignItems="center" className="soonish-category">
+            <ListItem alignItems="center" disabled={true} >
+              <Checkbox />
+              <p>Orange</p>
                 <TextField
                 label="Soon-ish"
                 variant="outlined"
                 disabled={true}
                 />
             </ListItem>
-            <ListItem alignItems="center" className="later-category">
+            <ListItem alignItems="center" disabled={true}>
+              <Checkbox />
+              <p>Yellow</p>
                 <TextField
                 label="Later"
                 variant="outlined"
                 disabled={true}
                 />
             </ListItem>
-            <button onClick={() => handleAdd()}>
-              +
-            </button><form onSubmit={handleSave}>
-            {userInput.map((userInput, idx) => {
+            
+            {category.map(item => {
                 return (
-                <ListItem alignItems="center" key={`${userInput}-${idx}`}>
+                <ListItem alignItems="center" key={item.category_name}>
+                <Checkbox />
+                <p>Color Goes Here</p>
+                
                 <TextField
                   id="name"
-                  label={category.category_name || "Customize Category"}
+                  label={item.category_name}
                   variant="outlined"
-                  disabled={category.isActive || false}
                   onChange={e => handleChange(idx, e)}
                 />
-                <Button disabled={category.isActive || false} variant="outlined" onClick={handleSave}>
-                  Save
+                <Button variant="outlined" onClick={handleSave}>
+                  Save Category
                 </Button>
+                
                 </ListItem>
-
-                );
+            );
             })}
-        </form>
-            
-              
+  
           </List>
    
         </DialogContent>
@@ -245,4 +249,4 @@ const handleChange = (i, event) => {
   );
 }
 
-export default Main;
+export default BrainDump;

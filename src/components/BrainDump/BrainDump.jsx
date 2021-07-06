@@ -23,6 +23,7 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import Checkbox from "@material-ui/core/Checkbox";
+import RadioButtonUncheckedIcon from '@material-ui/icons/RadioButtonUnchecked';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -167,44 +168,95 @@ function BrainDump() {
           </DialogContentText>
           <List>
             <ListItem alignItems="center">
-              <Checkbox className="red" disabled={true}/>
-              <p>Red</p>
-
-                <TextField
-                label="NOW"
-                variant="outlined"
-                disabled={true}
-                />
+              <Checkbox className="red" checked={true} disabled={true}/>
+              <RadioButtonUncheckedIcon className='red'/>
+              <TextField
+              label="NOW"
+              variant="outlined"
+              disabled={true}
+              />
             </ListItem>
             <ListItem alignItems="center"  >
-              <Checkbox disabled={true}/>
-              <p>Orange</p>
-                <TextField
-                label="Soon-ish"
-                variant="outlined"
-                disabled={true}
-                />
+              <Checkbox checked={true} disabled={true}/>
+              <RadioButtonUncheckedIcon className='orange'/>
+              <TextField
+              label="Soon-ish"
+              variant="outlined"
+              disabled={true}
+              />
             </ListItem>
             <ListItem alignItems="center" >
-              <Checkbox disabled={true}/>
-              <p>Yellow</p>
-                <TextField
-                label="Later"
-                variant="outlined"
-                disabled={true}
-                />
+              <Checkbox checked={true} disabled={true}/>
+              <RadioButtonUncheckedIcon className='yellow'/>
+              <TextField
+              label="Later"
+              variant="outlined"
+              disabled={true}
+              />
             </ListItem>
             <ListItem alignItems="center" >
               <Checkbox checked ={category[0]?.isChecked}/>
-              <p>Light Green</p>
+              <RadioButtonUncheckedIcon className='light-green'/>
+              <TextField
+              label={category[0]?.category}
+              variant="outlined"
+              disabled={!category[0]?.isChecked}
+              />
+            </ListItem>
+            <ListItem alignItems="center" >
+              <Checkbox checked ={category[1]?.isChecked}/>
+              <RadioButtonUncheckedIcon className='green'/>
+              <TextField
+              label={category[1]?.category}
+              variant="outlined"
+              disabled={!category[1]?.isChecked}
+              />
+            </ListItem>
+            <ListItem alignItems="center" >
+              <Checkbox checked ={category[2]?.isChecked}/>
+              <RadioButtonUncheckedIcon className='blue'/>
+              <TextField
+              label={category[2]?.category}
+              variant="outlined"
+              disabled={!category[2]?.isChecked}
+              />
+            </ListItem>
+            <ListItem alignItems="center" >
+              <Checkbox checked ={category[3]?.isChecked}/>
+              <RadioButtonUncheckedIcon className='purple'/>
+              <TextField
+              label={category[3]?.category}
+              variant="outlined"
+              disabled={!category[3]?.isChecked}
+              />
+            </ListItem>
+            <ListItem alignItems="center" >
+              <Checkbox checked ={category[4]?.isChecked}/>
+              <RadioButtonUncheckedIcon className='dark-purple'/>
+              <TextField
+              label={category[4]?.category}
+              variant="outlined"
+              disabled={!category[4]?.isChecked}
+              />
+            </ListItem>
+            <ListItem alignItems="center" >
+              <Checkbox checked ={category[5]?.isChecked}/>
+              <RadioButtonUncheckedIcon className='brown'/>
+              <TextField
+              label={category[5]?.category}
+              variant="outlined"
+              disabled={!category[5]?.isChecked}
+              />
+            </ListItem>
+            <ListItem alignItems="center" >
+              <Checkbox checked ={category[6]?.isChecked}/>
+                <RadioButtonUncheckedIcon className='grey'/>
                 <TextField
-                label={category[0]?.category}
+                label={category[6]?.category}
                 variant="outlined"
-                disabled={category[0]?.isChecked}
+                disabled={!category[6]?.isChecked}
                 />
             </ListItem>
-            
-           
           </List>
    
         </DialogContent>

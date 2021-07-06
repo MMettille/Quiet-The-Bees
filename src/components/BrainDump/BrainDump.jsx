@@ -108,11 +108,6 @@ function BrainDump() {
   const [newCategory, setNewCategory] = useState({
   })
 
-  console.log(category)
-  const handleClickOpen = () => {
-    setOpen(true);
-  };
-
   const handleClose = () => {
     setOpen(false);
   };
@@ -132,19 +127,6 @@ function BrainDump() {
     console.log(newCategory)
   }
  
-  const [color, setColor] = useState(null)
-  const [userInput, setUserInput] = useState({
-    color_id: null,
-    category_name: null,
-  })
-
-
-
-const handleChange = (i, event) => {
-  
-}
-
-
       return (
       <>
         <Header />
@@ -194,8 +176,8 @@ const handleChange = (i, event) => {
                 disabled={true}
                 />
             </ListItem>
-            <ListItem alignItems="center" disabled={true} >
-              <Checkbox />
+            <ListItem alignItems="center"  >
+              <Checkbox disabled={true}/>
               <p>Orange</p>
                 <TextField
                 label="Soon-ish"
@@ -203,8 +185,8 @@ const handleChange = (i, event) => {
                 disabled={true}
                 />
             </ListItem>
-            <ListItem alignItems="center" disabled={true}>
-              <Checkbox />
+            <ListItem alignItems="center" >
+              <Checkbox disabled={true}/>
               <p>Yellow</p>
                 <TextField
                 label="Later"
@@ -212,27 +194,17 @@ const handleChange = (i, event) => {
                 disabled={true}
                 />
             </ListItem>
-            
-            {category.map(item => {
-                return (
-                <ListItem alignItems="center" key={item.category_name}>
-                <Checkbox />
-                <p>Color Goes Here</p>
-                
+            <ListItem alignItems="center" >
+              <Checkbox checked ={category[0]?.isChecked}/>
+              <p>Light Green</p>
                 <TextField
-                  id="name"
-                  label={item.category_name}
-                  variant="outlined"
-                  onChange={e => handleChange(idx, e)}
+                label={category[0]?.category}
+                variant="outlined"
+                disabled={category[0]?.isChecked}
                 />
-                <Button variant="outlined" onClick={handleSave}>
-                  Save Category
-                </Button>
-                
-                </ListItem>
-            );
-            })}
-  
+            </ListItem>
+            
+           
           </List>
    
         </DialogContent>

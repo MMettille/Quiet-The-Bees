@@ -27,8 +27,7 @@ router.get('/', (req, res) => {
 router.get('/category', (req, res) => {
   // GET route code here
   const query = `
-    SELECT "color_id", "category_name", "isActive" FROM "category_names"
-    WHERE "user_id" = $1;
+    SELECT * from "custom_names" WHERE "color_id" >= 4 AND "user_id" = $1 ORDER BY "id" ASC;
     `;
   pool.query(query, [req.user.id])
     .then( result => {

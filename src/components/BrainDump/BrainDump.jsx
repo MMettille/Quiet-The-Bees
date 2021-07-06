@@ -6,6 +6,8 @@ import {useHistory} from 'react-router-dom'
 import Header from '../Header/Header';
 import AddNewTask from '../AddNewTask/AddNewTask';
 import StickyNote from '../StickyNote/StickyNote';
+import Category from '../Category/Category';
+// ⬇ What we need from material-ui
 import ColorLensIcon from '@material-ui/icons/ColorLens';
 import IconButton from '@material-ui/core/IconButton';
 import RadioGroup from '@material-ui/core/RadioGroup';
@@ -13,17 +15,7 @@ import { makeStyles, withStyles } from '@material-ui/core/styles';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Radio from '@material-ui/core/Radio';
 import Grid from '@material-ui/core/Grid';
-import TextField from '@material-ui/core/TextField';
-import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
-import DialogActions from '@material-ui/core/DialogActions';
-import DialogContent from '@material-ui/core/DialogContent';
-import DialogContentText from '@material-ui/core/DialogContentText';
-import DialogTitle from '@material-ui/core/DialogTitle';
-import List from "@material-ui/core/List";
-import ListItem from "@material-ui/core/ListItem";
-import Checkbox from "@material-ui/core/Checkbox";
-import RadioButtonUncheckedIcon from '@material-ui/icons/RadioButtonUnchecked';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -103,7 +95,7 @@ function BrainDump() {
   const dispatch = useDispatch();
   const classes = useStyles();
   const task = useSelector (store => store.task);
-  const category = useSelector (store => store.category)
+  
   const [value, setValue] = useState('')
   const [open, setOpen] = useState(false);
   const [newCategory, setNewCategory] = useState({
@@ -115,7 +107,6 @@ function BrainDump() {
   
   useEffect(() => {
     dispatch({type: 'FETCH_TASK'})
-    dispatch({type: 'FETCH_CATEGORY'})
   }, []);
   
   const handleClick = () => {
@@ -160,114 +151,8 @@ function BrainDump() {
           </Grid>
         </div>
         
-        <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
-        <DialogTitle id="form-dialog-title">Custom Categories</DialogTitle>
-        <DialogContent>
-          <DialogContentText>
-            Customize your categories below. Check the colors to hide and show those colors. Change the title of the category by typing the name in the text box.
-          </DialogContentText>
-          <List>
-            <ListItem alignItems="center">
-              <Checkbox className="red" checked={true} disabled={true}/>
-              <RadioButtonUncheckedIcon className='red'/>
-              <TextField
-              label="NOW"
-              variant="outlined"
-              disabled={true}
-              />
-            </ListItem>
-            <ListItem alignItems="center"  >
-              <Checkbox checked={true} disabled={true}/>
-              <RadioButtonUncheckedIcon className='orange'/>
-              <TextField
-              label="Soon-ish"
-              variant="outlined"
-              disabled={true}
-              />
-            </ListItem>
-            <ListItem alignItems="center" >
-              <Checkbox checked={true} disabled={true}/>
-              <RadioButtonUncheckedIcon className='yellow'/>
-              <TextField
-              label="Later"
-              variant="outlined"
-              disabled={true}
-              />
-            </ListItem>
-            <ListItem alignItems="center" >
-              <Checkbox checked ={category[0]?.isChecked}/>
-              <RadioButtonUncheckedIcon className='light-green'/>
-              <TextField
-              label={category[0]?.category}
-              variant="outlined"
-              disabled={!category[0]?.isChecked}
-              />
-            </ListItem>
-            <ListItem alignItems="center" >
-              <Checkbox checked ={category[1]?.isChecked}/>
-              <RadioButtonUncheckedIcon className='green'/>
-              <TextField
-              label={category[1]?.category}
-              variant="outlined"
-              disabled={!category[1]?.isChecked}
-              />
-            </ListItem>
-            <ListItem alignItems="center" >
-              <Checkbox checked ={category[2]?.isChecked}/>
-              <RadioButtonUncheckedIcon className='blue'/>
-              <TextField
-              label={category[2]?.category}
-              variant="outlined"
-              disabled={!category[2]?.isChecked}
-              />
-            </ListItem>
-            <ListItem alignItems="center" >
-              <Checkbox checked ={category[3]?.isChecked}/>
-              <RadioButtonUncheckedIcon className='purple'/>
-              <TextField
-              label={category[3]?.category}
-              variant="outlined"
-              disabled={!category[3]?.isChecked}
-              />
-            </ListItem>
-            <ListItem alignItems="center" >
-              <Checkbox checked ={category[4]?.isChecked}/>
-              <RadioButtonUncheckedIcon className='dark-purple'/>
-              <TextField
-              label={category[4]?.category}
-              variant="outlined"
-              disabled={!category[4]?.isChecked}
-              />
-            </ListItem>
-            <ListItem alignItems="center" >
-              <Checkbox checked ={category[5]?.isChecked}/>
-              <RadioButtonUncheckedIcon className='brown'/>
-              <TextField
-              label={category[5]?.category}
-              variant="outlined"
-              disabled={!category[5]?.isChecked}
-              />
-            </ListItem>
-            <ListItem alignItems="center" >
-              <Checkbox checked ={category[6]?.isChecked}/>
-                <RadioButtonUncheckedIcon className='grey'/>
-                <TextField
-                label={category[6]?.category}
-                variant="outlined"
-                disabled={!category[6]?.isChecked}
-                />
-            </ListItem>
-          </List>
-   
-        </DialogContent>
-        <DialogActions>
-          <Button onClick={handleClose} color="primary">
-            Cancel
-          </Button>
-          <Button onClick={handleClose} color="primary">
-            Subscribe
-          </Button>
-        </DialogActions>
+      <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
+        <Category handleClose={handleClose}/>
       </Dialog>
       </>
   );

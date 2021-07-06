@@ -199,7 +199,7 @@ function BrainDump() {
             </ListItem>
             
             {category?.map(item => {
-                return <CategoryItem category={item} id={item.id}/>
+                return <CategoryItem key={item.id} category={item} />
             })}
             
           </List>

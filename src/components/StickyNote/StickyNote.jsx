@@ -129,8 +129,6 @@ function StickyNote({item}) {
     dispatch({type: 'DELETE_TASK', payload: item})
   }
 
-  const [stickyCheckbox, setStickyCheckbox] = useState(item.isComplete)
-
   const handleCheck = (item) => {
     dispatch({type: 'TASK_TO_EDIT', payload: item})
     dispatch({ 

@@ -6,7 +6,7 @@ import {useHistory} from 'react-router-dom'
 import Header from '../Header/Header';
 import AddNewTask from '../AddNewTask/AddNewTask';
 import StickyNote from '../StickyNote/StickyNote';
-import Category from '../Category/Category';
+import CategoryItem from '../CategoryItem/CategoryItem';
 // ⬇ What we need from material-ui
 import ColorLensIcon from '@material-ui/icons/ColorLens';
 import IconButton from '@material-ui/core/IconButton';
@@ -16,6 +16,17 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Radio from '@material-ui/core/Radio';
 import Grid from '@material-ui/core/Grid';
 import Dialog from '@material-ui/core/Dialog';
+
+import List from "@material-ui/core/List";
+import ListItem from "@material-ui/core/ListItem";
+import Checkbox from "@material-ui/core/Checkbox";
+import RadioButtonUncheckedIcon from '@material-ui/icons/RadioButtonUnchecked';
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogContentText from '@material-ui/core/DialogContentText';
+import DialogTitle from '@material-ui/core/DialogTitle';
+import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -95,7 +106,7 @@ function BrainDump() {
   const dispatch = useDispatch();
   const classes = useStyles();
   const task = useSelector (store => store.task);
-  
+  const category = useSelector (store => store.category)
   const [value, setValue] = useState('')
   const [open, setOpen] = useState(false);
   const [newCategory, setNewCategory] = useState({
@@ -105,12 +116,13 @@ function BrainDump() {
     setOpen(false);
   };
   
+  console.log(category)
   useEffect(() => {
     dispatch({type: 'FETCH_TASK'})
+    dispatch({type: 'FETCH_CATEGORY'});
   }, []);
   
   const handleClick = () => {
-    console.log(value)
     setOpen(true)
   }
 
@@ -152,7 +164,55 @@ function BrainDump() {
         </div>
         
       <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
-        <Category handleClose={handleClose}/>
+      <DialogTitle id="form-dialog-title">Custom Categories</DialogTitle>
+        <DialogContent>
+          <DialogContentText>
+            Customize your categories below. Check the colors to hide and show those colors. Change the title of the category by typing the name in the text box.
+          </DialogContentText>
+          <List>
+            <ListItem alignItems="center">
+              <Checkbox className="red" checked={true} disabled={true}/>
+              <RadioButtonUncheckedIcon className='red'/>
+              <TextField
+              label="NOW"
+              variant="outlined"
+              disabled={true}
+              />
+            </ListItem>
+            <ListItem alignItems="center"  >
+              <Checkbox checked={true} disabled={true}/>
+              <RadioButtonUncheckedIcon className='orange'/>
+              <TextField
+              label="Soon-ish"
+              variant="outlined"
+              disabled={true}
+              />
+            </ListItem>
+            <ListItem alignItems="center" >
+              <Checkbox checked={true} disabled={true}/>
+              <RadioButtonUncheckedIcon className='yellow'/>
+              <TextField
+              label="Later"
+              variant="outlined"
+              disabled={true}
+              />
+            </ListItem>
+            
+            {category?.map(item => {
+                return <CategoryItem category={item} id={item.id}/>
+            })}
+            
+          </List>
+   
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleClose} color="primary">
+            Cancel
+          </Button>
+          <Button onClick={handleClose} color="primary">
+            Subscribe
+          </Button>
+        </DialogActions>
       </Dialog>
       </>
   );

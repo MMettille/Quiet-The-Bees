@@ -7,3 +7,15 @@ footer {
   height: 10px;
   background-color: #00acb0;
 }
+
+/* When the viewport is 800px or smaller - for smartphone users */
+@media screen and (max-width: 800px) {
+  .footer {
+      background-color: #00acb0;
+      min-height: 10px;
+      width: 100%;
+      position: fixed;
+      bottom:0;
+      height: 100px;
+  }
+}

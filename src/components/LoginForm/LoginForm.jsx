@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 
 import image from "./bee_path_3.png";
+import './LoginForm.css';
 
 function LoginForm() {
   const [username, setUsername] = useState("");
@@ -28,7 +29,7 @@ function LoginForm() {
 
   return (
     <>
-      <img src={image} height="200" />
+      <img src={image} className="beeOne" />
       <form className="formPanel" onSubmit={login}>
         <h2>Login</h2>
         {errors.loginMessage && (

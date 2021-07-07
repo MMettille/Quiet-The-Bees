@@ -3,3 +3,12 @@
     transform: scaleX(-1);
     width: 25%
 }
+
+
+/* The width is 100%, when the viewport is 700px or smaller - for smartphone users */
+@media screen and (max-width: 700px) {
+    .image2 {
+        margin-top: 5px;
+        width: 50%;
+    }
+}

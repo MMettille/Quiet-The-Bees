@@ -75,8 +75,8 @@ const GreyRadio = withStyles({
 function AddNewTask() {
   const dispatch = useDispatch();
 
-  const [newTask, setNewTask] = useState("");
-  const [value, setValue] = useState("");
+  const [newTask, setNewTask] = useState('');
+  const [value, setValue] = useState('');
   const category = useSelector (store => store.category)
 
   useEffect(() => {
@@ -92,8 +92,8 @@ function AddNewTask() {
         priority: value,
       },
     });
-    setNewTask("");
-    setValue("");
+    setNewTask('');
+    setValue('');
   };
 
   return (
@@ -107,13 +107,14 @@ function AddNewTask() {
               multiline
               variant="outlined"
               label="Enter Task Here"
+              value={value}
               onChange={(event) => setNewTask(event.target.value)}
             />
           </section>
 
           <section className="note-radio-group">
             <FormControl component="fieldset">
-              <h3>When Does It Need to Happen?</h3>
+              <h3>Add A Category Here:</h3>
               <RadioGroup
                 row
                 aria-label="priorityStatus"

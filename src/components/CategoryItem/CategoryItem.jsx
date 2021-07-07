@@ -12,7 +12,7 @@ import Button from "@material-ui/core/Button";
 
 function Category({ category }) {
   const dispatch = useDispatch();
-
+  
   const [hidden, setHidden] = useState(false);
   const [disabled, setDisabled] = useState(true)
   const taskToEdit = useSelector((store) => store.taskToEdit);
@@ -29,7 +29,7 @@ function Category({ category }) {
     setUserInput(event.target.value)
     dispatch({ 
       type: 'EDIT_ONCHANGE', 
-      payload: { property: 'category', value: userInput }
+      payload: { property: 'category', value: event.target.value }
     });
   }
 

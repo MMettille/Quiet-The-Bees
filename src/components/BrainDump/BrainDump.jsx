@@ -256,10 +256,7 @@ function BrainDump() {
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose} color="primary">
-            Cancel
-          </Button>
-          <Button onClick={handleClose} color="primary">
-            Save
+            Close
           </Button>
         </DialogActions>
       </Dialog>

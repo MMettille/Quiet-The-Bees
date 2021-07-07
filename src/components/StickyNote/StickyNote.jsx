@@ -161,7 +161,7 @@ function StickyNote({ item }) {
           <section className="note-btns"></section>
           <section className="delete-note-btn">
             {item.isComplete ? (
-              <Button onClick={handleDelete} variant="outlined">
+              <Button onClick={handleDelete} variant="outlined" className="btn">
                 Delete
               </Button>
             ) : (

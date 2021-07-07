@@ -28,3 +28,10 @@
     height: 24px;
     width: 24px;
 }
+
+/* When the viewport is 900px or smaller - for smartphone users */
+@media screen and (max-width: 900px) {
+    .category-dialogue{
+        max-width: 30%;
+    }
+}

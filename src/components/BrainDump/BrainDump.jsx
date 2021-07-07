@@ -225,6 +225,7 @@ function BrainDump() {
         open={open}
         onClose={handleClose}
         aria-labelledby="form-dialog-title"
+        className="category-dialogue"
       >
         <DialogTitle id="form-dialog-title">Custom Categories</DialogTitle>
         <DialogContent>

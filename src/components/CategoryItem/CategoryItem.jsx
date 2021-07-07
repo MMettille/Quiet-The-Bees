@@ -14,18 +14,35 @@ function Category({ category }) {
   const dispatch = useDispatch();
 
   const [hidden, setHidden] = useState(false);
-
+  const [disabled, setDisabled] = useState(true)
   const taskToEdit = useSelector((store) => store.taskToEdit);
-  const handleCheck = (category) => {
-    console.log("this category", category);
-    // setHidden(true);
-    // // setChecked(checked)
-    // dispatch({ type: "TASK_TO_EDIT", payload: category });
-    // dispatch({
-    //   type: "EDIT_ONCHANGE",
-    //   payload: { property: "isChecked", value: !category.isComplete },
-    // });
-  };
+  
+  const handleEdit = () => {
+    console.log('Task to edit:', category)
+    setHidden(true)
+    dispatch({type: 'TASK_TO_EDIT', payload: category})
+    setDisabled(false)
+  }
+  
+  // ⬇ Dispatches the changes to redux after each change
+  const handleChange = (event) => { 
+    setUserInput(event.target.value)
+    dispatch({ 
+      type: 'EDIT_ONCHANGE', 
+      payload: { property: 'category', value: userInput }
+    });
+  }
+
+  // ⬇ 
+  const handleSave = (event) => {
+    event.preventDefault();
+    // ⬇ PUT REQUEST to /task/:id
+    dispatch({type: 'EDIT_TASK', payload: taskToEdit})
+    // ⬇ Close the Modal 
+    setDisabled(true)
+  }
+
+  const [userInput, setUserInput] = useState('');
 
   return (
     <>
@@ -37,10 +54,12 @@ function Category({ category }) {
         <RadioButtonUncheckedIcon className={category.color_name} />
         <TextField
           label={category.category}
+          value={userInput}
           variant="outlined"
-          onChange={() => handleCheck}
+          disabled={disabled}
+          onChange={(event) => handleChange(event)}
         />
-        {hidden ? <Button variant="outlined" onClick={handleSave}>Save</Button> : <Button variant="outlined" onClick={handleEdit}>Edit</Button>}
+        {hidden ? (<Button variant="outlined" onClick={handleSave}>Save</Button>) : (<Button variant="outlined" onClick={handleEdit}>Edit</Button>)}
       </ListItem>
     </>
   );

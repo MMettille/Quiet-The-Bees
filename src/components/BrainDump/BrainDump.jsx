@@ -259,7 +259,7 @@ function BrainDump() {
             Cancel
           </Button>
           <Button onClick={handleClose} color="primary">
-            Subscribe
+            Save
           </Button>
         </DialogActions>
       </Dialog>

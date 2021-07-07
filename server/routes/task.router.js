@@ -3,7 +3,7 @@ const pool = require("../modules/pool");
 const router = express.Router();
 
 /**
- * GET route template
+ * GET routes
  */
 router.get("/", (req, res) => {
   // GET route code here
@@ -47,7 +47,7 @@ router.get("/category", (req, res) => {
 });
 
 /**
- * POST route template
+ * POST route
  */
 router.post("/", (req, res) => {
   // POST route code here
@@ -66,9 +66,31 @@ router.post("/", (req, res) => {
 });
 
 /**
- * PUT route template
+ * PUT route
  */
-router.put("/:id", (req, res) => {
+router.put("/category/:id", (req, res) => {
+  // Update this single task
+  const sqlText = `UPDATE "custom_names" SET "category" = $1 WHERE id = $2 AND "user_id" = $3;`;
+  pool
+    .query(sqlText, [
+      req.body.category,
+      req.body.id,
+      req.user.id,
+    ])
+    // ⬇ Sending back a 'ok' code to the user
+    .then((result) => {
+      res.sendStatus(200);
+    })
+    .catch((error) => {
+      console.log(`Error making database query ${sqlText}`, error);
+      res.sendStatus(500);
+    });
+});
+
+/**
+ * PUT route
+ */
+ router.put("/:id", (req, res) => {
   // Update this single task
   const sqlText = `UPDATE "taskList" SET "taskName" = $1, "priority_id" = $2, "isComplete" = $3 WHERE id = $4 AND "user_id" = $5;`;
   pool

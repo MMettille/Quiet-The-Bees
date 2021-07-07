@@ -37,7 +37,7 @@ function Category({ category }) {
   const handleSave = (event) => {
     event.preventDefault();
     // ⬇ PUT REQUEST to /task/:id
-    dispatch({type: 'EDIT_TASK', payload: taskToEdit})
+    dispatch({type: 'EDIT_CATEGORY', payload: taskToEdit})
     // ⬇ Close the Modal 
     setDisabled(true)
   }

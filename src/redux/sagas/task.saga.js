@@ -46,6 +46,20 @@ function* editTask(action) {
    }
 }
 
+function* editCategory(action) {
+  console.log(action.payload)
+  const categoryId = action.payload.id;
+   try {
+       yield axios.put(`/api/task/category/{categoryId}`, action.payload);
+       // ⬇ Refresh the tasks
+      yield put({ type: 'FETCH_CATEGORY'})
+      // ⬇ clean up reducer data 
+      yield put({ type: 'EDIT_CLEAR'})
+   } catch {
+   console.log('error in put task');
+   }
+}
+
 // ⬇ Deleting the task in the database
 function* deleteTask(action) {
   const task = action.payload.id;
@@ -62,6 +76,7 @@ function* taskSaga() {
   yield takeLatest('FETCH_TASK', fetchTask);
   yield takeLatest('FETCH_CATEGORY', fetchCategory);
   yield takeEvery('EDIT_TASK', editTask)
+  yield takeEvery('EDIT_CATEGORY', editCategory)
   yield takeEvery('DELETE_TASK', deleteTask)
   yield takeEvery('ADD_NEW_TASK', addNewTask)
 }

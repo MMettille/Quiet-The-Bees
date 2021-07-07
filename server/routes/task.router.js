@@ -1,11 +1,12 @@
 const express = require("express");
+const { rejectUnauthenticated } = require("../modules/authentication-middleware");
 const pool = require("../modules/pool");
 const router = express.Router();
 
 /**
  * GET routes
  */
-router.get("/", (req, res) => {
+router.get("/", rejectUnauthenticated, (req, res) => {
   // GET route code here
   const query = `
     SELECT "taskList".id, "taskName", "isComplete", "priority_id", "taskList".user_id, "priority_list".color_name from "priority_list"
@@ -25,7 +26,7 @@ router.get("/", (req, res) => {
     });
 });
 
-router.get("/category", (req, res) => {
+router.get("/category", rejectUnauthenticated, (req, res) => {
   // GET route code here
   const query = `
   SELECT "custom_names".id, "color_id", "category", "isChecked", "color_name"  from "custom_names" 
@@ -49,7 +50,7 @@ router.get("/category", (req, res) => {
 /**
  * POST route
  */
-router.post("/", (req, res) => {
+router.post("/", rejectUnauthenticated, (req, res) => {
   // POST route code here
   console.log(req.body);
   const insertNewTask = `INSERT INTO "taskList" ("taskName", "priority_id", "user_id")
@@ -68,7 +69,7 @@ router.post("/", (req, res) => {
 /**
  * PUT route
  */
-router.put("/category/:id", (req, res) => {
+router.put("/category/:id", rejectUnauthenticated, (req, res) => {
   // Update this single task
   const sqlText = `UPDATE "custom_names" SET "category" = $1 WHERE id = $2 AND "user_id" = $3;`;
   pool
@@ -90,7 +91,7 @@ router.put("/category/:id", (req, res) => {
 /**
  * PUT route
  */
- router.put("/:id", (req, res) => {
+ router.put("/:id", rejectUnauthenticated, (req, res) => {
   // Update this single task
   const sqlText = `UPDATE "taskList" SET "taskName" = $1, "priority_id" = $2, "isComplete" = $3 WHERE id = $4 AND "user_id" = $5;`;
   pool
@@ -114,7 +115,7 @@ router.put("/category/:id", (req, res) => {
 /**
  * DELETE route template
  */
-router.delete("/delete/:id", (req, res) => {
+router.delete("/delete/:id", rejectUnauthenticated, (req, res) => {
   // ⬇ This will grab the id of the task that we would like to delete
   const taskToDelete = req.params.id;
   console.log(taskToDelete);

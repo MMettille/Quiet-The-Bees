@@ -134,7 +134,7 @@ function BrainDump() {
       <Header />
 
       <AddNewTask />
-      <div className="container">
+      <div className="container important">
         <h2>SORT HERE</h2>
         <RadioGroup
           row

@@ -99,7 +99,7 @@ function AddNewTask() {
   return (
     <>
       <div className="add-box">
-        <h1>Create Your Reminder Here!</h1>
+        <h3>Create Your Reminder Here!</h3>
         <form onSubmit={handleSubmit}>
           <section className="add-body">
             <TextField

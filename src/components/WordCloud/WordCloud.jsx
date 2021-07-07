@@ -2,12 +2,10 @@ import React, { useRef, useState, useEffect } from "react";
 import axios from "axios";
 
 import * as am4core from "@amcharts/amcharts4/core";
-import * as am4charts from "@amcharts/amcharts4/charts";
 import * as am4plugins_wordCloud from "@amcharts/amcharts4/plugins/wordCloud";
-
+import image from './word_cloud.png';
 import Header from "../Header/Header";
-import { stringifyRequest } from "loader-utils";
-import { tag } from "postcss-selector-parser";
+
 function WordCloud() {
   useEffect(() => {
     // ⬇ This calls my get request from the server
@@ -52,6 +50,11 @@ function WordCloud() {
     <>
       <Header />
       <div id="chartdiv"></div>
+      <h1>Notes for User Testing:</h1>
+      <p>You are a new user, so you won't have many entries yet. Your graph will one day look like this! When you hover over the image,
+        your mouse will show how many times you have entered that trigger. The word will become bigger the more times you enter that word or phrase.
+      </p>
+      <img src={image} alt="image of a graph" />
     </>
   );
 }

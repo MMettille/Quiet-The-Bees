@@ -5,6 +5,7 @@ import React, { useRef, useState, useEffect } from "react";
 import axios from "axios";
 
 import Header from "../Header/Header";
+import image from './spoon-graph-image.png'
 
 function SpoonGraph() {
   // ⬇ Creating the chart
@@ -69,6 +70,9 @@ function SpoonGraph() {
     <>
       <Header />
       <div id="chartdiv"></div>
+      <h1>Notes for User Testing:</h1>
+      <p>You are a new user, so you won't have many entries yet. Your graph will one day look like this!</p>
+      <img src={image} alt="image of a graph" />
     </>
   );
 }

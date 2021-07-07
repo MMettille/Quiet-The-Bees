@@ -5,7 +5,6 @@ import {useDispatch, useSelector} from 'react-redux';
 import './StickyNote.css'
 // ⬇ What we need from material ui 
 import { makeStyles, withStyles } from '@material-ui/core/styles';
-import Modal from '@material-ui/core/Modal';
 import Dialog from '@material-ui/core/Dialog';
 import Backdrop from '@material-ui/core/Backdrop';
 import Fade from '@material-ui/core/Fade';

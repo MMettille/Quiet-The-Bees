@@ -13,32 +13,34 @@ import Button from "@material-ui/core/Button";
 function Category({ category }) {
   const dispatch = useDispatch();
 
-  const [hidden, setHidden] = useState(category.isChecked);
+  const [hidden, setHidden] = useState(false);
 
   const taskToEdit = useSelector((store) => store.taskToEdit);
   const handleCheck = (category) => {
     console.log("this category", category);
-    // setChecked(checked)
-    dispatch({ type: "TASK_TO_EDIT", payload: category });
-    dispatch({
-      type: "EDIT_ONCHANGE",
-      payload: { property: "isChecked", value: !category.isComplete },
-    });
+    // setHidden(true);
+    // // setChecked(checked)
+    // dispatch({ type: "TASK_TO_EDIT", payload: category });
+    // dispatch({
+    //   type: "EDIT_ONCHANGE",
+    //   payload: { property: "isChecked", value: !category.isComplete },
+    // });
   };
 
   return (
     <>
       <ListItem alignItems="center">
         <Checkbox
-          checked={category.isChecked}
-          onChange={() => handleCheck(category)}
+          checked={true}
+          disabled={true}
         />
         <RadioButtonUncheckedIcon className={category.color_name} />
         <TextField
           label={category.category}
           variant="outlined"
-          // disabled={!checked}
+          onChange={() => handleCheck}
         />
+        {hidden ? <Button variant="outlined" onClick={handleSave}>Save</Button> : <Button variant="outlined" onClick={handleEdit}>Edit</Button>}
       </ListItem>
     </>
   );

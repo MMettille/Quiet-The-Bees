@@ -229,9 +229,8 @@ function BrainDump() {
         <DialogTitle id="form-dialog-title">Custom Categories</DialogTitle>
         <DialogContent>
           <DialogContentText>
-            Customize your categories below. Check the colors to hide and show
-            those colors. Change the title of the category by typing the name in
-            the text box.
+            Customize your category labels below! If you would like to change the category name, click on the checkbox, type your
+            category name of choice in the text box and click the save button at the bottom.
           </DialogContentText>
           <List>
             <ListItem alignItems="center">

@@ -107,7 +107,7 @@ function AddNewTask() {
               multiline
               variant="outlined"
               label="Enter Task Here"
-              value={value}
+              value={newTask}
               onChange={(event) => setNewTask(event.target.value)}
             />
           </section>

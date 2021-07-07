@@ -11,7 +11,6 @@ import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
-import Typography from '@material-ui/core/Typography';
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 import IconButton from '@material-ui/core/IconButton';
 
@@ -87,12 +86,10 @@ function TriggerQuery() {
           Interested in Learning More About Failure Triggers?
         </Button>
 
-        <div className="container">
         <form onSubmit={handleSave}>
           {userInput.map((userInput, idx) => {
             return (
               <section  key={`${userInput}-${idx}`}>
-                <Typography >
                 <List>
                   <ListItem className="important">
                     <TextField
@@ -107,12 +104,11 @@ function TriggerQuery() {
                     </Button>
                   </ListItem>
                 </List>
-                </Typography>
               </section>
             );
           })}
         </form>
-        </div>
+
         <IconButton variant="outlined" onClick={() => handleAdd()}>
           <AddCircleOutlineIcon />
         </IconButton>

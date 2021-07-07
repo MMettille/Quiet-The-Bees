@@ -116,6 +116,10 @@ input {
   justify-content: center !important;
 }
 
+.container-eighty-percent {
+  margin-top: 100px;
+  width: 80%;
+}
 /* --------------------------------------------------------------------------------
 Setting the colors of each sticky note, based on it's priority/category status
 -------------------------------------------------------------------------------- */

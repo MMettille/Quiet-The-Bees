@@ -9,6 +9,8 @@ import Fade from "@material-ui/core/Fade";
 import Slider from "@material-ui/core/Slider";
 import Typography from "@material-ui/core/Typography";
 import image from "./bee_kind_honeycomb2.png";
+import Grid from "@material-ui/core/Grid"
+import Button from "@material-ui/core/Button";
 
 const useStyles = makeStyles((theme) => ({
   modal: {
@@ -23,7 +25,10 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(2, 4, 3),
   },
   root: {
-    width: 300,
+    padding: "20",
+    justifyContent: "center",
+    alignContent: "center",
+    align: "center"
   },
   margin: {
     height: theme.spacing(3),
@@ -109,26 +114,27 @@ function SpoonQuery() {
         <img src={image} width="50%" />
         <h1>It's a New Day!</h1>
         <h3>How many spoons are we working with?</h3>
-        <button onClick={handleOpen}>
+        <Button onClick={handleOpen} variant="outlined">
           Interested in Learning More About Spoon Theory?
-        </button>
+        </Button>
 
-        <section className={classes.root}>
-          <form onSubmit={handleSubmit} required={true}>
-            <Slider
-              defaultValue={5}
-              getAriaValueText={valuetext}
-              aria-labelledby="discrete-slider-always"
-              step={1}
-              marks={marks}
-              valueLabelDisplay="on"
-              min={0}
-              max={10}
-              onChange={(event, newValue) => setSpoonInput(newValue)}
-            />
-            <button type="submit">Submit</button>
-          </form>
-        </section>
+        <Grid container item xs={12} className={classes.root}>
+            <form className="container-eighty-percent" onSubmit={handleSubmit} required={true}>
+              <Slider
+                className="important"
+                defaultValue={5}
+                getAriaValueText={valuetext}
+                aria-labelledby="discrete-slider-always"
+                step={1}
+                marks={marks}
+                valueLabelDisplay="on"
+                min={0}
+                max={10}
+                onChange={(event, newValue) => setSpoonInput(newValue)}
+              />
+              <Button type="submit" variant="outlined">Submit</Button>
+            </form>
+        </Grid>
       </div>
 
       <Modal

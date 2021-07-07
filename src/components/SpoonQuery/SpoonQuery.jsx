@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useEffect } from "react-redux";
 import { useHistory } from "react-router-dom";
 
 import { makeStyles } from "@material-ui/core/styles";
@@ -9,8 +9,14 @@ import Fade from "@material-ui/core/Fade";
 import Slider from "@material-ui/core/Slider";
 import Typography from "@material-ui/core/Typography";
 import image from "./bee_kind_honeycomb2.png";
-import Grid from "@material-ui/core/Grid"
+import imageTwo from "./nlo-infographic-spoon-theory_sm.jpeg";
+import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
+import Dialog from "@material-ui/core/Dialog";
+import DialogActions from "@material-ui/core/DialogActions";
+import DialogContent from "@material-ui/core/DialogContent";
+import DialogContentText from "@material-ui/core/DialogContentText";
+import DialogTitle from "@material-ui/core/DialogTitle";
 
 const useStyles = makeStyles((theme) => ({
   modal: {
@@ -28,7 +34,7 @@ const useStyles = makeStyles((theme) => ({
     padding: "20",
     justifyContent: "center",
     alignContent: "center",
-    align: "center"
+    align: "center",
   },
   margin: {
     height: theme.spacing(3),
@@ -79,17 +85,27 @@ function valuetext(value) {
 }
 
 function SpoonQuery() {
+  const descriptionElementRef = React.useRef(null);
+  React.useEffect(() => {
+    if (open) {
+      const { current: descriptionElement } = descriptionElementRef;
+      if (descriptionElement !== null) {
+        descriptionElement.focus();
+      }
+    }
+  }, [open]);
+
   const history = useHistory("");
   const dispatch = useDispatch();
   const classes = useStyles();
   const [open, setOpen] = useState(false);
   const [spoonInput, setSpoonInput] = useState(null);
-
+  const [scroll, setScroll] = React.useState("paper");
   const handleClose = () => {
     setOpen(false);
   };
 
-  const handleOpen = () => {
+  const handleOpen = (event) => {
     setOpen(true);
   };
 
@@ -119,61 +135,61 @@ function SpoonQuery() {
         </Button>
 
         <Grid container item xs={12} className={classes.root}>
-            <form className="container-eighty-percent" onSubmit={handleSubmit} required={true}>
-              <Slider
-                className="important"
-                defaultValue={5}
-                getAriaValueText={valuetext}
-                aria-labelledby="discrete-slider-always"
-                step={1}
-                marks={marks}
-                valueLabelDisplay="on"
-                min={0}
-                max={10}
-                onChange={(event, newValue) => setSpoonInput(newValue)}
-              />
-              <Button type="submit" variant="outlined">Submit</Button>
-            </form>
+          <form
+            className="container-eighty-percent"
+            onSubmit={handleSubmit}
+            required={true}
+          >
+            <Slider
+              className="important"
+              defaultValue={5}
+              getAriaValueText={valuetext}
+              aria-labelledby="discrete-slider-always"
+              step={1}
+              marks={marks}
+              valueLabelDisplay="on"
+              min={0}
+              max={10}
+              onChange={(event, newValue) => setSpoonInput(newValue)}
+            />
+            <Button type="submit" variant="outlined">
+              Submit
+            </Button>
+          </form>
         </Grid>
       </div>
 
-      <Modal
-        aria-labelledby="transition-modal-title"
-        aria-describedby="transition-modal-description"
-        className={classes.modal}
+      <Dialog
         open={open}
         onClose={handleClose}
-        closeAfterTransition
-        BackdropComponent={Backdrop}
-        BackdropProps={{
-          timeout: 500,
-        }}
+        scroll={scroll}
+        aria-labelledby="scroll-dialog-title"
+        aria-describedby="scroll-dialog-description"
       >
-        <Fade in={open}>
-          <div className="visually_embed">
-            <img
-              className="visually_embed_infographic"
-              src="https://visual.ly/node/image/311959?_w=540"
-              alt="What Is Spoon Theory?"
-            />
-            <div className="visually_embed_cycle"></div>
-            <script
-              type="text/javascript"
-              src="https://a.visual.ly/api/embed/311959?width=540"
-              className="visually_embed_script"
-              id="visually_embed_script_311959"
-            ></script>
-            <p>
-              {" "}
-              From{" "}
-              <a href="https://visual.ly?utm_source=content-embed&utm_medium=embed">
-                Visually
-              </a>
-              .
-            </p>
-          </div>
-        </Fade>
-      </Modal>
+        <DialogContent dividers={scroll === "paper"}>
+          <DialogContentText
+            id="scroll-dialog-description"
+            ref={descriptionElementRef}
+            tabIndex={-1}
+          >
+            <figure>
+              <img src={imageTwo} />
+              <figcaption>
+                What Is the Spoon Theory? If you live with chronic
+                illness, explaining your condition can be tough. The spoon
+                theory was created to do just that, and has since become so much
+                more. - Source:{" "}
+                <a
+                  href="https://fibromyalgia.newlifeoutlook.com/infographics/what-is-spoon-theory/"
+                  title="Infographic: If you live with chronic illness, explaining your condition can be tough. The spoon theory was created to do just that, and has since become so much more."
+                >
+                  New Life Outlook {" "}
+                </a>
+              </figcaption>
+            </figure>
+          </DialogContentText>
+        </DialogContent>
+      </Dialog>
     </>
   );
 }

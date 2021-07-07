@@ -14,9 +14,12 @@ function Category({category}) {
 
   const dispatch = useDispatch();
   
+  const [hidden, setHidden] = useState(category.isChecked)
+
   const taskToEdit = useSelector(store => store.taskToEdit)
   const handleCheck = (category) => {
     console.log('this category', category)
+    // setChecked(checked)
     dispatch({type: 'TASK_TO_EDIT', payload: category})
     dispatch({ 
       type: 'EDIT_ONCHANGE', 
@@ -36,7 +39,7 @@ function Category({category}) {
         <TextField
         label={category.category}
         variant="outlined"
-        disabled={!category.isChecked}
+        // disabled={!checked}
         />
         </ListItem>
     </>

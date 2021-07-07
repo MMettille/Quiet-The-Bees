@@ -143,13 +143,13 @@ function BrainDump() {
             <FormControlLabel value="1" control={<RedRadio />} label="NOW" labelPlacement="end"/>
             <FormControlLabel value="2" control={<OrangeRadio />} label="Soon-ish" labelPlacement="end" />
             <FormControlLabel value="3" control={<YellowRadio />} label="Later" labelPlacement="end"/>
-            <FormControlLabel value="4" control={<LightGreenRadio />} label="Light Green" labelPlacement="end"/>
-            <FormControlLabel value="5" control={<GreenRadio />} label="Green" labelPlacement="end"/>
-            <FormControlLabel value="6" control={<BlueRadio />} label="Blue" labelPlacement="end"/>
-            <FormControlLabel value="7" control={<PurpleRadio />} label="Purple" labelPlacement="end"/>
-            <FormControlLabel value="8" control={<DarkPurpleRadio />} label="Purple" labelPlacement="end"/>
-            <FormControlLabel value="9" control={<BrownRadio />} label="Brown" labelPlacement="end"/>
-            <FormControlLabel value="10" control={<GreyRadio />} label="Grey" labelPlacement="end"/>
+            <FormControlLabel value="4" control={<LightGreenRadio />} label={category[0]?.category} labelPlacement="end"/>
+            <FormControlLabel value="5" control={<GreenRadio />} label={category[1]?.category} labelPlacement="end"/>
+            <FormControlLabel value="6" control={<BlueRadio />} label={category[2]?.category} labelPlacement="end"/>
+            <FormControlLabel value="7" control={<PurpleRadio />} label={category[3]?.category} labelPlacement="end"/>
+            <FormControlLabel value="8" control={<DarkPurpleRadio />} label={category[4]?.category} labelPlacement="end"/>
+            <FormControlLabel value="9" control={<BrownRadio />} label={category[5]?.category} labelPlacement="end"/>
+            <FormControlLabel value="10" control={<GreyRadio />} label={category[6]?.category} labelPlacement="end"/>
             <IconButton aria-label="color-pallete-button" onClick={handleClick}>
               <ColorLensIcon fontSize="large"/>
             </IconButton>

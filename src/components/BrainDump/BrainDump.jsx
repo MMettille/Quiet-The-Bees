@@ -134,7 +134,7 @@ function BrainDump() {
       <Header />
 
       <AddNewTask />
-      <div className="container important">
+      {/* <div className="container important">
         <h2>SORT HERE</h2>
         <RadioGroup
           row
@@ -212,7 +212,7 @@ function BrainDump() {
             <ColorLensIcon fontSize="large" />
           </IconButton>
         </RadioGroup>
-      </div>
+      </div> */}
       <div className={classes.root}>
         <Grid container spacing={3}>
           {task.map((item) => {

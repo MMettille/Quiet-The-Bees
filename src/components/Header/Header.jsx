@@ -68,7 +68,7 @@ function Header() {
         </Grid>
         <Grid item xs={12} sm={6}>
           <Paper className={classes.paper}>
-            <h3>Energy</h3>
+            <h3>Spoon(s)</h3>
             <p>{spoonInput.spoon}</p>
             <div className="graph-btn">
               <Button

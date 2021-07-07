@@ -7,6 +7,13 @@ import Modal from "@material-ui/core/Modal";
 import Backdrop from "@material-ui/core/Backdrop";
 import Fade from "@material-ui/core/Fade";
 import image from "./just_bee_you.png";
+import Button from "@material-ui/core/Button";
+import TextField from "@material-ui/core/TextField";
+import List from "@material-ui/core/List";
+import ListItem from "@material-ui/core/ListItem";
+import Typography from '@material-ui/core/Typography';
+import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
+import IconButton from '@material-ui/core/IconButton';
 
 const useStyles = makeStyles((theme) => ({
   modal: {
@@ -14,9 +21,22 @@ const useStyles = makeStyles((theme) => ({
     alignItems: "center",
     justifyContent: "center",
   },
+  root: {
+    textAlign: 'left',
+    paddingTop: 8,
+    paddingBottom: 8,
+    boxSizing: 'border-box',
+    display: 'flex',
+    justifyContent: 'flex-start',
+    alignItems: 'center',
+    position: 'relative',
+    textDecoration: 'none',
+    width: '100%',
+  }
 }));
 
 function TriggerQuery() {
+  
   const history = useHistory("");
   const dispatch = useDispatch();
   const classes = useStyles();
@@ -63,31 +83,42 @@ function TriggerQuery() {
       <div className="container">
         <img src={image} width="50%" />
         <h1>Any Failure Triggers to Be Aware Of?</h1>
-        <button onClick={handleOpen}>
+        <Button onClick={handleOpen} variant="outlined">
           Interested in Learning More About Failure Triggers?
-        </button>
+        </Button>
 
+        <div className="container">
         <form onSubmit={handleSave}>
           {userInput.map((userInput, idx) => {
             return (
-              <div key={`${userInput}-${idx}`}>
-                <input
-                  type="text"
-                  placeholder="Enter text"
-                  value={userInput.trigger || ""}
-                  onChange={(e) => handleChange(idx, e)}
-                />
-                <button type="submit">Save</button>
-              </div>
+              <section  key={`${userInput}-${idx}`}>
+                <Typography >
+                <List>
+                  <ListItem className="important">
+                    <TextField
+                      type="text"
+                      variant="outlined"
+                      label="Enter text"
+                      value={userInput.trigger || ""}
+                      onChange={(e) => handleChange(idx, e)}
+                    />
+                    <Button type="submit" variant="outlined">
+                      Save
+                    </Button>
+                  </ListItem>
+                </List>
+                </Typography>
+              </section>
             );
           })}
         </form>
-        <button type="button" onClick={() => handleAdd()}>
-          +
-        </button>
-        <button type="button" onClick={handleSubmit}>
+        </div>
+        <IconButton variant="outlined" onClick={() => handleAdd()}>
+          <AddCircleOutlineIcon />
+        </IconButton>
+        <Button type="button" variant="outlined" onClick={handleSubmit}>
           Submit
-        </button>
+        </Button>
       </div>
 
       <Modal

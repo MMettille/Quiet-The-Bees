@@ -112,6 +112,9 @@ input {
   margin-bottom: 10px;
 }
 
+.important {
+  justify-content: center !important;
+}
 
 /* --------------------------------------------------------------------------------
 Setting the colors of each sticky note, based on it's priority/category status

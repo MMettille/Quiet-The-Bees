@@ -18,7 +18,8 @@
     max-height: 200px;
     padding: 10px;
     text-align: center;
-    display: table
+    display: table;
+    background-color: #eceff1
 }
 
 .MuiDialog-paperWidthSm {

@@ -1,22 +1,16 @@
 import React, { useState } from "react";
-import { useDispatch, useEffect } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 
 import { makeStyles } from "@material-ui/core/styles";
-import Modal from "@material-ui/core/Modal";
-import Backdrop from "@material-ui/core/Backdrop";
-import Fade from "@material-ui/core/Fade";
 import Slider from "@material-ui/core/Slider";
-import Typography from "@material-ui/core/Typography";
 import image from "./bee_kind_honeycomb2.png";
 import imageTwo from "./nlo-infographic-spoon-theory_sm.jpeg";
 import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
 import Dialog from "@material-ui/core/Dialog";
-import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
-import DialogContentText from "@material-ui/core/DialogContentText";
-import DialogTitle from "@material-ui/core/DialogTitle";
+import DialogContentText from "@material-ui/core/DialogContentText"
 
 const useStyles = makeStyles((theme) => ({
   modal: {

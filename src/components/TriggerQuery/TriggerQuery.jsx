@@ -3,9 +3,6 @@ import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 
 import { makeStyles } from "@material-ui/core/styles";
-import Modal from "@material-ui/core/Modal";
-import Backdrop from "@material-ui/core/Backdrop";
-import Fade from "@material-ui/core/Fade";
 import image from "./just_bee_you.png";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
@@ -13,32 +10,14 @@ import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 import IconButton from '@material-ui/core/IconButton';
-
-const useStyles = makeStyles((theme) => ({
-  modal: {
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  root: {
-    textAlign: 'left',
-    paddingTop: 8,
-    paddingBottom: 8,
-    boxSizing: 'border-box',
-    display: 'flex',
-    justifyContent: 'flex-start',
-    alignItems: 'center',
-    position: 'relative',
-    textDecoration: 'none',
-    width: '100%',
-  }
-}));
+import Dialog from "@material-ui/core/Dialog";
+import DialogContent from "@material-ui/core/DialogContent";
+import DialogContentText from "@material-ui/core/DialogContentText"
 
 function TriggerQuery() {
   
   const history = useHistory("");
   const dispatch = useDispatch();
-  const classes = useStyles();
   const [open, setOpen] = useState(false);
   const [userInput, setUserInput] = useState([{ trigger: null }]);
 
@@ -117,24 +96,16 @@ function TriggerQuery() {
         </Button>
       </div>
 
-      <Modal
-        aria-labelledby="transition-modal-title"
-        aria-describedby="transition-modal-description"
-        className={classes.modal}
+      <Dialog
         open={open}
         onClose={handleClose}
-        closeAfterTransition
-        BackdropComponent={Backdrop}
-        BackdropProps={{
-          timeout: 500,
-        }}
       >
-        <Fade in={open}>
-          <div className="visually_embed">
+        <DialogContent dividers={scroll === "paper"}>
+          <DialogContentText>
             <p>Some Text Here</p>
-          </div>
-        </Fade>
-      </Modal>
+          </DialogContentText>
+        </DialogContent>
+      </Dialog>
     </>
   );
 }

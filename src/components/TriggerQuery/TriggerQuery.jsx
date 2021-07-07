@@ -103,6 +103,21 @@ function TriggerQuery() {
         <DialogContent dividers={scroll === "paper"}>
           <DialogContentText>
             <p>Some Text Here</p>
+            <h1>Notes for User Testing:</h1>
+            <p>Think of a failure trigger as anything that can prevent you from being productive that day. Some common failure triggers (this will vary based on YOU):</p>
+            <ul>
+              <li>Didn't get enough sleep last night</li>
+              <li>Sensitive to noise</li>
+              <li>Food (either you are hungry or food is triggering in general)</li>
+              <li>Feeling anxious - I encourage you to dive deeper with this. About what?</li>
+              <li>Multitasking</li>
+              <li>Tiny humans//dogs//cats//partner wants attention</li>
+              <li>Recent fight//breakup//life-event that is on your mind</li>
+              <li>Feeling Overwhelmed</li>
+              <li>Depression</li>
+              <li>LOTS of things to do today, not enough time</li>
+            </ul>
+            <p>Hopefully that helps! :)</p>
           </DialogContentText>
         </DialogContent>
       </Dialog>

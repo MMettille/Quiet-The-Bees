@@ -1,32 +1,32 @@
-import React, {useState, useEffect} from 'react';
-import {useDispatch, useSelector} from 'react-redux';
-import {useHistory} from 'react-router-dom'
+import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
 
 // ⬇ What Components we need to import
-import Header from '../Header/Header';
-import AddNewTask from '../AddNewTask/AddNewTask';
-import StickyNote from '../StickyNote/StickyNote';
-import CategoryItem from '../CategoryItem/CategoryItem';
+import Header from "../Header/Header";
+import AddNewTask from "../AddNewTask/AddNewTask";
+import StickyNote from "../StickyNote/StickyNote";
+import CategoryItem from "../CategoryItem/CategoryItem";
 // ⬇ What we need from material-ui
-import ColorLensIcon from '@material-ui/icons/ColorLens';
-import IconButton from '@material-ui/core/IconButton';
-import RadioGroup from '@material-ui/core/RadioGroup';
-import { makeStyles, withStyles } from '@material-ui/core/styles';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Radio from '@material-ui/core/Radio';
-import Grid from '@material-ui/core/Grid';
-import Dialog from '@material-ui/core/Dialog';
+import ColorLensIcon from "@material-ui/icons/ColorLens";
+import IconButton from "@material-ui/core/IconButton";
+import RadioGroup from "@material-ui/core/RadioGroup";
+import { makeStyles, withStyles } from "@material-ui/core/styles";
+import FormControlLabel from "@material-ui/core/FormControlLabel";
+import Radio from "@material-ui/core/Radio";
+import Grid from "@material-ui/core/Grid";
+import Dialog from "@material-ui/core/Dialog";
 
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import Checkbox from "@material-ui/core/Checkbox";
-import RadioButtonUncheckedIcon from '@material-ui/icons/RadioButtonUnchecked';
-import DialogActions from '@material-ui/core/DialogActions';
-import DialogContent from '@material-ui/core/DialogContent';
-import DialogContentText from '@material-ui/core/DialogContentText';
-import DialogTitle from '@material-ui/core/DialogTitle';
-import TextField from '@material-ui/core/TextField';
-import Button from '@material-ui/core/Button';
+import RadioButtonUncheckedIcon from "@material-ui/icons/RadioButtonUnchecked";
+import DialogActions from "@material-ui/core/DialogActions";
+import DialogContent from "@material-ui/core/DialogContent";
+import DialogContentText from "@material-ui/core/DialogContentText";
+import DialogTitle from "@material-ui/core/DialogTitle";
+import TextField from "@material-ui/core/TextField";
+import Button from "@material-ui/core/Button";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -102,108 +102,158 @@ const GreyRadio = withStyles({
 })((props) => <Radio color="default" {...props} />);
 
 function BrainDump() {
-
   const dispatch = useDispatch();
   const classes = useStyles();
-  const task = useSelector (store => store.task);
-  const category = useSelector (store => store.category)
-  const [value, setValue] = useState('')
+  const task = useSelector((store) => store.task);
+  const category = useSelector((store) => store.category);
+  const [value, setValue] = useState("");
   const [open, setOpen] = useState(false);
-  const [newCategory, setNewCategory] = useState({
-  })
+  const [newCategory, setNewCategory] = useState({});
 
   const handleClose = () => {
     setOpen(false);
   };
-  
-  console.log(category)
+
+  console.log(category);
   useEffect(() => {
-    dispatch({type: 'FETCH_TASK'})
-    dispatch({type: 'FETCH_CATEGORY'});
+    dispatch({ type: "FETCH_TASK" });
+    dispatch({ type: "FETCH_CATEGORY" });
   }, []);
-  
+
   const handleClick = () => {
-    setOpen(true)
-  }
+    setOpen(true);
+  };
 
   const handleSave = (event) => {
-    event.preventDefault()
-    console.log(newCategory)
-  }
- 
-      return (
-      <>
-        <Header />
-        
-        <AddNewTask />
-        <div className="container">
-          <h2>SORT HERE</h2>
-          <RadioGroup row aria-label="sort-by-category" value={value} onChange={(event) => setValue(event.target.value)}>
-            <FormControlLabel value="*" control={<Radio color="default"/>} label="ALL" labelPlacement="end"/>
-            <FormControlLabel value="1" control={<RedRadio />} label="NOW" labelPlacement="end"/>
-            <FormControlLabel value="2" control={<OrangeRadio />} label="Soon-ish" labelPlacement="end" />
-            <FormControlLabel value="3" control={<YellowRadio />} label="Later" labelPlacement="end"/>
-            <FormControlLabel value="4" control={<LightGreenRadio />} label={category[0]?.category} labelPlacement="end"/>
-            <FormControlLabel value="5" control={<GreenRadio />} label={category[1]?.category} labelPlacement="end"/>
-            <FormControlLabel value="6" control={<BlueRadio />} label={category[2]?.category} labelPlacement="end"/>
-            <FormControlLabel value="7" control={<PurpleRadio />} label={category[3]?.category} labelPlacement="end"/>
-            <FormControlLabel value="8" control={<DarkPurpleRadio />} label={category[4]?.category} labelPlacement="end"/>
-            <FormControlLabel value="9" control={<BrownRadio />} label={category[5]?.category} labelPlacement="end"/>
-            <FormControlLabel value="10" control={<GreyRadio />} label={category[6]?.category} labelPlacement="end"/>
-            <IconButton aria-label="color-pallete-button" onClick={handleClick}>
-              <ColorLensIcon fontSize="large"/>
-            </IconButton>
-          </RadioGroup>
-        </div>
-        <div className={classes.root}>
-          <Grid container spacing={3}>
-            {task.map(item => {
-                  return <StickyNote key={item.id} item={item}/>
-            })}
-          </Grid>
-        </div>
-        
-      <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
-      <DialogTitle id="form-dialog-title">Custom Categories</DialogTitle>
+    event.preventDefault();
+    console.log(newCategory);
+  };
+
+  return (
+    <>
+      <Header />
+
+      <AddNewTask />
+      <div className="container">
+        <h2>SORT HERE</h2>
+        <RadioGroup
+          row
+          aria-label="sort-by-category"
+          value={value}
+          onChange={(event) => setValue(event.target.value)}
+        >
+          <FormControlLabel
+            value="*"
+            control={<Radio color="default" />}
+            label="ALL"
+            labelPlacement="end"
+          />
+          <FormControlLabel
+            value="1"
+            control={<RedRadio />}
+            label="NOW"
+            labelPlacement="end"
+          />
+          <FormControlLabel
+            value="2"
+            control={<OrangeRadio />}
+            label="Soon-ish"
+            labelPlacement="end"
+          />
+          <FormControlLabel
+            value="3"
+            control={<YellowRadio />}
+            label="Later"
+            labelPlacement="end"
+          />
+          <FormControlLabel
+            value="4"
+            control={<LightGreenRadio />}
+            label={category[0]?.category}
+            labelPlacement="end"
+          />
+          <FormControlLabel
+            value="5"
+            control={<GreenRadio />}
+            label={category[1]?.category}
+            labelPlacement="end"
+          />
+          <FormControlLabel
+            value="6"
+            control={<BlueRadio />}
+            label={category[2]?.category}
+            labelPlacement="end"
+          />
+          <FormControlLabel
+            value="7"
+            control={<PurpleRadio />}
+            label={category[3]?.category}
+            labelPlacement="end"
+          />
+          <FormControlLabel
+            value="8"
+            control={<DarkPurpleRadio />}
+            label={category[4]?.category}
+            labelPlacement="end"
+          />
+          <FormControlLabel
+            value="9"
+            control={<BrownRadio />}
+            label={category[5]?.category}
+            labelPlacement="end"
+          />
+          <FormControlLabel
+            value="10"
+            control={<GreyRadio />}
+            label={category[6]?.category}
+            labelPlacement="end"
+          />
+          <IconButton aria-label="color-pallete-button" onClick={handleClick}>
+            <ColorLensIcon fontSize="large" />
+          </IconButton>
+        </RadioGroup>
+      </div>
+      <div className={classes.root}>
+        <Grid container spacing={3}>
+          {task.map((item) => {
+            return <StickyNote key={item.id} item={item} />;
+          })}
+        </Grid>
+      </div>
+
+      <Dialog
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="form-dialog-title"
+      >
+        <DialogTitle id="form-dialog-title">Custom Categories</DialogTitle>
         <DialogContent>
           <DialogContentText>
-            Customize your categories below. Check the colors to hide and show those colors. Change the title of the category by typing the name in the text box.
+            Customize your categories below. Check the colors to hide and show
+            those colors. Change the title of the category by typing the name in
+            the text box.
           </DialogContentText>
           <List>
             <ListItem alignItems="center">
-              <Checkbox className="red" checked={true} disabled={true}/>
-              <RadioButtonUncheckedIcon className='red'/>
-              <TextField
-              label="NOW"
-              variant="outlined"
-              disabled={true}
-              />
+              <Checkbox className="red" checked={true} disabled={true} />
+              <RadioButtonUncheckedIcon className="red" />
+              <TextField label="NOW" variant="outlined" disabled={true} />
             </ListItem>
-            <ListItem alignItems="center"  >
-              <Checkbox checked={true} disabled={true}/>
-              <RadioButtonUncheckedIcon className='orange'/>
-              <TextField
-              label="Soon-ish"
-              variant="outlined"
-              disabled={true}
-              />
+            <ListItem alignItems="center">
+              <Checkbox checked={true} disabled={true} />
+              <RadioButtonUncheckedIcon className="orange" />
+              <TextField label="Soon-ish" variant="outlined" disabled={true} />
             </ListItem>
-            <ListItem alignItems="center" >
-              <Checkbox checked={true} disabled={true}/>
-              <RadioButtonUncheckedIcon className='yellow'/>
-              <TextField
-              label="Later"
-              variant="outlined"
-              disabled={true}
-              />
+            <ListItem alignItems="center">
+              <Checkbox checked={true} disabled={true} />
+              <RadioButtonUncheckedIcon className="yellow" />
+              <TextField label="Later" variant="outlined" disabled={true} />
             </ListItem>
-            
-            {category?.map(item => {
-                return <CategoryItem key={item.id} category={item} />
+
+            {category?.map((item) => {
+              return <CategoryItem key={item.id} category={item} />;
             })}
-            
           </List>
-   
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose} color="primary">
@@ -214,7 +264,7 @@ function BrainDump() {
           </Button>
         </DialogActions>
       </Dialog>
-      </>
+    </>
   );
 }
 

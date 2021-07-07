@@ -1,10 +1,10 @@
 import * as am4core from "@amcharts/amcharts4/core";
 import * as am4charts from "@amcharts/amcharts4/charts";
-import './SpoonGraph.css'
+import "./SpoonGraph.css";
 import React, { useRef, useState, useEffect } from "react";
 import axios from "axios";
 
-import Header from '../Header/Header';
+import Header from "../Header/Header";
 
 function SpoonGraph() {
   // ⬇ Creating the chart
@@ -21,7 +21,6 @@ function SpoonGraph() {
       .get("/api/query/spoongraph")
       .then((response) => {
         const spoonData = response.data;
-        
 
         // ⬇ This creates the kind of chart that I would like from am4charts
         let x = am4core.create("chartdiv", am4charts.XYChart);
@@ -31,7 +30,7 @@ function SpoonGraph() {
         // ⬇ This declares what kind of date format I would like.
         x.dateFormatter.dateFormat = "yyyy-MM-dd";
         // ⬇ Adding from the data that I set in the getFeedback function
-        let data = spoonData
+        let data = spoonData;
         // ⬇ Making the data tied to the chart, called x.
         x.data = data;
         // ⬇ creating xAxes (the horizontal axis)
@@ -40,13 +39,13 @@ function SpoonGraph() {
         dateAxis.renderer.grid.template.location = 0;
         // ⬇ creating yAxes (the vertical axis)
         let valueAxis = x.yAxes.push(new am4charts.ValueAxis());
-        valueAxis.title.text = "Spoons"
+        valueAxis.title.text = "Spoons";
         valueAxis.tooltip.disabled = true;
         valueAxis.renderer.minWidth = 35;
         valueAxis.min = 0;
         valueAxis.max = 10;
         valueAxis.extraMin = 0.1;
-        valueAxis.extraMax = 0.1; 
+        valueAxis.extraMax = 0.1;
         // ⬇ Creating the series for a line graph
         let series = x.series.push(new am4charts.LineSeries());
         // ⬇ Binding the data to the series
@@ -60,25 +59,18 @@ function SpoonGraph() {
         x.scrollbarX = scrollbarX;
 
         chart.current = x;
-
       })
       .catch((error) => {
         console.log(`We have a server error`, error);
       });
+  };
 
-  }
-
-    return (
-        <>
-            <Header />
-            <div id="chartdiv"></div>
-        </>
-    )
+  return (
+    <>
+      <Header />
+      <div id="chartdiv"></div>
+    </>
+  );
 }
 
 export default SpoonGraph;
-
-
-
-
-

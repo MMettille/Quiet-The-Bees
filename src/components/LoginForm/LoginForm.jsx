@@ -1,14 +1,13 @@
-import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import {useSelector} from 'react-redux';
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 
-import image from './bee_path_3.png';
-
+import image from "./bee_path_3.png";
 
 function LoginForm() {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
-  const errors = useSelector(store => store.errors);
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const errors = useSelector((store) => store.errors);
   const dispatch = useDispatch();
 
   const login = (event) => {
@@ -16,20 +15,20 @@ function LoginForm() {
 
     if (username && password) {
       dispatch({
-        type: 'LOGIN',
+        type: "LOGIN",
         payload: {
           username: username,
           password: password,
         },
       });
     } else {
-      dispatch({ type: 'LOGIN_INPUT_ERROR' });
+      dispatch({ type: "LOGIN_INPUT_ERROR" });
     }
   }; // end login
 
   return (
     <>
-      <img src={image} height="200"/>
+      <img src={image} height="200" />
       <form className="formPanel" onSubmit={login}>
         <h2>Login</h2>
         {errors.loginMessage && (

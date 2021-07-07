@@ -25,10 +25,12 @@ function Main() {
       <AddNewTask />
 
       <h1>NOW</h1>
-      <h4>
-        These are the most important tasks. What are the consequences of not
-        completing these things?
-      </h4>
+      <h3>
+        These are the most important tasks. 
+      </h3>
+      <h4>HINT: What are the consequences of not
+        completing these things?</h4>
+      <div className="minimum-height-container">
       <Grid container spacing={3}>
         {task.map((item) => {
           if (item.priority_id === 1) {
@@ -36,11 +38,14 @@ function Main() {
           }
         })}
       </Grid>
+      </div>
+      
       <h1>Soon-ish</h1>
-      <h4>
+      <h3>
         These tasks don't need to happen immediately, but do need to happen
-        soon. Can you set a due date?
-      </h4>
+        soon. 
+      </h3>
+      <h4>HINT: Can you set a due date?</h4>
       <Grid container spacing={3}>
         {task.map((item) => {
           if (item.priority_id === 2) {
@@ -49,7 +54,8 @@ function Main() {
         })}
       </Grid>
       <h1>Later</h1>
-      <h4>These tasks are on your radar for later.</h4>
+      <h3>These tasks are on your radar for later.</h3>
+      <h4>HINT: Have a lot of spoons today? Tackle these!</h4>
       <Grid container spacing={3}>
         {task.map((item) => {
           if (item.priority_id === 3) {

@@ -29,12 +29,13 @@ Container
  overflow: hidden;
  display: block;
  position: relative;
- padding-bottom: 100px; /* height of your footer */
+ 
 }
 
  #content-wrap {
  height: 100%;
  position: relative;
+ padding-bottom: 2.5rem; /* height of your footer */
 }
 
 /* --------------------------------------------------------------------------------

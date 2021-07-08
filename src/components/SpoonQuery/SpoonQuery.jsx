@@ -25,7 +25,7 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(2, 4, 3),
   },
   root: {
-    padding: "20",
+    padding: "15",
     justifyContent: "center",
     alignContent: "center",
     align: "center",

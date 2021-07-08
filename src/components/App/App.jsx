@@ -37,8 +37,10 @@ function App() {
   }, [dispatch]);
 
   return (
+    <div id="page-container">
     <Router>
-      <div>
+      
+      <div id="content-wrap">
         <Nav />
         <Switch>
           {/* Visiting localhost:3000 will redirect to localhost:3000/home */}
@@ -132,9 +134,12 @@ function App() {
             <h1>404</h1>
           </Route>
         </Switch>
+        
+        </div>
         <Footer />
-      </div>
+      
     </Router>
+    </div>
   );
 }
 

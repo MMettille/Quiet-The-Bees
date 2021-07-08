@@ -13,6 +13,7 @@ import IconButton from '@material-ui/core/IconButton';
 import Dialog from "@material-ui/core/Dialog";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText"
+import DialogActions from '@material-ui/core/DialogActions';
 
 function TriggerQuery() {
   
@@ -27,11 +28,6 @@ function TriggerQuery() {
 
   const handleOpen = () => {
     setOpen(true);
-  };
-
-  const handleSave = (event) => {
-    event.preventDefault();
-    console.log(`The user's input(s) are: `, userInput);
   };
 
   const handleAdd = () => {
@@ -65,7 +61,7 @@ function TriggerQuery() {
           Interested in Learning More About Failure Triggers?
         </Button>
 
-        <form onSubmit={handleSave}>
+        <form >
           {userInput.map((userInput, idx) => {
             return (
               <section  key={`${userInput}-${idx}`}>
@@ -74,13 +70,10 @@ function TriggerQuery() {
                     <TextField
                       type="text"
                       variant="outlined"
-                      label="Enter text"
+                      label="Enter Trigger Here"
                       value={userInput.trigger || ""}
                       onChange={(e) => handleChange(idx, e)}
                     />
-                    <Button type="submit" variant="outlined">
-                      Save
-                    </Button>
                   </ListItem>
                 </List>
               </section>
@@ -102,8 +95,6 @@ function TriggerQuery() {
       >
         <DialogContent dividers={scroll === "paper"}>
           <DialogContentText>
-            <p>Some Text Here</p>
-            <h1>Notes for User Testing:</h1>
             <p>Think of a failure trigger as anything that can prevent you from being productive that day. Some common failure triggers (this will vary based on YOU):</p>
             <ul>
               <li>Didn't get enough sleep last night</li>
@@ -117,9 +108,14 @@ function TriggerQuery() {
               <li>Depression</li>
               <li>LOTS of things to do today, not enough time</li>
             </ul>
-            <p>Hopefully that helps! :)</p>
+            <p>Failure triggers are nothing to be ashamed of - but it is important to keep track of the ones that you have most so you can work
+              WITH them, instead of against them.
+            </p>
           </DialogContentText>
         </DialogContent>
+        <DialogActions>
+          <Button onClick={handleClose}>Close</Button>
+        </DialogActions>
       </Dialog>
     </>
   );

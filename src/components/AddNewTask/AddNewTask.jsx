@@ -76,12 +76,11 @@ const GreyRadio = withStyles({
 function AddNewTask() {
   const dispatch = useDispatch();
   const location = useLocation();
-  
-  const currentLocation = location.pathname
-  console.log(currentLocation)
-  const [newTask, setNewTask] = useState('');
-  const [value, setValue] = useState('');
-  const category = useSelector (store => store.category)
+
+  const currentLocation = location.pathname;
+  const [newTask, setNewTask] = useState("");
+  const [value, setValue] = useState("");
+  const category = useSelector((store) => store.category);
 
   useEffect(() => {
     dispatch({ type: "FETCH_CATEGORY" });
@@ -96,113 +95,145 @@ function AddNewTask() {
         priority: value,
       },
     });
-    setNewTask('');
-    setValue('');
+    setNewTask("");
+    setValue("");
   };
 
   return (
     <>
-      <div className="add-box">
-        <h4>What Do You Need to Do Today?</h4>
-        <form onSubmit={handleSubmit}>
-  
-          <section className="add-body">
-            <TextField
-              type="text"
-              multiline
-              variant="outlined"
-              label="Enter Task Here"
-              value={newTask}
-              onChange={(event) => setNewTask(event.target.value)}
-            />
-          </section>
+      {currentLocation.includes("/main") ? (
+        <div className="main-add-box">
+          <h4>What Do You Need to Do Today?</h4>
+          <form onSubmit={handleSubmit}>
+            <section className="add-body">
+              <TextField
+                type="text"
+                multiline
+                variant="outlined"
+                label="Enter Task Here"
+                value={newTask}
+                onChange={(event) => setNewTask(event.target.value)}
+              />
+            </section>
 
-          <section className="note-radio-group">
-            <FormControl component="fieldset">
-              <h4>When Do You Have to Do It?</h4>
-              <RadioGroup
-                row
-                aria-label="priorityStatus"
-                value={value}
-                onChange={(event) => setValue(event.target.value)}
-              >
-                {currentLocation.includes('/main') ? (
+            <section className="note-radio-group">
+              <FormControl component="fieldset">
+                <h4>When Do You Have to Do It?</h4>
+                <RadioGroup
+                  row
+                  aria-label="priorityStatus"
+                  value={value}
+                  onChange={(event) => setValue(event.target.value)}
+                >
                   <section>
-                <FormControlLabel
-                  value="1"
-                  control={<RedRadio />}
-                  label="NOW"
-                  labelPlacement="top"
-                />
-                <FormControlLabel
-                  value="2"
-                  control={<OrangeRadio />}
-                  label="Soon-ish"
-                  labelPlacement="top"
-                />
-                <FormControlLabel
-                  value="3"
-                  control={<YellowRadio />}
-                  label="Later"
-                  labelPlacement="top"
-                />
-                </section>) : currentLocation.includes('/braindump') ? ('') : null}
-                
-                {currentLocation.includes('/braindump') ? (
+                    <FormControlLabel
+                      value="1"
+                      control={<RedRadio />}
+                      label="NOW"
+                      labelPlacement="top"
+                    />
+                    <FormControlLabel
+                      value="2"
+                      control={<OrangeRadio />}
+                      label="Soon-ish"
+                      labelPlacement="top"
+                    />
+                    <FormControlLabel
+                      value="3"
+                      control={<YellowRadio />}
+                      label="Later"
+                      labelPlacement="top"
+                    />
+                  </section>
+                </RadioGroup>
+              </FormControl>
+            </section>
+            <section className="add-btn">
+              <Button variant="outlined" size="small" type="submit">
+                Add Note
+              </Button>
+            </section>
+          </form>
+        </div>
+      ) : currentLocation.includes("/braindump") ? (
+        <div className="braindump-add-box">
+          <h4>What Do You Need Out of Your Head?</h4>
+          <form onSubmit={handleSubmit}>
+            <section className="add-body">
+              <TextField
+                type="text"
+                multiline
+                variant="outlined"
+                label="Enter Task Here"
+                value={newTask}
+                onChange={(event) => setNewTask(event.target.value)}
+              />
+            </section>
+
+            <section className="note-radio-group">
+              <FormControl component="fieldset">
+                <h4>Do you want to add a category?</h4>
+                <RadioGroup
+                  row
+                  aria-label="priorityStatus"
+                  value={value}
+                  onChange={(event) => setValue(event.target.value)}
+                >
                   <section>
-                <FormControlLabel
-                  value="4"
-                  control={<LightGreenRadio />}
-                  label={category[0]?.category}
-                  labelPlacement="top"
-                />
-                <FormControlLabel
-                  value="5"
-                  control={<GreenRadio />}
-                  label={category[1]?.category}
-                  labelPlacement="top"
-                />
-                <FormControlLabel
-                  value="6"
-                  control={<BlueRadio />}
-                  label={category[2]?.category}
-                  labelPlacement="top"
-                />
-                <FormControlLabel
-                  value="7"
-                  control={<PurpleRadio />}
-                  label={category[3]?.category}
-                  labelPlacement="top"
-                />
-                <FormControlLabel
-                  value="8"
-                  control={<DarkPurpleRadio />}
-                  label={category[4]?.category}
-                  labelPlacement="top"
-                />
-                <FormControlLabel
-                  value="9"
-                  control={<BrownRadio />}
-                  label={category[5]?.category}
-                  labelPlacement="top"
-                />
-                <FormControlLabel
-                  value="10"
-                  control={<GreyRadio />}
-                  label={category[6]?.category}
-                  labelPlacement="top"
-                /> 
-                </section>) : currentLocation.includes('/main') ? ('') : null}
-              </RadioGroup>
-            </FormControl>
-          </section>
-          <section className="add-btn">
-            <Button variant="outlined" size="small" type="submit">
-              Add Note
-            </Button>
-          </section>
-        </form>
-      </div>
+                    <FormControlLabel
+                      value="4"
+                      control={<LightGreenRadio />}
+                      label={category[0]?.category}
+                      labelPlacement="top"
+                    />
+                    <FormControlLabel
+                      value="5"
+                      control={<GreenRadio />}
+                      label={category[1]?.category}
+                      labelPlacement="top"
+                    />
+                    <FormControlLabel
+                      value="6"
+                      control={<BlueRadio />}
+                      label={category[2]?.category}
+                      labelPlacement="top"
+                    />
+                    <FormControlLabel
+                      value="7"
+                      control={<PurpleRadio />}
+                      label={category[3]?.category}
+                      labelPlacement="top"
+                    />
+                    <FormControlLabel
+                      value="8"
+                      control={<DarkPurpleRadio />}
+                      label={category[4]?.category}
+                      labelPlacement="top"
+                    />
+                    <FormControlLabel
+                      value="9"
+                      control={<BrownRadio />}
+                      label={category[5]?.category}
+                      labelPlacement="top"
+                    />
+                    <FormControlLabel
+                      value="10"
+                      control={<GreyRadio />}
+                      label={category[6]?.category}
+                      labelPlacement="top"
+                    />
+                  </section>
+                </RadioGroup>
+              </FormControl>
+            </section>
+            <section className="add-btn">
+              <Button variant="outlined" size="small" type="submit">
+                Add Note
+              </Button>
+            </section>
+          </form>
+        </div>
+      ) : null}
     </>
   );
 }

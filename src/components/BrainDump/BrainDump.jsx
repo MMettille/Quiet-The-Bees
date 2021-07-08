@@ -41,24 +41,6 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const RedRadio = withStyles({
-  root: {
-    color: "#e53935",
-  },
-})((props) => <Radio color="default" {...props} />);
-
-const OrangeRadio = withStyles({
-  root: {
-    color: "#ff9800",
-  },
-})((props) => <Radio color="default" {...props} />);
-
-const YellowRadio = withStyles({
-  root: {
-    color: "#ffeb3b",
-  },
-})((props) => <Radio color="default" {...props} />);
-
 const GreenRadio = withStyles({
   root: {
     color: "#80cbc4",
@@ -149,24 +131,6 @@ function BrainDump() {
             labelPlacement="end"
           />
           <FormControlLabel
-            value="1"
-            control={<RedRadio />}
-            label="NOW"
-            labelPlacement="end"
-          />
-          <FormControlLabel
-            value="2"
-            control={<OrangeRadio />}
-            label="Soon-ish"
-            labelPlacement="end"
-          />
-          <FormControlLabel
-            value="3"
-            control={<YellowRadio />}
-            label="Later"
-            labelPlacement="end"
-          />
-          <FormControlLabel
             value="4"
             control={<LightGreenRadio />}
             label={category[0]?.category}
@@ -234,22 +198,6 @@ function BrainDump() {
             category name of choice in the text box and click the save button at the bottom.
           </DialogContentText>
           <List>
-            <ListItem alignItems="center">
-              <Checkbox className="red" checked={true} disabled={true} />
-              <RadioButtonUncheckedIcon className="red" />
-              <TextField label="NOW" variant="outlined" disabled={true} />
-            </ListItem>
-            <ListItem alignItems="center">
-              <Checkbox checked={true} disabled={true} />
-              <RadioButtonUncheckedIcon className="orange" />
-              <TextField label="Soon-ish" variant="outlined" disabled={true} />
-            </ListItem>
-            <ListItem alignItems="center">
-              <Checkbox checked={true} disabled={true} />
-              <RadioButtonUncheckedIcon className="yellow" />
-              <TextField label="Later" variant="outlined" disabled={true} />
-            </ListItem>
-
             {category?.map((item) => {
               return <CategoryItem key={item.id} category={item} />;
             })}

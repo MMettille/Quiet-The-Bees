@@ -27,7 +27,7 @@ function Nav() {
         <img className="header-bee" src={image} />
       </section>
 
-      <div>
+      <div className="nav-right">
         <Link className="navLink" to={loginLinkData.path}>
           {loginLinkData.text}
         </Link>

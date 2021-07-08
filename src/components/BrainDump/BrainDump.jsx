@@ -191,7 +191,7 @@ function BrainDump() {
         aria-labelledby="form-dialog-title"
         className="category-dialogue"
       >
-        <DialogTitle id="form-dialog-title">Custom Categories</DialogTitle>
+        <DialogTitle id="form-dialog-title">Custom Categories (Coming Soon!)</DialogTitle>
         <DialogContent>
           <DialogContentText>
             Customize your category labels below! If you would like to change the category name, click on the checkbox, type your

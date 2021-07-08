@@ -24,6 +24,7 @@ function Main() {
       <Header />
       <AddNewTask />
 
+      <div id="main-container">
       <h2>NOW</h2>
       <h4>
         These are the most important tasks. 
@@ -63,6 +64,7 @@ function Main() {
           }
         })}
       </Grid>
+      </div>
     </>
   );
 }

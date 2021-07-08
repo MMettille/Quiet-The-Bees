@@ -7,6 +7,7 @@ body,
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   margin: 0px;
+  
 }
 
 img {
@@ -23,12 +24,17 @@ Container
   text-align: center;
 }
 
+#main-container {
+  padding-left: 12px;
+}
+
 #page-container {
   /* position: relative; */
   min-height: 100vh; /* will cover the 100% of viewport */
  overflow: hidden;
  display: block;
  position: relative;
+ 
  
 }
 

@@ -1,9 +1,8 @@
 import { useDispatch, useSelector } from "react-redux";
 import React, { useEffect, useState } from "react";
 import { withStyles } from "@material-ui/core/styles";
-import { useLocation } from "react-router-dom";
 
-import "./AddNewTask.css";
+import "./BrainDumpAddNewTask.css";
 
 import Button from "@material-ui/core/Button";
 import Radio from "@material-ui/core/Radio";
@@ -75,8 +74,7 @@ const GreyRadio = withStyles({
 
 function AddNewTask() {
   const dispatch = useDispatch();
-  const location = useLocation();
-  console.log(location.pathname)
+
   const [newTask, setNewTask] = useState('');
   const [value, setValue] = useState('');
   const category = useSelector (store => store.category)
@@ -123,24 +121,6 @@ function AddNewTask() {
                 value={value}
                 onChange={(event) => setValue(event.target.value)}
               >
-                <FormControlLabel
-                  value="1"
-                  control={<RedRadio />}
-                  label="NOW"
-                  labelPlacement="top"
-                />
-                <FormControlLabel
-                  value="2"
-                  control={<OrangeRadio />}
-                  label="Soon-ish"
-                  labelPlacement="top"
-                />
-                <FormControlLabel
-                  value="3"
-                  control={<YellowRadio />}
-                  label="Later"
-                  labelPlacement="top"
-                />
                 <FormControlLabel
                   value="4"
                   control={<LightGreenRadio />}

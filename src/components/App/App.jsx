@@ -25,6 +25,7 @@ import SpoonQuery from "../SpoonQuery/SpoonQuery";
 import WordCloud from "../WordCloud/WordCloud";
 import TriggerQuery from "../TriggerQuery/TriggerQuery";
 import Main from "../Main/Main";
+import LandingPage from '../LandingPage/LandingPage'
 
 import "./App.css";
 
@@ -41,14 +42,14 @@ function App() {
         <Nav />
         <Switch>
           {/* Visiting localhost:3000 will redirect to localhost:3000/home */}
-          <Redirect exact from="/" to="/spoon" />
+          <Redirect exact from="/" to="/landingpage" />
           {/* Visiting localhost:3000/about will show the about page. */}
           <Route
             // shows AboutPage at all times (logged in or not)
             exact
-            path="/about"
+            path="/landingpage"
           >
-            <AboutPage />
+            <LandingPage />
           </Route>
           <ProtectedRoute
             // logged in shows SpoonGraph else shows LoginPage

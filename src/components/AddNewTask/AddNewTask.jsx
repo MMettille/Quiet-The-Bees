@@ -76,7 +76,9 @@ const GreyRadio = withStyles({
 function AddNewTask() {
   const dispatch = useDispatch();
   const location = useLocation();
-  console.log(location.pathname)
+  
+  const currentLocation = location.pathname
+  console.log(currentLocation)
   const [newTask, setNewTask] = useState('');
   const [value, setValue] = useState('');
   const category = useSelector (store => store.category)
@@ -141,6 +143,8 @@ function AddNewTask() {
                   label="Later"
                   labelPlacement="top"
                 />
+                {currentLocation.includes('/braindump') ? (
+                  <section>
                 <FormControlLabel
                   value="4"
                   control={<LightGreenRadio />}
@@ -182,7 +186,8 @@ function AddNewTask() {
                   control={<GreyRadio />}
                   label={category[6]?.category}
                   labelPlacement="top"
-                />
+                /> 
+                </section>) : currentLocation.includes('/main') ? ('') : null}
               </RadioGroup>
             </FormControl>
           </section>

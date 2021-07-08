@@ -16,6 +16,10 @@ import Radio from "@material-ui/core/Radio";
 import RadioGroup from "@material-ui/core/RadioGroup";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import FormControl from "@material-ui/core/FormControl";
+import { useLocation } from "react-router-dom";
+import DeleteIcon from '@material-ui/icons/Delete';
+import IconButton from '@material-ui/core/IconButton';
+import EditIcon from '@material-ui/icons/Edit';
 
 const useStyles = makeStyles((theme) => ({
   modal: {
@@ -24,6 +28,7 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: "center",
   },
 }));
+
 const RedRadio = withStyles({
   root: {
     color: "#e53935",
@@ -91,7 +96,9 @@ function StickyNote({ item }) {
   const [open, setOpen] = useState(false);
   const taskToEdit = useSelector((store) => store.taskToEdit);
   const category = useSelector((store) => store.category);
+  const location = useLocation();
 
+  const currentLocation = location.pathname;
   // ⬇ Opens and closes the modal
   const handleClose = () => {
     setOpen(false);
@@ -161,13 +168,13 @@ function StickyNote({ item }) {
           <section className="note-btns"></section>
           <section className="delete-note-btn">
             {item.isComplete ? (
-              <Button onClick={handleDelete} size="small" variant="outlined" className="btn">
-                Delete
-              </Button>
+              <IconButton onClick={handleDelete} size="small" variant="outlined" className="btn">
+                <DeleteIcon />
+              </IconButton>
             ) : (
-              <Button onClick={handleEdit} size="small" variant="outlined">
-                Edit
-              </Button>
+              <IconButton onClick={handleEdit} size="small" variant="outlined">
+                <EditIcon />
+              </IconButton>
             )}
           </section>
         </div>
@@ -231,6 +238,8 @@ function StickyNote({ item }) {
                       label="Later"
                       labelPlacement="top"
                     />
+                    {currentLocation.includes("/braindump") ? (
+                      <section>
                     <FormControlLabel
                       value="4"
                       control={<LightGreenRadio />}
@@ -273,6 +282,7 @@ function StickyNote({ item }) {
                       label={category[6]?.category}
                       labelPlacement="top"
                     />
+                    </section>) : currentLocation.includes("/braindump") ? ("") : null}
                   </RadioGroup>
                 </FormControl>
               </section>

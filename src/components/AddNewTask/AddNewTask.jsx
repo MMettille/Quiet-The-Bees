@@ -172,7 +172,7 @@ function AddNewTask() {
 
             <section className="note-radio-group">
               <FormControl component="fieldset">
-                <h4>Do you want to add a </h4>
+                <h4>Do you want to add a category?</h4>
                 <RadioGroup
                   row
                   aria-label="priorityStatus"
@@ -219,7 +219,7 @@ function AddNewTask() {
                     <FormControlLabel
                       value="10"
                       control={<GreyRadio />}
-                      label={category[6]?.category}
+                      label="Blank"
                       labelPlacement="top"
                     />
                   </section>

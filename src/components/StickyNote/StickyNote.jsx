@@ -17,9 +17,9 @@ import RadioGroup from "@material-ui/core/RadioGroup";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import FormControl from "@material-ui/core/FormControl";
 import { useLocation } from "react-router-dom";
-import DeleteIcon from '@material-ui/icons/Delete';
-import IconButton from '@material-ui/core/IconButton';
-import EditIcon from '@material-ui/icons/Edit';
+import DeleteIcon from "@material-ui/icons/Delete";
+import IconButton from "@material-ui/core/IconButton";
+import EditIcon from "@material-ui/icons/Edit";
 
 const useStyles = makeStyles((theme) => ({
   modal: {
@@ -145,11 +145,16 @@ function StickyNote({ item }) {
     });
     dispatch({ type: "EDIT_TASK", payload: taskToEdit });
   };
-
+  const [isShown, setIsShown] = useState(false);
+  
   return (
     <>
       <Grid item>
-        <div className={`note-box ${item.color_name}`}>
+        <div
+          className={`note-box ${item.color_name}`}
+          onMouseEnter={() => setIsShown(true)}
+          onMouseLeave={() => setIsShown(false)}
+        >
           <section className="note-checkbox">
             <Checkbox
               checked={item.isComplete}
@@ -167,14 +172,28 @@ function StickyNote({ item }) {
           </section>
           <section className="note-btns"></section>
           <section className="delete-note-btn">
-            {item.isComplete ? (
-              <IconButton onClick={handleDelete} size="small" variant="outlined" className="btn">
+            
+            {isShown && (
+              <>
+              {item.isComplete ? ('') : (
+                <IconButton size="small" variant="outlined" onClick={handleEdit}>
+                <EditIcon />
+              </IconButton>
+              )}
+              
+              {item.isComplete ? (
+              <IconButton
+                onClick={handleDelete}
+                size="small"
+                variant="outlined"
+                className="btn"
+              >
                 <DeleteIcon />
               </IconButton>
             ) : (
-              <IconButton onClick={handleEdit} size="small" variant="outlined">
-                <EditIcon />
-              </IconButton>
+              ''
+            )}
+              </>
             )}
           </section>
         </div>
@@ -240,49 +259,52 @@ function StickyNote({ item }) {
                     />
                     {currentLocation.includes("/braindump") ? (
                       <section>
-                    <FormControlLabel
-                      value="4"
-                      control={<LightGreenRadio />}
-                      label={category[0]?.category}
-                      labelPlacement="top"
-                    />
-                    <FormControlLabel
-                      value="5"
-                      control={<GreenRadio />}
-                      label={category[1]?.category}
-                      labelPlacement="top"
-                    />
-                    <FormControlLabel
-                      value="6"
-                      control={<BlueRadio />}
-                      label={category[2]?.category}
-                      labelPlacement="top"
-                    />
-                    <FormControlLabel
-                      value="7"
-                      control={<PurpleRadio />}
-                      label={category[3]?.category}
-                      labelPlacement="top"
-                    />
-                    <FormControlLabel
-                      value="8"
-                      control={<DarkPurpleRadio />}
-                      label={category[4]?.category}
-                      labelPlacement="top"
-                    />
-                    <FormControlLabel
-                      value="9"
-                      control={<BrownRadio />}
-                      label={category[5]?.category}
-                      labelPlacement="top"
-                    />
-                    <FormControlLabel
-                      value="10"
-                      control={<GreyRadio />}
-                      label={category[6]?.category}
-                      labelPlacement="top"
-                    />
-                    </section>) : currentLocation.includes("/braindump") ? ("") : null}
+                        <FormControlLabel
+                          value="4"
+                          control={<LightGreenRadio />}
+                          label={category[0]?.category}
+                          labelPlacement="top"
+                        />
+                        <FormControlLabel
+                          value="5"
+                          control={<GreenRadio />}
+                          label={category[1]?.category}
+                          labelPlacement="top"
+                        />
+                        <FormControlLabel
+                          value="6"
+                          control={<BlueRadio />}
+                          label={category[2]?.category}
+                          labelPlacement="top"
+                        />
+                        <FormControlLabel
+                          value="7"
+                          control={<PurpleRadio />}
+                          label={category[3]?.category}
+                          labelPlacement="top"
+                        />
+                        <FormControlLabel
+                          value="8"
+                          control={<DarkPurpleRadio />}
+                          label={category[4]?.category}
+                          labelPlacement="top"
+                        />
+                        <FormControlLabel
+                          value="9"
+                          control={<BrownRadio />}
+                          label={category[5]?.category}
+                          labelPlacement="top"
+                        />
+                        <FormControlLabel
+                          value="10"
+                          control={<GreyRadio />}
+                          label={category[6]?.category}
+                          labelPlacement="top"
+                        />
+                      </section>
+                    ) : currentLocation.includes("/braindump") ? (
+                      ""
+                    ) : null}
                   </RadioGroup>
                 </FormControl>
               </section>

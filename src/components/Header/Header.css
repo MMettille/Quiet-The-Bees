@@ -9,3 +9,6 @@
     height: auto;
     transform: scaleY(-1);
 }
+.minimum-height-trigger-box{
+    height: 100px;
+}

@@ -71,9 +71,12 @@ function Header() {
         <Grid item xs={12} sm={6}>
           <Paper className={classes.paper} alignItems="stretch" >
             <h3>Failure Triggers</h3>
+            <div className="minimum-height-trigger-box">
             {triggerInput.map((item) => {
               return <p key={item.trigger}>{item.trigger}</p>;
             })}
+            </div>
+            
             <div className="graph-btn">
               <Button variant="contained" onClick={goToCloud}>
                 Word Cloud

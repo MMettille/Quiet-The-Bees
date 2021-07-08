@@ -9,13 +9,12 @@ const router = express.Router();
 // CANNOT SEND A DATE ON THE BODY
 router.get('/spoon', (req, res) => {
     // GET route code here
-    console.log('date in /spoon get request', req.query.q)
+    console.log('date from /spoon get request', req.query.q)
     const sqlText = `
         SELECT "spoon_input".spoon FROM "spoon_input"
         WHERE "spoon_input".user_id = $1
         AND "spoon_input".date = $2;`
     pool.query(sqlText, [req.user.id, req.query.q]).then( (result) =>{
-        console.log('response from /spoon get request', result.rows)
         res.send(result.rows);
       }).catch((error)=>{
         console.log(`error making database query`, error);
@@ -55,7 +54,7 @@ router.get('/wordcloud', (req, res) => {
 
 router.get('/trigger', (req, res) => {
     // GET route code here
-    console.log(req.query.q)
+    console.log('date from /trigger get request', req.query.q)
     const sqlText = `
         SELECT "trigger_input".trigger FROM "trigger_input"
         WHERE "trigger_input".user_id = $1

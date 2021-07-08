@@ -77,9 +77,9 @@ function Header() {
         <Grid item xs={12} sm={6}>
           <Paper className={classes.paper} alignItems="stretch" >
             <h3>Spoon(s)</h3>
-            {triggerInput.map((item) => {
+            {/* {triggerInput.map((item) => {
               return <img src={image} alt="Image of a Spoon" className="spoon-image" key={item.trigger}/>
-            })}
+            })} */}
             
             <p>{spoonInput.spoon}</p>
             <div className="graph-btn">

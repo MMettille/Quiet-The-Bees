@@ -34,7 +34,7 @@ function* addTriggerInput(action){
 function* fetchUserSpoon(action){
     try{
         const today = action.payload;
-        const response = yield axios.get(`/api/query/spoon/?q=${today}`)
+        const response = yield axios.get('/api/query/spoon/?q=${today}')
         console.log(response.data)
         yield put({type: 'SET_TODAY_SPOON', payload: response.data})
     } catch (err){

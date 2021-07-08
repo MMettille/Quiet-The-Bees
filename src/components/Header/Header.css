@@ -5,10 +5,14 @@
 }
 
 .spoon-image{
-    width: 100px;
+    width: 50px;
     height: auto;
     transform: scaleY(-1);
 }
 .minimum-height-trigger-box{
-    height: 100px;
+    height: 75px;
+}
+
+max-header-height{
+    max-height: 200px important!
 }

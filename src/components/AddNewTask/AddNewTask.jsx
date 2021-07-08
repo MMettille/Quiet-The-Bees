@@ -185,7 +185,7 @@ function AddNewTask() {
             </FormControl>
           </section>
           <section className="add-btn">
-            <Button variant="outlined" type="submit">
+            <Button variant="outlined" size="small" type="submit">
               Add Note
             </Button>
           </section>

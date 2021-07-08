@@ -79,7 +79,7 @@ function AddNewTask() {
 
   const currentLocation = location.pathname;
   const [newTask, setNewTask] = useState("");
-  const [value, setValue] = useState(1);
+  const [value, setValue] = useState("");
   const category = useSelector((store) => store.category);
 
   useEffect(() => {
@@ -172,7 +172,7 @@ function AddNewTask() {
 
             <section className="note-radio-group">
               <FormControl component="fieldset">
-                <h4>Do you want to add a category?</h4>
+                <h4>Do you want to add a </h4>
                 <RadioGroup
                   row
                   aria-label="priorityStatus"

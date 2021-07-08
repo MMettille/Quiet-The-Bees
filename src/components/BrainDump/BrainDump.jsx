@@ -4,7 +4,7 @@ import { useHistory } from "react-router-dom";
 
 // ⬇ What Components we need to import
 import Header from "../Header/Header";
-import BrainDumpItem from "../BrainDumpItem/BrainDumpItem";
+import AddNewTask from "../AddNewTask/AddNewTask";
 import StickyNote from "../StickyNote/StickyNote";
 import CategoryItem from "../CategoryItem/CategoryItem";
 // ⬇ What we need from material-ui
@@ -115,9 +115,9 @@ function BrainDump() {
     <>
       <Header />
 
-      <BrainDumpItem />
+      <AddNewTask />
       <div className="container important">
-        <h2>SORT HERE(COMING SOON!)</h2>
+        <h2>SORT HERE(COMING SOON)</h2>
         <RadioGroup
           row
           aria-label="sort-by-category"

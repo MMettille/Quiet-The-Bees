@@ -52,6 +52,13 @@ function Header() {
 
   const classes = useStyles();
 
+  const printSpoons = () => {
+    let rows = [];
+    for (let i=0; i<spoonInput.spoon; i++){
+      rows.push(<img src={image} alt="Image of a Spoon" className="spoon-image" key={i}/>)
+    }
+    return rows
+  }
   return (
     <div className={classes.root}>
       <Grid
@@ -77,11 +84,7 @@ function Header() {
         <Grid item xs={12} sm={6}>
           <Paper className={classes.paper} alignItems="stretch" >
             <h3>Spoon(s)</h3>
-            {/* {triggerInput.map((item) => {
-              return <img src={image} alt="Image of a Spoon" className="spoon-image" key={item.trigger}/>
-            })} */}
-            
-            <p>{spoonInput.spoon}</p>
+            {printSpoons()}
             <div className="graph-btn">
               <Button
                 className="graph-btn"

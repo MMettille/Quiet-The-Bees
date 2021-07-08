@@ -105,6 +105,7 @@ function AddNewTask() {
       <div className="add-box">
         <h4>What Do You Need to Do Today?</h4>
         <form onSubmit={handleSubmit}>
+  
           <section className="add-body">
             <TextField
               type="text"
@@ -125,6 +126,8 @@ function AddNewTask() {
                 value={value}
                 onChange={(event) => setValue(event.target.value)}
               >
+                {currentLocation.includes('/main') ? (
+                  <section>
                 <FormControlLabel
                   value="1"
                   control={<RedRadio />}
@@ -143,6 +146,8 @@ function AddNewTask() {
                   label="Later"
                   labelPlacement="top"
                 />
+                </section>) : currentLocation.includes('/braindump') ? ('') : null}
+                
                 {currentLocation.includes('/braindump') ? (
                   <section>
                 <FormControlLabel

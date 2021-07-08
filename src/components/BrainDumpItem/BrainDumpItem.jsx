@@ -1,9 +1,8 @@
 import { useDispatch, useSelector } from "react-redux";
 import React, { useEffect, useState } from "react";
 import { withStyles } from "@material-ui/core/styles";
-import { useLocation } from "react-router-dom";
 
-import "./AddNewTask.css";
+import "./BrainDumpItem.css";
 
 import Button from "@material-ui/core/Button";
 import Radio from "@material-ui/core/Radio";
@@ -73,13 +72,10 @@ const GreyRadio = withStyles({
   },
 })((props) => <Radio color="default" {...props} />);
 
-function AddNewTask() {
+function BrainDumpItem() {
   const dispatch = useDispatch();
-  const location = useLocation();
-
-  const currentLocation = location.pathname;
   const [newTask, setNewTask] = useState("");
-  const [value, setValue] = useState(1);
+  const [value, setValue] = useState(10);
   const category = useSelector((store) => store.category);
 
   useEffect(() => {
@@ -101,62 +97,7 @@ function AddNewTask() {
 
   return (
     <>
-      {currentLocation.includes("/main") ? (
-        <div className="main-add-box">
-          <h4>What Do You Need to Do Today?</h4>
-          <form onSubmit={handleSubmit}>
-            <section className="add-body">
-              <TextField
-                type="text"
-                multiline
-                variant="outlined"
-                label="Enter Task Here"
-                value={newTask}
-                onChange={(event) => setNewTask(event.target.value)}
-              />
-            </section>
-
-            <section className="note-radio-group">
-              <FormControl component="fieldset">
-                <h4>When Do You Have to Do It?</h4>
-                <RadioGroup
-                  row
-                  aria-label="priorityStatus"
-                  value={value}
-                  onChange={(event) => setValue(event.target.value)}
-                >
-                  <section>
-                    <FormControlLabel
-                      value="1"
-                      control={<RedRadio />}
-                      label="NOW"
-                      labelPlacement="top"
-                    />
-                    <FormControlLabel
-                      value="2"
-                      control={<OrangeRadio />}
-                      label="Soon-ish"
-                      labelPlacement="top"
-                    />
-                    <FormControlLabel
-                      value="3"
-                      control={<YellowRadio />}
-                      label="Later"
-                      labelPlacement="top"
-                    />
-                  </section>
-                </RadioGroup>
-              </FormControl>
-            </section>
-            <section className="add-btn">
-              <Button variant="outlined" size="small" type="submit">
-                Add Note
-              </Button>
-            </section>
-          </form>
-        </div>
-      ) : currentLocation.includes("/braindump") ? (
-        <div className="braindump-add-box">
+<div className="braindump-add-box">
           <h4>What Do You Need Out of Your Head?</h4>
           <form onSubmit={handleSubmit}>
             <section className="add-body">
@@ -233,9 +174,8 @@ function AddNewTask() {
             </section>
           </form>
         </div>
-      ) : null}
     </>
   );
 }
 
-export default AddNewTask;
+export default BrainDumpItem;

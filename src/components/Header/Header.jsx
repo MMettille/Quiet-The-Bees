@@ -16,6 +16,7 @@ const useStyles = makeStyles((theme) => ({
   paper: {
     padding: theme.spacing(2),
     textAlign: "center",
+    height: '90%',
     color: theme.palette.text.secondary,
   },
 }));
@@ -52,12 +53,18 @@ function Header() {
 
   return (
     <div className={classes.root}>
-      <Grid container spacing={3}>
+      <Grid
+        spacing={3}
+        container
+        direction="row"
+        justifyContent="center"
+        alignItems="stretch"
+      >
         <Grid item xs={12} sm={6}>
-          <Paper className={classes.paper}>
+          <Paper className={classes.paper} alignItems="stretch" >
             <h3>Failure Triggers</h3>
             {triggerInput.map((item) => {
-              return <li key={item.trigger}>{item.trigger}</li>;
+              return <p key={item.trigger}>{item.trigger}</p>;
             })}
             <div className="graph-btn">
               <Button variant="contained" onClick={goToCloud}>
@@ -67,7 +74,7 @@ function Header() {
           </Paper>
         </Grid>
         <Grid item xs={12} sm={6}>
-          <Paper className={classes.paper}>
+          <Paper className={classes.paper} alignItems="stretch" >
             <h3>Spoon(s)</h3>
             <p>{spoonInput.spoon}</p>
             <div className="graph-btn">

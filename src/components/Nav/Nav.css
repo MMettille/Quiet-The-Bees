@@ -2,12 +2,13 @@
   /* flex box layout */
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
+  text-align: center;
   max-height: 3rem;
   margin: 0 0 15px;
   background-color: #00acb0;
   overflow: hidden;
-  padding: 10px
+  padding: 5px
 }
 
 .nav a {
@@ -19,22 +20,27 @@
   font-weight: 700;
   color: #f2f2f2;
   padding-left: 10px;
-  margin: 0;
+  width: 100%;
 }
 
 .header-bee{
   height: 50px;
 }
 
+.nav-center{
+  width: 100%;
+}
+.nav-right{
+  width: 100%;
+}
 .navLink {
   display: inline-block;
   color: #f2f2f2;
   background-color: #00acb0;
   text-align: center;
-  padding: 24px 10px;
+  padding: 18px 10px;
   text-decoration: none;
   font-size: 12px;
-
   /* these last two make the logout button in
   the nav bar look like another link */
   border: none;

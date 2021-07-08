@@ -99,7 +99,7 @@ function AddNewTask() {
   return (
     <>
       <div className="add-box">
-        <h3>Create Your Reminder Here!</h3>
+        <h4>What Do You Need to Do Today?</h4>
         <form onSubmit={handleSubmit}>
           <section className="add-body">
             <TextField
@@ -114,7 +114,7 @@ function AddNewTask() {
 
           <section className="note-radio-group">
             <FormControl component="fieldset">
-              <h3>Add A Category Here:</h3>
+              <h4>When Do You Have to Do It?</h4>
               <RadioGroup
                 row
                 aria-label="priorityStatus"
@@ -139,7 +139,7 @@ function AddNewTask() {
                   label="Later"
                   labelPlacement="top"
                 />
-                <FormControlLabel
+                {/* <FormControlLabel
                   value="4"
                   control={<LightGreenRadio />}
                   label={category[0]?.category}
@@ -180,7 +180,7 @@ function AddNewTask() {
                   control={<GreyRadio />}
                   label={category[6]?.category}
                   labelPlacement="top"
-                />
+                /> */}
               </RadioGroup>
             </FormControl>
           </section>

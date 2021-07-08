@@ -3,3 +3,9 @@
     position: relative;
     bottom: 0;
 }
+
+.spoon-image{
+    width: 100px;
+    height: auto;
+    transform: scaleY(-1);
+}

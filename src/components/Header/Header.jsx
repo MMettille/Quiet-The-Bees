@@ -8,6 +8,7 @@ import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
 
 import "./Header.css";
+import image from './spoon.png'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -76,6 +77,10 @@ function Header() {
         <Grid item xs={12} sm={6}>
           <Paper className={classes.paper} alignItems="stretch" >
             <h3>Spoon(s)</h3>
+            {triggerInput.map((item) => {
+              return <img src={image} alt="Image of a Spoon" className="spoon-image" key={item.trigger}/>
+            })}
+            
             <p>{spoonInput.spoon}</p>
             <div className="graph-btn">
               <Button

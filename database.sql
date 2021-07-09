@@ -34,14 +34,13 @@ CREATE TABLE "taskList" (
 
 CREATE TABLE "color_list" (
 	"id" SERIAL PRIMARY KEY,
-	"color_name" VARCHAR (255),
+	"color_name" VARCHAR (255)
 );
 
 create table "custom_names" (
 	id serial primary key,
-	"color_id" INT REFERENCES "priority_list",
+	"color_id" INT REFERENCES "color_list",
 	"category" VARCHAR(25) DEFAULT '',
 	"isChecked" BOOLEAN DEFAULT FALSE,
 	"user_id" INT REFERENCES "user"
 );
-

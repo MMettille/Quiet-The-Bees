@@ -59,6 +59,7 @@ Button
   font-size: 1.1rem;
   outline: 0;
   cursor: pointer;
+  margin: 5px;
 }
 
 .btn_sizeMin {
@@ -69,6 +70,7 @@ Button
 .btn_sizeSm {
   padding: 10px 15px;
   font-size: 0.8rem;
+
 }
 
 .btn_sizeFull {

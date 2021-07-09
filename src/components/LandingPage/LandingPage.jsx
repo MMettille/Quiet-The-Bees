@@ -12,12 +12,17 @@ function LandingPage() {
     history.push("/login");
   };
 
-  const handleClick = {};
+  const handleClick = () => {
+    history.push("/registration");
+  };
 
   return (
       <div className="container">
-        <div className="grid">
-          <div className="grid-col grid-col_8">
+<img 
+          src={bee_kind_hexagon}
+          alt="Image of a honeycomb hexagon with the words Bee Kind written in the middle"
+          className="bee-kind-hexagon"
+        />
             <p>
               Staying organized in this information saturated world is next to
               impossible - there are things to remember, to-do lists to make,
@@ -41,26 +46,17 @@ function LandingPage() {
               you don't want to forget, write it down so you can<br>
               </br><strong>Quiet The Bees and Stay on Task!</strong>
             </p>
-          </div>
-          <div className="grid-col grid-col_4">
-            <RegisterForm />
+            <br/>
 
-            <center>
-              <h4>Already a Member?</h4>
+            <button className="btn btn_sizeSm" onClick={handleClick}>
+                Register
+              </button>
               <button className="btn btn_sizeSm" onClick={onLogin}>
                 Login
               </button>
-            </center>
-          </div>
-        </div>
-        <img
-          src={bee_kind_hexagon}
-          alt="Image of a honeycomb hexagon with the words Bee Kind written in the middle"
-          className="bee-kind-hexagon"
-          onClick={handleClick}
-        />
+         
       </div>
-  );
+  )
 }
 
 export default LandingPage;

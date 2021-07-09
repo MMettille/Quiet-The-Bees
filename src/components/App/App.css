@@ -146,32 +146,33 @@ Setting the colors of each sticky note, based on it's priority/category status
 -------------------------------------------------------------------------------- */
 
 .red{
-  background-color: #ef9a9a;
+  background-color: #d50000;
 }
 .orange{
-  background-color: #ffcc80;
+  background-color: #ffab40;
 }
 .yellow{
-  background-color: #fff59d;
+  background-color: #ffff00;
+}
+.light-green{
+  background-color: #c6ff00;
 }
 .green{
   background-color: #4caf50;
 }
-.light-green{
-  background-color: #aed581;
+.teal{
+  background-color: #009688;
 }
 .purple{
-  background-color: #b39ddb;
+  background-color: #7e57c2;
 }
-.dark-purple{
-  background-color: #9575cd;
+.dark-blue{
+  background-color: #03a9f4;
 }
 .blue{
-  background-color: #90caf9;
+  background-color: #40c4ff;
 }
-.brown{
-  background-color: #a1887f;
-}
+
 .grey{
   background-color: #ffffff;
 }

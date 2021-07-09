@@ -29,6 +29,9 @@
     width: 24px;
 }
 
+.custom_category_btn{
+    float: left
+}
 /* When the viewport is 900px or smaller - for smartphone users */
 @media screen and (max-width: 900px) {
     .category-dialogue{

@@ -2,7 +2,7 @@ import React from 'react';
 
 import { useHistory } from 'react-router-dom';
 import RegisterForm from '../RegisterForm/RegisterForm';
-
+import image from '../Images/bee_path_7.png'
 function RegisterPage() {
   const history = useHistory();
 
@@ -21,6 +21,7 @@ function RegisterPage() {
           Login
         </button>
       </center>
+      <img className="image2" src={image} />
     </div>
   );
 }

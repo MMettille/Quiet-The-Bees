@@ -6,7 +6,6 @@ import axios from "axios";
 
 import Header from "../Header/Header";
 import image from './spoon-graph-image.png'
-
 function SpoonGraph() {
   // ⬇ Creating the chart
   const chart = useRef(null);
@@ -69,10 +68,17 @@ function SpoonGraph() {
   return (
     <>
       <Header />
+      <div className="container">
+      <h1>Welcome to Your Spoon Graph!</h1>
+      <h5>Here you will see how your spoons change throughout time.</h5>
       <div id="chartdiv"></div>
-      <h1>Notes for User Testing:</h1>
+      </div>
+      
+      
+      
+      {/* <h1>Notes for User Testing:</h1>
       <p>You are a new user, so you won't have many entries yet. Your graph will one day look like this!</p>
-      <img src={image} alt="image of a graph" />
+      <img src={image} alt="image of a graph" /> */}
     </>
   );
 }

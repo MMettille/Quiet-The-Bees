@@ -32,3 +32,15 @@
     min-height: 40px;
 }
 
+.image3{
+    float: left;
+    transform: scaleX(-1);
+    width: 15%
+}
+
+.image4{
+    float: right;
+    transform: scaleX(-1);
+    width: 10%
+}
+

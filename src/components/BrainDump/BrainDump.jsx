@@ -137,7 +137,7 @@ function BrainDump() {
       <Header />
 
       <AddNewTask />
-      <div className="container important">
+      {/* <div className="container important"> */}
         {/* <h2>SORT HERE(COMING SOON)</h2>
         <RadioGroup
           row
@@ -198,10 +198,10 @@ function BrainDump() {
             <ColorLensIcon fontSize="large" />
           </IconButton>
         </RadioGroup> */}
-        <IconButton aria-label="color-pallete-button" onClick={handleClick}>
+        <IconButton className="custom_category_btn" aria-label="color-pallete-button" onClick={handleClick}>
             <ColorLensIcon fontSize="large" />
           </IconButton>
-      </div>
+      {/* </div> */}
       <div className={classes.root}>
         <Masonry
           breakpointCols={breakpoints}

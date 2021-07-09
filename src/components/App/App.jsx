@@ -117,7 +117,7 @@ function App() {
             path="/registration"
             authRedirect="/spoon"
           >
-            <LoginPage />
+            <RegisterPage />
           </ProtectedRoute>
 
           {/* If none of the other routes matched, we will show a 404. */}

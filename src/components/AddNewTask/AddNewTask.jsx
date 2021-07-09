@@ -12,6 +12,8 @@ import FormControlLabel from "@material-ui/core/FormControlLabel";
 import FormControl from "@material-ui/core/FormControl";
 import FormLabel from "@material-ui/core/FormLabel";
 import TextField from "@material-ui/core/TextField";
+import image from '../Images/bee_path_5.png'
+import imageTwo from '../Images/bee_path_1.png'
 
 const RedRadio = withStyles({
   root: {
@@ -104,6 +106,7 @@ function AddNewTask() {
 
   return (
     <>
+    <img className="image3" src={image} />
       {currentLocation.includes("/main") ? (
         <div className="main-add-box">
           <h5>What Do You Need to Do Today?</h5>
@@ -238,6 +241,7 @@ function AddNewTask() {
           </form>
         </div>
       ) : null}
+      <img className="image4" src={imageTwo} />
     </>
   );
 }

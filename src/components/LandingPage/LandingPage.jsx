@@ -4,7 +4,7 @@ import "./LandingPage.css";
 
 // CUSTOM COMPONENTS
 import RegisterForm from "../RegisterForm/RegisterForm";
-import bee_kind_hexagon from '../Images/bee_kind_hexagon.png'
+import bee_kind_hexagon from "../Images/bee_kind_hexagon.png";
 function LandingPage() {
   const history = useHistory();
 
@@ -12,42 +12,54 @@ function LandingPage() {
     history.push("/login");
   };
 
+  const handleClick = {};
+
   return (
-    <div className="container">
-      <div className="grid">
-        <div className="grid-col grid-col_8">
-          <p>
-          Staying organized in this information saturated world is next to impossible - there are things to remember, to-do lists
-          to make, recipes to try, books to read, moods and energy to track.. Luckily, there are plenty of apps out there to help
-          with this - unfortunately, they were all built for a neurotypical brain. So what does one do? Uses several apps and systems,
-          trying to find one that will work for your brain - Google Notes, Mood Tracker Apps, the app from your therapist, physical planners,
-          sticky notes, text messages to your partner...and it is quite mentally taxing trying to keep track of all those moving pieces!
-          </p>
+      <div className="container">
+        <div className="grid">
+          <div className="grid-col grid-col_8">
+            <p>
+              Staying organized in this information saturated world is next to
+              impossible - there are things to remember, to-do lists to make,
+              recipes to try, books to read, moods and energy to track...and if
+              you have anxiety or are neurodivergent, those thoughts can constantly
+              be battling for your attention - almost as if there was a hive of bees
+              buzzing noisily in your head!
+            </p>
 
-          <p>
-          This app provides one centralized location for all the things buzzing around in your brain - no more finding sticky notes under a shoe!
-          At the beginning of your day, login and check-in with yourself, guided by this app. Do you have a lot of energy? Are you feeling tired?
-          What is preventing you from getting stuff done today?
-          </p>
+            <p>
+              This app provides one centralized location for all the those
+              bees flying around in your brain - and what makes this app <i>work </i>
+              is that it was not built for the neurotypical brain. No more downloading note apps
+              and calendar apps and forgetting which one you used to write this note or that one.
+              No more spending money on planners and organizers that you never use.              
+            </p>
 
-          <p>
-            The main page is all about you, today - what do you need to get done? What's happening? As you progress throughout the day, if things pop
-            into your head that you don't want to forget, write it down so you can quiet the buzz and stay on task!
-          </p>
+            <p>
+              At the beginning of your day, sit down and answer questions about your mental health,
+              then make a game plan for what you need to accomplish. And if things pop into your head that
+              you don't want to forget, write it down so you can<br>
+              </br><strong>Quiet The Bees and Stay on Task!</strong>
+            </p>
+          </div>
+          <div className="grid-col grid-col_4">
+            <RegisterForm />
+
+            <center>
+              <h4>Already a Member?</h4>
+              <button className="btn btn_sizeSm" onClick={onLogin}>
+                Login
+              </button>
+            </center>
+          </div>
         </div>
-        <div className="grid-col grid-col_4">
-          <RegisterForm />
-
-          <center>
-            <h4>Already a Member?</h4>
-            <button className="btn btn_sizeSm" onClick={onLogin}>
-              Login
-            </button>
-          </center>
-        </div>
+        <img
+          src={bee_kind_hexagon}
+          alt="Image of a honeycomb hexagon with the words Bee Kind written in the middle"
+          className="bee-kind-hexagon"
+          onClick={handleClick}
+        />
       </div>
-      <img src={bee_kind_hexagon} alt="Image of a honeycomb hexagon with the words Bee Kind written in the middle" className="bee-kind-hexagon"/>
-    </div>
   );
 }
 

@@ -289,7 +289,7 @@ function StickyNote({ item }) {
                           labelPlacement="top"
                         />
                       </>
-                    ) : currentLocation.includes("/braindump") ? (
+                    ) : currentLocation.includes("/main") ? (
                       <>
                         <FormControlLabel
                           value="1"

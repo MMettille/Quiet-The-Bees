@@ -1,11 +1,12 @@
 import { useDispatch, useSelector } from "react-redux";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 
 import { makeStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
+
 
 import "./Header.css";
 import image from '../Images/spoon.png'
@@ -27,7 +28,8 @@ function Header() {
   const dispatch = useDispatch();
   const spoonInput = useSelector((store) => store.spoonInput);
   const triggerInput = useSelector((store) => store.triggerInput);
-
+  const dayDate = new Date();
+  const today = dayDate.getDate();
   useEffect(() => {
     fetchUserInput();
   }, []);
@@ -59,8 +61,38 @@ function Header() {
     }
     return rows
   }
+
+  const printWeekdays = () => {
+    const array = [];
+    const WeekDay = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+    let now = WeekDay[dayDate.getDay()]
+    for(let item of WeekDay){
+      if(now === item){
+        array.push(<p className={`now now-circle`}>{item}</p>)
+      } else if (now != item){
+        array.push(<p className={`now`}>{item}</p>)
+      }
+    }
+    return array
+  }
+
+  const printDays = () => {
+    const Days = [];
+    for(let i = 1; i<=31; i++){
+      if(today === i){
+        Days.push(<p className={`day day-circle`}>{i}</p>)
+      } else if (today != i){
+        Days.push(<p className={`day`}>{i}</p>)
+      }
+    }
+    return Days
+  }
+
   return (
-    <div className="max-header-height">
+    <div className="container">
+      {printWeekdays()}
+      <br />
+      {printDays()}
     <div className={classes.root}>
       <Grid
         spacing={3}

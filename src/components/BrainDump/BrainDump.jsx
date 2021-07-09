@@ -114,7 +114,10 @@ function BrainDump() {
   const breakpoints = {
     default: 7,
     1100: 5,
-    700: 1
+    1000: 4,
+    800: 3,
+    600: 2,
+    400: 1,
   }
   return (
     <>

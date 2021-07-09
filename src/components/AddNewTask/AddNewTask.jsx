@@ -81,7 +81,7 @@ function AddNewTask() {
 
   const currentLocation = location.pathname;
   const [newTask, setNewTask] = useState("");
-  const [value, setValue] = useState("");
+  const [value, setValue] = useState(10);
   const category = useSelector((store) => store.category);
 
   useEffect(() => {
@@ -90,9 +90,9 @@ function AddNewTask() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    if(value === ''){
-      setValue = 10
-    }
+    // if(value === ''){
+    //   setValue = 10
+    // }
     dispatch({
       type: "ADD_NEW_TASK",
       payload: {
@@ -101,7 +101,7 @@ function AddNewTask() {
       },
     });
     setNewTask("");
-    setValue("");
+    setValue(10);
   };
 
   return (

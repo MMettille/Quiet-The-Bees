@@ -25,7 +25,7 @@ Container
 }
 
 #main-container {
-  padding-left: 12px;
+  
 }
 
 #page-container {
@@ -182,11 +182,13 @@ Setting the colors of each sticky note, based on it's priority/category status
   display: -webkit-box; /* Not needed if autoprefixing */
   display: -ms-flexbox; /* Not needed if autoprefixing */
   display: flex;
-  /* margin-left: -30px; gutter size offset */
+  margin-left: 30px;
+  /* gutter size offset  */
   width: auto;
+
 }
 .my-masonry-grid_column {
-  padding-left: 10px; /* gutter size */
+  padding-left: 0px; /* gutter size */
   background-clip: padding-box;
 }
 

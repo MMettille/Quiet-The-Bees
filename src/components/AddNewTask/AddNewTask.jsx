@@ -88,6 +88,9 @@ function AddNewTask() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    if(value === ''){
+      setValue = 10
+    }
     dispatch({
       type: "ADD_NEW_TASK",
       payload: {

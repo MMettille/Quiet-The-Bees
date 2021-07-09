@@ -32,7 +32,7 @@ function Main() {
       <h5>HINT: What are the consequences of not
         completing these things?</h5>
       <div className="minimum-height-container">
-      <Grid container spacing={3}>
+      <Grid container spacing={.5}>
         {task.map((item) => {
           if (item.color_id === 1) {
             return <StickyNote key={item.id} item={item} />;
@@ -47,7 +47,7 @@ function Main() {
         soon. 
       </h4>
       <h5>HINT: Can you set a due date?</h5>
-      <Grid container spacing={3}>
+      <Grid container spacing={.5}>
         {task.map((item) => {
           if (item.color_id === 2) {
             return <StickyNote key={item.id} item={item} />;

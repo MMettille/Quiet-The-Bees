@@ -149,7 +149,7 @@ function StickyNote({ item }) {
   
   return (
     <>
-      <Grid item>
+      {/* <Grid item> */}
         <div
           className={`note-box ${item.color_name}`}
           onMouseEnter={() => setIsShown(true)}
@@ -197,7 +197,7 @@ function StickyNote({ item }) {
             )}
           </section>
         </div>
-      </Grid>
+      {/* </Grid> */}
 
       <Dialog
         aria-labelledby="edit-dialog"

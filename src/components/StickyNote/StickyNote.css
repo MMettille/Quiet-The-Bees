@@ -1,11 +1,10 @@
 .note-box{
-    min-width: 120px;
+    min-width: 150px;
     max-width: 150px;
     transition: box-shadow .3s;
     padding: 10px;
     border-radius: 10px;
     text-align: center;
-    margin: 10px;
     display: table;
     border: 1px solid #ccc;
 }
@@ -38,13 +37,18 @@ rgba(33,33,33,2);
 .note-checkbox,
 .delete-note-btn {
     text-align: right;
-    min-height: 30px;
+    min-height: 40px;
 }
 .note-body{
-    min-height: 30px;
+    min-height: 40px;
     vertical-align: center;
 }
 
+/* Style your items */
+.my-masonry-grid_column > note-box { /* change div to reference your elements you put in <Masonry> */
+    background: grey;
+    margin-bottom: 30px;
+  }
 
 /* When the viewport is 900px or smaller - for smartphone users */
 @media screen and (max-width: 900px) {

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
-
+import Masonry from 'react-masonry-css'
 // ⬇ What Components we need to import
 import Header from "../Header/Header";
 import AddNewTask from "../AddNewTask/AddNewTask";
@@ -111,6 +111,11 @@ function BrainDump() {
     console.log(newCategory);
   };
 
+  const breakpoints = {
+    default: 7,
+    1100: 5,
+    700: 1
+  }
   return (
     <>
       <Header />
@@ -178,11 +183,14 @@ function BrainDump() {
         </RadioGroup>
       </div>
       <div className={classes.root}>
-        <Grid container spacing={.5}>
+        <Masonry
+        breakpointCols={breakpoints}
+        className="my-masonry-grid"
+        columnClassName="my-masonry-grid_column">
           {task.map((item) => {
             return <StickyNote key={item.id} item={item} />;
           })}
-        </Grid>
+        </Masonry>
       </div>
 
       <Dialog

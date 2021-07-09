@@ -57,7 +57,7 @@ function Main() {
       <h2>Later</h2>
       <h4>These tasks are on your radar for later.</h4>
       <h5>HINT: Have a lot of spoons today? Tackle these!</h5>
-      <Grid container spacing={3}>
+      <Grid container spacing={.5}>
         {task.map((item) => {
           if (item.color_id === 3) {
             return <StickyNote key={item.id} item={item} />;

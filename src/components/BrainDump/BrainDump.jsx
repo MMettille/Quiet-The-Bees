@@ -178,7 +178,7 @@ function BrainDump() {
         </RadioGroup>
       </div>
       <div className={classes.root}>
-        <Grid container spacing={3}>
+        <Grid container spacing={.5}>
           {task.map((item) => {
             return <StickyNote key={item.id} item={item} />;
           })}

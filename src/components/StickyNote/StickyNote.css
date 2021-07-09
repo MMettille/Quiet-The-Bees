@@ -19,6 +19,7 @@ rgba(33,33,33,2);
 }
 
 .edit-note-box{
+    min-width: 200px;
     max-height: 200px;
     padding: 10px;
     text-align: center;

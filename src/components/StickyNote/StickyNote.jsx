@@ -258,7 +258,7 @@ function StickyNote({ item }) {
                       labelPlacement="top"
                     />
                     {currentLocation.includes("/braindump") ? (
-                      <section>
+                      <>
                         <FormControlLabel
                           value="4"
                           control={<LightGreenRadio />}
@@ -301,7 +301,7 @@ function StickyNote({ item }) {
                           label={category[6]?.category}
                           labelPlacement="top"
                         />
-                      </section>
+                      </>
                     ) : currentLocation.includes("/braindump") ? (
                       ""
                     ) : null}
@@ -309,7 +309,7 @@ function StickyNote({ item }) {
                 </FormControl>
               </section>
               <section className="add-btn">
-                <Button variant="outlined" type="submit">
+                <Button variant="outlined" type="submit" size="small">
                   Update Note
                 </Button>
               </section>

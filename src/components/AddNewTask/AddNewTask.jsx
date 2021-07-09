@@ -106,11 +106,12 @@ function AddNewTask() {
     <>
       {currentLocation.includes("/main") ? (
         <div className="main-add-box">
-          <h4>What Do You Need to Do Today?</h4>
+          <h5>What Do You Need to Do Today?</h5>
           <form onSubmit={handleSubmit}>
             <section className="add-body">
               <TextField
                 type="text"
+                size="small"
                 multiline
                 variant="outlined"
                 label="Enter Task Here"
@@ -119,9 +120,9 @@ function AddNewTask() {
               />
             </section>
 
-            <section className="note-radio-group">
+            
               <FormControl component="fieldset">
-                <h4>When Do You Have to Do It?</h4>
+                <h5>When Do You Have to Do It?</h5>
                 <RadioGroup
                   row
                   aria-label="priorityStatus"
@@ -150,7 +151,7 @@ function AddNewTask() {
                   </section>
                 </RadioGroup>
               </FormControl>
-            </section>
+            
             <section className="add-btn">
               <Button variant="outlined" size="small" type="submit">
                 Add Note

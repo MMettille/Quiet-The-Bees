@@ -28,20 +28,20 @@ router.post("/register", async (req, res, next) => {
     const result = await connection.query(queryText, [username, password]);
     const newUser = result.rows[0].id;
     //Adding rows to "custom_names"
-    const colorFour = `INSERT INTO "custom_names" (color_id, user_id) VALUES ($1, $2);`;
-    await connection.query(colorFour, [4, newUser]);
-    const colorFive = `INSERT INTO "custom_names" (color_id, user_id) VALUES ($1, $2);`;
-    await connection.query(colorFive, [5, newUser]);
-    const colorSix = `INSERT INTO "custom_names" (color_id, user_id) VALUES ($1, $2);`;
-    await connection.query(colorSix, [6, newUser]);
-    const colorSeven = `INSERT INTO "custom_names" (color_id, user_id) VALUES ($1, $2);`;
-    await connection.query(colorSeven, [7, newUser]);
-    const colorEight = `INSERT INTO "custom_names" (color_id, user_id) VALUES ($1, $2);`;
-    await connection.query(colorEight, [8, newUser]);
-    const colorNine = `INSERT INTO "custom_names" (color_id, user_id) VALUES ($1, $2);`;
-    await connection.query(colorNine, [9, newUser]);
-    const colorTen = `INSERT INTO "custom_names" (color_id, user_id) VALUES ($1, $2);`;
-    await connection.query(colorTen, [10, newUser]);
+    const colorFour = `INSERT INTO "custom_names" (color_id, category, user_id) VALUES ($1, $2, $3);`;
+    await connection.query(colorFour, [4, 'Lime Green', newUser]);
+    const colorFive = `INSERT INTO "custom_names" (color_id, category, user_id) VALUES ($1, $2, $3);`;
+    await connection.query(colorFive, [5, 'Green', newUser]);
+    const colorSix = `INSERT INTO "custom_names" (color_id, category, user_id) VALUES ($1, $2, $3);`;
+    await connection.query(colorSix, [6, 'Blue', newUser]);
+    const colorSeven = `INSERT INTO "custom_names" (color_id, category, user_id) VALUES ($1, $2, $3);`;
+    await connection.query(colorSeven, [7, 'Purple', newUser]);
+    const colorEight = `INSERT INTO "custom_names" (color_id, category, user_id) VALUES ($1, $2, $3);`;
+    await connection.query(colorEight, [8, 'Dark Blue', newUser]);
+    const colorNine = `INSERT INTO "custom_names" (color_id, category, user_id) VALUES ($1, $2, $3);`;
+    await connection.query(colorNine, [9, 'Teal', newUser]);
+    const colorTen = `INSERT INTO "custom_names" (color_id, category, user_id) VALUES ($1, $2, $3);`;
+    await connection.query(colorTen, [10, 'Blank', newUser]);
     //Committing all of the posts
     await connection.query("COMMIT");
     res.sendStatus(200);

@@ -40,6 +40,8 @@ function Main() {
   };
   const MainBreakpoints = {
     default: 3,
+    1200: 2,
+    750: 1,
   };
 
   return (

@@ -3,7 +3,6 @@ import axios from "axios";
 
 import * as am4core from "@amcharts/amcharts4/core";
 import * as am4plugins_wordCloud from "@amcharts/amcharts4/plugins/wordCloud";
-import image from './word_cloud.png';
 import Header from "../Header/Header";
 
 function WordCloud() {
@@ -57,11 +56,6 @@ function WordCloud() {
       <div id="chartdiv"></div>
       </div>
       
-      {/* <h1>Notes for User Testing:</h1>
-      <p>You are a new user, so you won't have many entries yet. Your graph will one day look like this! When you hover over the image,
-        your mouse will show how many times you have entered that trigger. The word will become bigger the more times you enter that word or phrase.
-      </p>
-      <img src={image} alt="image of a graph" /> */}
     </>
   );
 }

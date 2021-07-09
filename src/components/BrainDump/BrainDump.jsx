@@ -10,7 +10,6 @@ import CategoryItem from "../CategoryItem/CategoryItem";
 // ⬇ What we need from material-ui
 import ColorLensIcon from "@material-ui/icons/ColorLens";
 import IconButton from "@material-ui/core/IconButton";
-import RadioGroup from "@material-ui/core/RadioGroup";
 import { makeStyles, withStyles } from "@material-ui/core/styles";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Radio from "@material-ui/core/Radio";

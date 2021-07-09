@@ -146,57 +146,62 @@ function StickyNote({ item }) {
     dispatch({ type: "EDIT_TASK", payload: taskToEdit });
   };
   const [isShown, setIsShown] = useState(false);
-  
+
   return (
     <>
       {/* <Grid item> */}
-        <div
-          className={`note-box ${item.color_name}`}
-          onMouseEnter={() => setIsShown(true)}
-          onMouseLeave={() => setIsShown(false)}
-        >
-          <section className="note-checkbox">
-            <Checkbox
-              checked={item.isComplete}
-              color="default"
-              onChange={() => handleCheck(item)}
-              inputProps={{ "aria-label": "primary checkbox" }}
-            />
-          </section>
-          <section className="note-body">
-            {item.isComplete ? (
-              <p className="strikethrough font-size">{item.taskName}</p>
-            ) : (
-              <p className="font-size">{item.taskName}</p>
-            )}
-          </section>
-          <section className="note-btns"></section>
-          <section className="delete-note-btn">
-            
-            {isShown && (
-              <>
-              {item.isComplete ? ('') : (
-                <IconButton size="small" variant="outlined" onClick={handleEdit}>
-                <EditIcon />
-              </IconButton>
-              )}
-              
+      <div
+        className={`note-box ${item.color_name}`}
+        onMouseEnter={() => setIsShown(true)}
+        onMouseLeave={() => setIsShown(false)}
+      >
+        <section className="note-checkbox">
+          <Checkbox
+            checked={item.isComplete}
+            color="default"
+            onChange={() => handleCheck(item)}
+            inputProps={{ "aria-label": "primary checkbox" }}
+          />
+        </section>
+        <section className="note-body">
+          {item.isComplete ? (
+            <p className="strikethrough font-size">{item.taskName}</p>
+          ) : (
+            <p className="font-size">{item.taskName}</p>
+          )}
+        </section>
+        <section className="note-btns"></section>
+        <section className="delete-note-btn">
+          {isShown && (
+            <>
               {item.isComplete ? (
-              <IconButton
-                onClick={handleDelete}
-                size="small"
-                variant="outlined"
-                className="btn"
-              >
-                <DeleteIcon />
-              </IconButton>
-            ) : (
-              ''
-            )}
-              </>
-            )}
-          </section>
-        </div>
+                ""
+              ) : (
+                <IconButton
+                  size="small"
+                  variant="outlined"
+                  onClick={handleEdit}
+                >
+                  <EditIcon />
+                </IconButton>
+              )}
+
+              {item.isComplete ? (
+                <IconButton
+                  onClick={handleDelete}
+                  size="small"
+                  variant="outlined"
+                  className="btn"
+                >
+                  <DeleteIcon />
+                </IconButton>
+              ) : (
+                ""
+              )}
+            </>
+          )}
+        </section>
+      </div>
       {/* </Grid> */}
 
       <Dialog
@@ -239,24 +244,6 @@ function StickyNote({ item }) {
                       })
                     }
                   >
-                    <FormControlLabel
-                      value="1"
-                      control={<RedRadio />}
-                      label="NOW"
-                      labelPlacement="top"
-                    />
-                    <FormControlLabel
-                      value="2"
-                      control={<OrangeRadio />}
-                      label="Soon-ish"
-                      labelPlacement="top"
-                    />
-                    <FormControlLabel
-                      value="3"
-                      control={<YellowRadio />}
-                      label="Later"
-                      labelPlacement="top"
-                    />
                     {currentLocation.includes("/braindump") ? (
                       <>
                         <FormControlLabel
@@ -303,7 +290,26 @@ function StickyNote({ item }) {
                         />
                       </>
                     ) : currentLocation.includes("/braindump") ? (
-                      ""
+                      <>
+                        <FormControlLabel
+                          value="1"
+                          control={<RedRadio />}
+                          label="NOW"
+                          labelPlacement="top"
+                        />
+                        <FormControlLabel
+                          value="2"
+                          control={<OrangeRadio />}
+                          label="Soon-ish"
+                          labelPlacement="top"
+                        />
+                        <FormControlLabel
+                          value="3"
+                          control={<YellowRadio />}
+                          label="Later"
+                          labelPlacement="top"
+                        />
+                      </>
                     ) : null}
                   </RadioGroup>
                 </FormControl>

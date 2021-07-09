@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
-import Masonry from 'react-masonry-css'
+import Masonry from "react-masonry-css";
 // ⬇ What Components we need to import
 import Header from "../Header/Header";
 import AddNewTask from "../AddNewTask/AddNewTask";
@@ -36,6 +36,24 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+const RedRadio = withStyles({
+  root: {
+    color: "#e53935",
+  },
+})((props) => <Radio color="default" {...props} />);
+
+const OrangeRadio = withStyles({
+  root: {
+    color: "#f57c00",
+  },
+})((props) => <Radio color="default" {...props} />);
+
+const YellowRadio = withStyles({
+  root: {
+    color: "#fdd835",
+  },
+})((props) => <Radio color="default" {...props} />);
+
 const GreenRadio = withStyles({
   root: {
     color: "#80cbc4",
@@ -50,13 +68,13 @@ const LightGreenRadio = withStyles({
 
 const PurpleRadio = withStyles({
   root: {
-    color: "#b39ddb",
+    color: "#7e57c2",
   },
 })((props) => <Radio color="default" {...props} />);
 
-const BrownRadio = withStyles({
+const TealRadio = withStyles({
   root: {
-    color: "#a1887f",
+    color: "#009688",
   },
 })((props) => <Radio color="default" {...props} />);
 
@@ -66,9 +84,9 @@ const BlueRadio = withStyles({
   },
 })((props) => <Radio color="default" {...props} />);
 
-const DarkPurpleRadio = withStyles({
+const DarkBlueRadio = withStyles({
   root: {
-    color: "#9575cd",
+    color: "#03a9f4",
   },
 })((props) => <Radio color="default" {...props} />);
 
@@ -91,7 +109,6 @@ function BrainDump() {
     setOpen(false);
   };
 
-  console.log(category);
   useEffect(() => {
     dispatch({ type: "FETCH_TASK" });
     dispatch({ type: "FETCH_CATEGORY" });
@@ -113,19 +130,21 @@ function BrainDump() {
     800: 3,
     600: 2,
     400: 1,
-  }
+  };
+
   return (
     <>
       <Header />
 
       <AddNewTask />
       <div className="container important">
-        <h2>SORT HERE(COMING SOON)</h2>
+        {/* <h2>SORT HERE(COMING SOON)</h2>
         <RadioGroup
           row
           aria-label="sort-by-category"
           value={value}
-          onChange={(event) => setValue(event.target.value)}
+          onChange={(event) => setSort(event.target.value)}
+          onClick={handleSort}
         >
           <FormControlLabel
             value="*"
@@ -153,40 +172,44 @@ function BrainDump() {
           />
           <FormControlLabel
             value="7"
-            control={<PurpleRadio />}
+            control={<DarkBlueRadio />}
             label={category[3]?.category}
             labelPlacement="end"
           />
           <FormControlLabel
             value="8"
-            control={<DarkPurpleRadio />}
+            control={<PurpleRadio />}
             label={category[4]?.category}
             labelPlacement="end"
           />
           <FormControlLabel
             value="9"
-            control={<BrownRadio />}
+            control={<TealRadio />}
             label={category[5]?.category}
             labelPlacement="end"
           />
           <FormControlLabel
             value="10"
             control={<GreyRadio />}
-            label={category[6]?.category}
+            label="Blank"
             labelPlacement="end"
           />
           <IconButton aria-label="color-pallete-button" onClick={handleClick}>
             <ColorLensIcon fontSize="large" />
           </IconButton>
-        </RadioGroup>
+        </RadioGroup> */}
+        <IconButton aria-label="color-pallete-button" onClick={handleClick}>
+            <ColorLensIcon fontSize="large" />
+          </IconButton>
       </div>
       <div className={classes.root}>
         <Masonry
-        breakpointCols={breakpoints}
-        className="my-masonry-grid"
-        columnClassName="my-masonry-grid_column">
+          breakpointCols={breakpoints}
+          className="my-masonry-grid"
+          columnClassName="my-masonry-grid_column"
+        >
           {task.map((item) => {
-            if(item.color_id > 3){
+            if (item.color_id > 3) {
               return <StickyNote key={item.id} item={item} />;
             }
           })}
@@ -199,11 +222,14 @@ function BrainDump() {
         aria-labelledby="form-dialog-title"
         className="category-dialogue"
       >
-        <DialogTitle id="form-dialog-title">Custom Categories (Coming Soon!)</DialogTitle>
+        <DialogTitle id="form-dialog-title">
+          Custom Categories
+        </DialogTitle>
         <DialogContent>
           <DialogContentText>
-            Customize your category labels below! If you would like to change the category name, click on the checkbox, type your
-            category name of choice in the text box and click the save button at the bottom.
+            Customize your category labels below! If you would like to change
+            the category name, click on the edit button, type in your category name of
+            choice in the text box and click the save button.
           </DialogContentText>
           <List>
             {category?.map((item) => {

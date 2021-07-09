@@ -6,6 +6,7 @@ import spoonInput from './spoonInput.reducer'
 import triggerInput from './triggerInput.reducer'
 import taskToEdit from './editTask.reducer';
 import category from './category.reducer'
+import sortCategory from './sort.category.reducer'
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -21,6 +22,7 @@ const rootReducer = combineReducers({
   spoonInput, // will contain todays inputs
   triggerInput, // will contain todays inputs
   category, // will contain the categories that the user selects
+  sortCategory,
 });
 
 export default rootReducer;

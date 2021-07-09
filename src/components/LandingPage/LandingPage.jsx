@@ -4,7 +4,7 @@ import "./LandingPage.css";
 
 // CUSTOM COMPONENTS
 import RegisterForm from "../RegisterForm/RegisterForm";
-
+import bee_kind_hexagon from './bee_kind_hexagon.png'
 function LandingPage() {
   const history = useHistory();
 
@@ -46,6 +46,7 @@ function LandingPage() {
           </center>
         </div>
       </div>
+      <img src={bee_kind_hexagon} alt="Image of a honeycomb hexagon with the words Bee Kind written in the middle" className="bee-kind-hexagon"/>
     </div>
   );
 }

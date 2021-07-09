@@ -186,7 +186,9 @@ function BrainDump() {
         className="my-masonry-grid"
         columnClassName="my-masonry-grid_column">
           {task.map((item) => {
-            return <StickyNote key={item.id} item={item} />;
+            if(item.color_id > 3){
+              return <StickyNote key={item.id} item={item} />;
+            }
           })}
         </Masonry>
       </div>

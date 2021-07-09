@@ -33,11 +33,17 @@ function LandingPage() {
             </p>
 
             <p>
-              This app provides one centralized location for all the those
-              bees flying around in your brain - and what makes this app <i>work </i>
-              is that it was not built for the neurotypical brain. No more downloading note apps
+              We've all been there - you get frustrated by all those moving parts, so you
+              download this productivity app, that calender app, that mood tracker app, or buy a new pretty planner. The
+              fundamental flaw with these products is that they were built for the "typical" brain...so we use it for a
+              few days, maybe a week, then forget about it.
+              This app solves that problem by providing one centralized location for all the those
+              bees flying around in your brain.
+               {/* - and what makes this app <i>work </i>
+              is that it was not built for the "typical" brain.  */}
+              {/* No more downloading note apps
               and calendar apps and forgetting which one you used to write this note or that one.
-              No more spending money on planners and organizers that you never use.              
+              No more spending money on planners and organizers that you never use.               */}
             </p>
 
             <p>

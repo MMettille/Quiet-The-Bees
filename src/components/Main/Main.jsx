@@ -22,7 +22,7 @@ function Main() {
   return (
     <>
       <Header />
-      {/* <AddNewTask /> */}
+      <AddNewTask />
 
       <div id="main-container">
       <h2>NOW</h2>

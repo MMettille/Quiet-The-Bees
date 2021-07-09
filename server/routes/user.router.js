@@ -35,9 +35,9 @@ router.post("/register", async (req, res, next) => {
     const colorSix = `INSERT INTO "custom_names" (color_id, category, user_id) VALUES ($1, $2, $3);`;
     await connection.query(colorSix, [6, 'Blue', newUser]);
     const colorSeven = `INSERT INTO "custom_names" (color_id, category, user_id) VALUES ($1, $2, $3);`;
-    await connection.query(colorSeven, [7, 'Purple', newUser]);
+    await connection.query(colorSeven, [7, 'Dark Blue', newUser]);
     const colorEight = `INSERT INTO "custom_names" (color_id, category, user_id) VALUES ($1, $2, $3);`;
-    await connection.query(colorEight, [8, 'Dark Blue', newUser]);
+    await connection.query(colorEight, [8, 'Purple', newUser]);
     const colorNine = `INSERT INTO "custom_names" (color_id, category, user_id) VALUES ($1, $2, $3);`;
     await connection.query(colorNine, [9, 'Teal', newUser]);
     const colorTen = `INSERT INTO "custom_names" (color_id, category, user_id) VALUES ($1, $2, $3);`;

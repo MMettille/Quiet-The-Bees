@@ -45,13 +45,13 @@ const LightGreenRadio = withStyles({
 
 const PurpleRadio = withStyles({
   root: {
-    color: "#b39ddb",
+    color: "#7e57c2",
   },
 })((props) => <Radio color="default" {...props} />);
 
-const BrownRadio = withStyles({
+const TealRadio = withStyles({
   root: {
-    color: "#a1887f",
+    color: "#009688",
   },
 })((props) => <Radio color="default" {...props} />);
 
@@ -61,9 +61,9 @@ const BlueRadio = withStyles({
   },
 })((props) => <Radio color="default" {...props} />);
 
-const DarkPurpleRadio = withStyles({
+const DarkBlueRadio = withStyles({
   root: {
-    color: "#9575cd",
+    color: "#03a9f4",
   },
 })((props) => <Radio color="default" {...props} />);
 
@@ -200,19 +200,19 @@ function AddNewTask() {
                     />
                     <FormControlLabel
                       value="7"
-                      control={<PurpleRadio />}
+                      control={<DarkBlueRadio />}
                       label={category[3]?.category}
                       labelPlacement="top"
                     />
                     <FormControlLabel
                       value="8"
-                      control={<DarkPurpleRadio />}
+                      control={<PurpleRadio />}
                       label={category[4]?.category}
                       labelPlacement="top"
                     />
                     <FormControlLabel
                       value="9"
-                      control={<BrownRadio />}
+                      control={<TealRadio />}
                       label={category[5]?.category}
                       labelPlacement="top"
                     />

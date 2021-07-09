@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 
 import { makeStyles } from "@material-ui/core/styles";
-import image from "./just_bee_you.png";
+import image from "../Images/just_bee_you.png";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
 import List from "@material-ui/core/List";

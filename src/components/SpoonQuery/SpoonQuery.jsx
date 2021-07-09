@@ -4,7 +4,7 @@ import { useHistory } from "react-router-dom";
 
 import { makeStyles } from "@material-ui/core/styles";
 import Slider from "@material-ui/core/Slider";
-import image from "./bee_kind_honeycomb2.png";
+import image from "../Images/bee_kind_honeycomb2.png";
 import imageTwo from "./nlo-infographic-spoon-theory_sm.jpeg";
 import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";

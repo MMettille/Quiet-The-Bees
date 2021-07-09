@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 
-import image from "./bee_path_3.png";
+import image from "../Images/bee_path_3.png";
 import './LoginForm.css';
 
 function LoginForm() {

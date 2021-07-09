@@ -101,7 +101,7 @@ function App() {
             be taken to the component and path supplied. */}
           <ProtectedRoute
             // with authRedirect:
-            // - if logged in, redirects to "/user"
+            // - if logged in, redirects to "/spoon"
             // - else shows LoginPage at /login
             exact
             path="/login"
@@ -111,24 +111,15 @@ function App() {
           </ProtectedRoute>
           <ProtectedRoute
             // with authRedirect:
-            // - if logged in, redirects to "/user"
+            // - if logged in, redirects to "/spoon"
             // - else shows RegisterPage at "/registration"
             exact
             path="/registration"
             authRedirect="/spoon"
           >
-            <RegisterPage />
-          </ProtectedRoute>
-          <ProtectedRoute
-            // with authRedirect:
-            // - if logged in, redirects to "/user"
-            // - else shows LandingPage at "/home"
-            exact
-            path="/spoon"
-            authRedirect="/about"
-          >
             <LoginPage />
           </ProtectedRoute>
+
           {/* If none of the other routes matched, we will show a 404. */}
           <Route>
             <h1>404</h1>

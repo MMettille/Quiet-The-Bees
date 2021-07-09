@@ -2,7 +2,7 @@ import React from "react";
 import LoginForm from "../LoginForm/LoginForm";
 import { useHistory } from "react-router-dom";
 
-import image from "./bee_path_7.png";
+import image from "../Images/bee_path_7.png";
 import "./LoginPage.css";
 
 function LoginPage() {

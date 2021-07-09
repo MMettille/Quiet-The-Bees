@@ -4,7 +4,7 @@ import "./LandingPage.css";
 
 // CUSTOM COMPONENTS
 import RegisterForm from "../RegisterForm/RegisterForm";
-import bee_kind_hexagon from './bee_kind_hexagon.png'
+import bee_kind_hexagon from '../Images/bee_kind_hexagon.png'
 function LandingPage() {
   const history = useHistory();
 

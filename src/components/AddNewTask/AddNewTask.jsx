@@ -92,7 +92,7 @@ function AddNewTask() {
       type: "ADD_NEW_TASK",
       payload: {
         taskName: newTask,
-        priority: value,
+        color_id: value,
       },
     });
     setNewTask("");

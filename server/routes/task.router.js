@@ -9,15 +9,14 @@ const router = express.Router();
 router.get("/", rejectUnauthenticated, (req, res) => {
   // GET route code here
   const query = `
-    SELECT "taskList".id, "taskName", "isComplete", "priority_id", "taskList".user_id, "priority_list".color_name from "priority_list"
+    SELECT "taskList".id, "taskName", "isComplete", "color_id", "taskList".user_id, "color_list".color_name from "color_list"
     JOIN "taskList"
-    ON "priority_list".id = "taskList".priority_id
+    ON "color_list".id = "taskList".color_id
     WHERE "taskList".user_id = $1
     ORDER BY "taskList".id DESC;`;
   pool
     .query(query, [req.user.id])
     .then((result) => {
-      console.log("tasks from the database", result.rows);
       res.send(result.rows);
     })
     .catch((err) => {
@@ -30,15 +29,14 @@ router.get("/category", rejectUnauthenticated, (req, res) => {
   // GET route code here
   const query = `
   SELECT "custom_names".id, "color_id", "category", "isChecked", "color_name"  from "custom_names" 
-  JOIN "priority_list"
-  ON "priority_list".id = "custom_names".color_id
+  JOIN "color_list"
+  ON "color_list".id = "custom_names".color_id
   WHERE "color_id" >= 4 AND "user_id" = $1
   ORDER BY "id" ASC;
     `;
   pool
     .query(query, [req.user.id])
     .then((result) => {
-      console.log("categories from the database", result.rows);
       res.send(result.rows);
     })
     .catch((err) => {
@@ -53,10 +51,10 @@ router.get("/category", rejectUnauthenticated, (req, res) => {
 router.post("/", rejectUnauthenticated, (req, res) => {
   // POST route code here
   console.log(req.body);
-  const insertNewTask = `INSERT INTO "taskList" ("taskName", "priority_id", "user_id")
+  const insertNewTask = `INSERT INTO "taskList" ("taskName", "color_id", "user_id")
         VALUES ($1, $2, $3);`;
   pool
-    .query(insertNewTask, [req.body.taskName, req.body.priority, req.user.id])
+    .query(insertNewTask, [req.body.taskName, req.body.color_id, req.user.id])
     .then((result) => {
       res.sendStatus(201);
     })
@@ -93,11 +91,11 @@ router.put("/category/:id", rejectUnauthenticated, (req, res) => {
  */
  router.put("/:id", rejectUnauthenticated, (req, res) => {
   // Update this single task
-  const sqlText = `UPDATE "taskList" SET "taskName" = $1, "priority_id" = $2, "isComplete" = $3 WHERE id = $4 AND "user_id" = $5;`;
+  const sqlText = `UPDATE "taskList" SET "taskName" = $1, "color_id" = $2, "isComplete" = $3 WHERE id = $4 AND "user_id" = $5;`;
   pool
     .query(sqlText, [
       req.body.taskName,
-      req.body.priority_id,
+      req.body.color_id,
       req.body.isComplete,
       req.body.id,
       req.user.id,
@@ -126,7 +124,6 @@ router.delete("/delete/:id", rejectUnauthenticated, (req, res) => {
     .query(queryText, [taskToDelete, req.user.id])
     // ⬇ Sending back a 'ok' code to the user
     .then((response) => {
-      console.log(`You deleted...`, taskToDelete);
       res.sendStatus(200);
     })
     .catch((err) => {

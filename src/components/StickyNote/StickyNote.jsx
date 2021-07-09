@@ -228,12 +228,12 @@ function StickyNote({ item }) {
                   <RadioGroup
                     aria-label="priorityStatus"
                     row
-                    value={taskToEdit.priority_id}
+                    value={taskToEdit.color_id}
                     onChange={(event) =>
                       dispatch({
                         type: "EDIT_ONCHANGE",
                         payload: {
-                          property: "priority_id",
+                          property: "color_id",
                           value: event.target.value,
                         },
                       })

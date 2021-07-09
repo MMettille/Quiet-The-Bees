@@ -34,7 +34,7 @@ function Main() {
       <div className="minimum-height-container">
       <Grid container spacing={3}>
         {task.map((item) => {
-          if (item.priority_id === 1) {
+          if (item.color_id === 1) {
             return <StickyNote key={item.id} item={item} />;
           }
         })}
@@ -49,7 +49,7 @@ function Main() {
       <h5>HINT: Can you set a due date?</h5>
       <Grid container spacing={3}>
         {task.map((item) => {
-          if (item.priority_id === 2) {
+          if (item.color_id === 2) {
             return <StickyNote key={item.id} item={item} />;
           }
         })}
@@ -59,7 +59,7 @@ function Main() {
       <h5>HINT: Have a lot of spoons today? Tackle these!</h5>
       <Grid container spacing={3}>
         {task.map((item) => {
-          if (item.priority_id === 3) {
+          if (item.color_id === 3) {
             return <StickyNote key={item.id} item={item} />;
           }
         })}

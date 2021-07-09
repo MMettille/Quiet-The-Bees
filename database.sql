@@ -28,19 +28,20 @@ CREATE TABLE "taskList" (
     "id" SERIAL PRIMARY KEY,
     "taskName" VARCHAR(1000),
     "isComplete" boolean DEFAULT false,
-    "priority_id" integer REFERENCES "priority_list",
+    "color_id" integer REFERENCES "color_list",
     "user_id" integer REFERENCES "user"
 );
 
-CREATE TABLE "priority_list" (
+CREATE TABLE "color_list" (
 	"id" SERIAL PRIMARY KEY,
 	"color_name" VARCHAR (255),
 );
 
-create table "priority_task_category" (
-	"id" SERIAL primary key,
-	"user_id" INT REFERENCES "user",
+create table "custom_names" (
+	id serial primary key,
 	"color_id" INT REFERENCES "priority_list",
-	"category_name" VARCHAR (25),
-	"isActive" BOOLEAN DEFAULT TRUE
+	"category" VARCHAR(25) DEFAULT '',
+	"isChecked" BOOLEAN DEFAULT FALSE,
+	"user_id" INT REFERENCES "user"
 );
+

@@ -49,12 +49,19 @@ function WordCloud() {
   return (
     <>
       <Header />
+      <div className="container">
+      <h1>Welcome to Your Word Cloud!</h1>
+      <h5>Hover over each word and you will see how many times you have 
+        entered that trigger. The larger the word, the more times you have
+        entered that word or phrase.</h5>
       <div id="chartdiv"></div>
-      <h1>Notes for User Testing:</h1>
+      </div>
+      
+      {/* <h1>Notes for User Testing:</h1>
       <p>You are a new user, so you won't have many entries yet. Your graph will one day look like this! When you hover over the image,
         your mouse will show how many times you have entered that trigger. The word will become bigger the more times you enter that word or phrase.
       </p>
-      <img src={image} alt="image of a graph" />
+      <img src={image} alt="image of a graph" /> */}
     </>
   );
 }

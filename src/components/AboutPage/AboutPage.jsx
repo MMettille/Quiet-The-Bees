@@ -1,10 +1,7 @@
 import React from 'react';
 import List from '@material-ui/core/List';
 
-// This is one of our simplest components
-// It doesn't have local state,
-// It doesn't dispatch any redux actions or display any part of redux state
-// or even care what the redux state is'
+// ⬇ This component doesn't do much - just plain HTML.
 
 function AboutPage() {
   return (

@@ -1,10 +1,11 @@
+// ⬇ What we need to import for functionality
 import { useDispatch, useSelector } from "react-redux";
 import React, { useEffect, useState } from "react";
-import { withStyles } from "@material-ui/core/styles";
 import { useLocation } from "react-router-dom";
-
+// ⬇ What we need to import for custom styling
 import "./AddNewTask.css";
-
+// ⬇ What we need to import from material-ui for styling
+import { withStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import Radio from "@material-ui/core/Radio";
 import RadioGroup from "@material-ui/core/RadioGroup";
@@ -15,6 +16,7 @@ import TextField from "@material-ui/core/TextField";
 import image from '../Images/bee_path_5.png'
 import imageTwo from '../Images/bee_path_1.png'
 
+// ⬇ The custom Radio Color Buttons
 const RedRadio = withStyles({
   root: {
     color: "#e53935",
@@ -76,23 +78,23 @@ const GreyRadio = withStyles({
 })((props) => <Radio color="default" {...props} />);
 
 function AddNewTask() {
+  // ⬇ What functions we need to use in this component
   const dispatch = useDispatch();
   const location = useLocation();
-
+  const category = useSelector((store) => store.category);
+  // ⬇ Variables we need to declare and use in this component
   const currentLocation = location.pathname;
   const [newTask, setNewTask] = useState("");
   const [value, setValue] = useState(10);
-  const category = useSelector((store) => store.category);
-
+  // ⬇ On page load, fetch the categories from the database
   useEffect(() => {
     dispatch({ type: "FETCH_CATEGORY" });
   }, []);
 
   const handleSubmit = (event) => {
+    // ⬇ Prevent the page from reloading
     event.preventDefault();
-    // if(value === ''){
-    //   setValue = 10
-    // }
+      // ⬇ Dispatch the new task to redux
     dispatch({
       type: "ADD_NEW_TASK",
       payload: {
@@ -100,6 +102,7 @@ function AddNewTask() {
         color_id: value,
       },
     });
+    // ⬇ Reset the newTask to an empty string and the value to 10
     setNewTask("");
     setValue(10);
   };
@@ -149,6 +152,12 @@ function AddNewTask() {
                       value="3"
                       control={<YellowRadio />}
                       label="Later"
+                      labelPlacement="top"
+                    />
+                    <FormControlLabel
+                      value="10"
+                      control={<GreyRadio />}
+                      label="Blank"
                       labelPlacement="top"
                     />
                   </section>

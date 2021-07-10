@@ -67,7 +67,7 @@ router.get('/trigger', (req, res) => {
   });
 
 /**
- * POST route template
+ * POST routes
  */
 router.post('/spoon', (req, res) => {
     // ⬇ This will post the user's spoon into the spoon_input table

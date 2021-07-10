@@ -14,9 +14,9 @@ router.get("/", rejectUnauthenticated, (req, res) => {
   res.send(req.user);
 });
 
-// Handles POST request with new user data
-// The only thing different from this and every other post we've seen
-// is that the password gets encrypted before being inserted
+// ⬇ Handles POST request with new user data
+// ⬇  An async/await function that make a new user and then insert color names for the categories.
+// ⬇ If one query fails, they all do an are rolledback
 router.post("/register", async (req, res, next) => {
   const username = req.body.username;
   const password = encryptLib.encryptPassword(req.body.password);

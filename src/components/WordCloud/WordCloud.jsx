@@ -1,11 +1,13 @@
+// ⬇ What we need to import for functionality
 import React, { useRef, useState, useEffect } from "react";
 import axios from "axios";
-
 import * as am4core from "@amcharts/amcharts4/core";
 import * as am4plugins_wordCloud from "@amcharts/amcharts4/plugins/wordCloud";
+// ⬇ What Components we need to import
 import Header from "../Header/Header";
 
 function WordCloud() {
+  
   useEffect(() => {
     // ⬇ This calls my get request from the server
     getWordCloud();

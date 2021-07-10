@@ -1,3 +1,4 @@
+// ⬇ What we need to import for functionality
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 // ⬇ What we need from material-ui
@@ -10,8 +11,8 @@ import Button from "@material-ui/core/Button";
 function Category({ category }) {
   // ⬇ What functions we need to use in this component
   const dispatch = useDispatch();
-  const taskToEdit = useSelector((store) => store.taskToEdit);
   // ⬇ Variables we need to declare and use in this component
+  const taskToEdit = useSelector((store) => store.taskToEdit);
   const [hidden, setHidden] = useState(false);
   const [disabled, setDisabled] = useState(true)
   const [userInput, setUserInput] = useState('');

@@ -81,11 +81,11 @@ function AddNewTask() {
   // ⬇ What functions we need to use in this component
   const dispatch = useDispatch();
   const location = useLocation();
-  const category = useSelector((store) => store.category);
   // ⬇ Variables we need to declare and use in this component
-  const currentLocation = location.pathname;
+  const category = useSelector((store) => store.category);
   const [newTask, setNewTask] = useState("");
   const [value, setValue] = useState(10);
+  const currentLocation = location.pathname;
   // ⬇ On page load, fetch the categories from the database
   useEffect(() => {
     dispatch({ type: "FETCH_CATEGORY" });

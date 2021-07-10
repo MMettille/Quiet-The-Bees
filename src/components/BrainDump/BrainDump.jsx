@@ -1,3 +1,4 @@
+// ⬇ What we need to import for functionality
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
@@ -99,9 +100,9 @@ function BrainDump() {
   // ⬇ What functions we need to use in this component
   const dispatch = useDispatch();
   const classes = useStyles();
+  // ⬇ Variables we need to declare and use in this component
   const task = useSelector((store) => store.task);
   const category = useSelector((store) => store.category);
-  // ⬇ Variables we need to declare and use in this component
   const [open, setOpen] = useState(false);
   const [newCategory, setNewCategory] = useState({});
 

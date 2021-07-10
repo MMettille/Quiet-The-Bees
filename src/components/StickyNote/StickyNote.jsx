@@ -312,6 +312,12 @@ function StickyNote({ item }) {
                           label="Later"
                           labelPlacement="top"
                         />
+                        <FormControlLabel
+                          value="10"
+                          control={<GreyRadio />}
+                          label={category[6]?.category}
+                          labelPlacement="top"
+                        />
                       </>
                     ) : null}
                   </RadioGroup>

@@ -57,9 +57,11 @@ function Main() {
 
       <div className="container">
         <div className="container">
-        <h2>NOW</h2>
-        <h4>These are the most important tasks.</h4>
-        <h5>HINT: What are the consequences of not completing these things?</h5>
+          <h2>NOW</h2>
+          <h4>These are the most important tasks.</h4>
+          <h5>
+            HINT: What are the consequences of not completing these things?
+          </h5>
           <Masonry
             breakpointCols={breakpoints}
             className="my-masonry-grid"
@@ -71,7 +73,7 @@ function Main() {
               }
             })}
           </Masonry>
-      </div>
+        </div>
         <Grid container className={classes.root} spacing={3}>
           <Grid item xs={6}>
             <h2>Soon-ish</h2>
@@ -109,7 +111,23 @@ function Main() {
             </Masonry>
           </Grid>
         </Grid>
-</div>
+        <div className="container">
+          <h2>TBD</h2>
+          <h4>These tasks still need to be sorted.</h4>
+          <h5>HINT: What are the consequences of not doing these things?</h5>
+          <Masonry
+            breakpointCols={breakpoints}
+            className="my-masonry-grid"
+            columnClassName="my-masonry-grid_column"
+          >
+            {task.map((item) => {
+              if (item.color_id === 10) {
+                return <StickyNote key={item.id} item={item} />;
+              }
+            })}
+          </Masonry>
+        </div>
+      </div>
     </>
   );
 }

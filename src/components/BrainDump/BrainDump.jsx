@@ -14,14 +14,13 @@ import { makeStyles, withStyles } from "@material-ui/core/styles";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Radio from "@material-ui/core/Radio";
 import Dialog from "@material-ui/core/Dialog";
-
 import List from "@material-ui/core/List";
 import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import Button from "@material-ui/core/Button";
-
+// ⬇ Custom styling for material-ui
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
@@ -35,6 +34,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+// ⬇ The custom Radio Color Buttons
 const RedRadio = withStyles({
   root: {
     color: "#e53935",
@@ -96,32 +96,31 @@ const GreyRadio = withStyles({
 })((props) => <Radio color="default" {...props} />);
 
 function BrainDump() {
+  // ⬇ What functions we need to use in this component
   const dispatch = useDispatch();
   const classes = useStyles();
   const task = useSelector((store) => store.task);
   const category = useSelector((store) => store.category);
-  const [value, setValue] = useState(10);
+  // ⬇ Variables we need to declare and use in this component
   const [open, setOpen] = useState(false);
   const [newCategory, setNewCategory] = useState({});
 
-  const handleClose = () => {
-    setOpen(false);
-  };
-
+  // ⬇ On page load, fetch the task and categories from the database
   useEffect(() => {
     dispatch({ type: "FETCH_TASK" });
     dispatch({ type: "FETCH_CATEGORY" });
   }, []);
 
+  // ⬇ Function to close the dialog
+  const handleClose = () => {
+    setOpen(false);
+  };
+  // ⬇ Function to open the dialog
   const handleClick = () => {
     setOpen(true);
   };
 
-  const handleSave = (event) => {
-    event.preventDefault();
-    console.log(newCategory);
-  };
-
+  // ⬇ Breakpoints for the masonry css
   const breakpoints = {
     default: 7,
     1100: 5,

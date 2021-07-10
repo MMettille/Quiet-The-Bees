@@ -1,3 +1,4 @@
+// ⬇ What we need to import for functionality
 import React, { useEffect } from "react";
 import {
   HashRouter as Router,
@@ -5,29 +6,28 @@ import {
   Redirect,
   Switch,
 } from "react-router-dom";
-
+import { useDispatch } from "react-redux";
+// ⬇ Importing the default font for material ui
 import "@fontsource/roboto";
 
-import { useDispatch } from "react-redux";
 
-import Nav from "../Nav/Nav";
-import Footer from "../Footer/Footer";
 
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 
 // ⬇ What Components we need to import
+import "./App.css";
 import AboutPage from "../AboutPage/AboutPage";
 import BrainDump from "../BrainDump/BrainDump";
+import Footer from "../Footer/Footer";
+import LandingPage from '../LandingPage/LandingPage'
 import LoginPage from "../LoginPage/LoginPage";
+import Main from "../Main/Main";
+import Nav from "../Nav/Nav";
 import RegisterPage from "../RegisterPage/RegisterPage";
 import SpoonGraph from "../SpoonGraph/SpoonGraph";
 import SpoonQuery from "../SpoonQuery/SpoonQuery";
-import WordCloud from "../WordCloud/WordCloud";
 import TriggerQuery from "../TriggerQuery/TriggerQuery";
-import Main from "../Main/Main";
-import LandingPage from '../LandingPage/LandingPage'
-
-import "./App.css";
+import WordCloud from "../WordCloud/WordCloud";
 
 function App() {
   const dispatch = useDispatch();
@@ -43,7 +43,7 @@ function App() {
       <div id="content-wrap">
         <Nav />
         <Switch>
-          {/* Visiting localhost:3000 will redirect to localhost:3000/home */}
+          {/* Visiting localhost:3000 will redirect to localhost:3000/landingpage */}
           <Redirect exact from="/" to="/landingpage" />
 
           {/* Visiting localhost:3000/about will show the about page. */}
@@ -63,52 +63,56 @@ function App() {
           >
             <LandingPage />
           </Route>
+
           <ProtectedRoute
-            // logged in shows SpoonGraph else shows LoginPage
+            // logged in shows SpoonGraph else shows LandingPage
             exact
             path="/spoongraph"
           >
             <SpoonGraph />
           </ProtectedRoute>
+
           <ProtectedRoute
-            // logged in shows UserPage else shows LoginPage
+            // logged in shows UserPage else shows LandingPage
             exact
             path="/spoon"
           >
             <SpoonQuery />
           </ProtectedRoute>
-          '
+          
           <ProtectedRoute
-            // logged in shows UserPage else shows LoginPage
+            // logged in shows UserPage else shows LandingPage
             exact
             path="/wordCloud"
           >
             <WordCloud />
           </ProtectedRoute>
+
           <ProtectedRoute
-            // logged in shows UserPage else shows LoginPage
+            // logged in shows UserPage else shows LandingPage
             exact
             path="/trigger"
           >
             <TriggerQuery />
           </ProtectedRoute>
+
           <ProtectedRoute
-            // logged in shows UserPage else shows LoginPage
+            // logged in shows UserPage else shows LandingPage
             exact
             path="/main"
           >
             <Main />
           </ProtectedRoute>
+
           <ProtectedRoute
-            // logged in shows UserPage else shows LoginPage
+            // logged in shows UserPage else shows LandingPage
             exact
             path="/braindump"
           >
             <BrainDump />
           </ProtectedRoute>
-          {/* When a value is supplied for the authRedirect prop the user will
-            be redirected to the path supplied when logged in, otherwise they will
-            be taken to the component and path supplied. */}
+
+
           <ProtectedRoute
             // with authRedirect:
             // - if logged in, redirects to "/spoon"
@@ -119,6 +123,7 @@ function App() {
           >
             <LoginPage />
           </ProtectedRoute>
+          
           <ProtectedRoute
             // with authRedirect:
             // - if logged in, redirects to "/spoon"

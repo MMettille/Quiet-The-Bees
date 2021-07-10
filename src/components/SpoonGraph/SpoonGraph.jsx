@@ -7,6 +7,7 @@ import axios from "axios";
 // ⬇ What Components we need to import
 import Header from "../Header/Header";
 import "./SpoonGraph.css";
+import Fab from '../Fab/Fab';
 
 function SpoonGraph() {
   // ⬇ Creating the chart
@@ -67,6 +68,8 @@ function SpoonGraph() {
       });
   };
 
+  
+
   return (
     <>
       <Header />
@@ -75,6 +78,7 @@ function SpoonGraph() {
         <h5>Here you will see how your spoons change throughout time.</h5>
         <div id="chartdiv"></div>
       </div>
+      <Fab />
     </>
   );
 }

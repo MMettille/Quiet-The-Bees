@@ -7,7 +7,7 @@ import * as am4plugins_wordCloud from "@amcharts/amcharts4/plugins/wordCloud";
 import Header from "../Header/Header";
 
 function WordCloud() {
-  
+
   useEffect(() => {
     // ⬇ This calls my get request from the server
     getWordCloud();
@@ -19,7 +19,6 @@ function WordCloud() {
       .then((response) => {
         const words = response.data;
         console.log(words);
-
         // ⬇ This creates the kind of chart that I would like from am4charts
         const x = am4core.create("chartdiv", am4plugins_wordCloud.WordCloud);
         // ⬇ Creating the series for a word cloud

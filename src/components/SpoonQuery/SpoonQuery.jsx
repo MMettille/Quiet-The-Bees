@@ -1,7 +1,8 @@
+// ⬇ What we need to import for functionality
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
-
+// ⬇ What we need from material-ui
 import { makeStyles } from "@material-ui/core/styles";
 import Slider from "@material-ui/core/Slider";
 import image from "../Images/bee_kind_honeycomb2.png";
@@ -12,7 +13,7 @@ import Dialog from "@material-ui/core/Dialog";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText"
 import DialogActions from '@material-ui/core/DialogActions';
-
+// ⬇ Custom styling for material-ui
 const useStyles = makeStyles((theme) => ({
   modal: {
     display: "flex",
@@ -35,7 +36,7 @@ const useStyles = makeStyles((theme) => ({
     height: theme.spacing(3),
   },
 }));
-
+// ⬇ The marks and values for the slider button
 const marks = [
   {
     value: 0,
@@ -90,23 +91,26 @@ function SpoonQuery() {
     }
   }, [open]);
 
-  const history = useHistory("");
+  // ⬇ What functions we need to use in this component
+  const history = useHistory();
   const dispatch = useDispatch();
   const classes = useStyles();
+  // ⬇ Variables we need to declare and use in this component
   const [open, setOpen] = useState(false);
   const [spoonInput, setSpoonInput] = useState(null);
   const [scroll, setScroll] = React.useState("paper");
+
+  // ⬇ Closes the Dialog
   const handleClose = () => {
     setOpen(false);
   };
-
+  // ⬇ Opens the Dialog
   const handleOpen = (event) => {
     setOpen(true);
   };
-
+  // ⬇ Sends the spoon the redux-saga and to the database
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(`User's Spoon Input is: `, spoonInput);
     dispatch({
       type: "ADD_SPOON_INPUT",
       payload: {

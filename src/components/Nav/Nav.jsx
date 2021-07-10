@@ -7,6 +7,7 @@ import { useSelector } from "react-redux";
 import image from "../Images/Bee_5.png";
 
 function Nav() {
+  // ⬇ Variables we need to declare and use in this component
   const user = useSelector((store) => store.user);
 
   let loginLinkData = {

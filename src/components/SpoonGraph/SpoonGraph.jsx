@@ -1,10 +1,12 @@
+// ⬇ What we need to import for functionality
 import * as am4core from "@amcharts/amcharts4/core";
 import * as am4charts from "@amcharts/amcharts4/charts";
-import "./SpoonGraph.css";
+
 import React, { useRef, useState, useEffect } from "react";
 import axios from "axios";
-
+// ⬇ What Components we need to import
 import Header from "../Header/Header";
+import "./SpoonGraph.css";
 
 function SpoonGraph() {
   // ⬇ Creating the chart
@@ -69,9 +71,9 @@ function SpoonGraph() {
     <>
       <Header />
       <div className="container">
-      <h1>Welcome to Your Spoon Graph!</h1>
-      <h5>Here you will see how your spoons change throughout time.</h5>
-      <div id="chartdiv"></div>
+        <h1>Welcome to Your Spoon Graph!</h1>
+        <h5>Here you will see how your spoons change throughout time.</h5>
+        <div id="chartdiv"></div>
       </div>
     </>
   );

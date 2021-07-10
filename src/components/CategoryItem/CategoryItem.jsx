@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-
 // ⬇ What we need from material-ui
-
 import ListItem from "@material-ui/core/ListItem";
 import Checkbox from "@material-ui/core/Checkbox";
 import RadioButtonUncheckedIcon from "@material-ui/icons/RadioButtonUnchecked";
@@ -10,15 +8,16 @@ import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 
 function Category({ category }) {
-  console.log(category)
+  // ⬇ What functions we need to use in this component
   const dispatch = useDispatch();
-  
+  const taskToEdit = useSelector((store) => store.taskToEdit);
+  // ⬇ Variables we need to declare and use in this component
   const [hidden, setHidden] = useState(false);
   const [disabled, setDisabled] = useState(true)
-  const taskToEdit = useSelector((store) => store.taskToEdit);
-  
+  const [userInput, setUserInput] = useState('');
+
+  // ⬇ Function to set which category is going to be edited and sent to redux
   const handleEdit = () => {
-    console.log('Task to edit:', category)
     setHidden(true)
     dispatch({type: 'TASK_TO_EDIT', payload: category})
     setDisabled(false)
@@ -33,7 +32,7 @@ function Category({ category }) {
     });
   }
 
-  // ⬇ 
+  // ⬇  Dispatches the changes to redux-saga and the database
   const handleSave = (event) => {
     event.preventDefault();
     // ⬇ PUT REQUEST to /task/:id
@@ -41,8 +40,6 @@ function Category({ category }) {
     // ⬇ Close the Modal 
     setDisabled(true)
   }
-
-  const [userInput, setUserInput] = useState('');
 
   return (
     <>

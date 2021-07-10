@@ -7,7 +7,7 @@ const router = express.Router();
  * GET routes
  */
 router.get("/", rejectUnauthenticated, (req, res) => {
-  // GET route code here
+  // ⬇ This will grab everything we need to start displaying tasks
   const query = `
     SELECT "taskList".id, "taskName", "isComplete", "color_id", "taskList".user_id, "color_list".color_name from "color_list"
     JOIN "taskList"
@@ -26,7 +26,7 @@ router.get("/", rejectUnauthenticated, (req, res) => {
 });
 
 router.get("/category", rejectUnauthenticated, (req, res) => {
-  // GET route code here
+  // ⬇ This will update the category in question
   const query = `
   SELECT "custom_names".id, "color_id", "category", "isChecked", "color_name"  from "custom_names" 
   JOIN "color_list"
@@ -49,8 +49,7 @@ router.get("/category", rejectUnauthenticated, (req, res) => {
  * POST route
  */
 router.post("/", rejectUnauthenticated, (req, res) => {
-  // POST route code here
-  console.log(req.body);
+  // ⬇ This will post a task into the taskList table
   const insertNewTask = `INSERT INTO "taskList" ("taskName", "color_id", "user_id")
         VALUES ($1, $2, $3);`;
   pool
@@ -65,10 +64,10 @@ router.post("/", rejectUnauthenticated, (req, res) => {
 });
 
 /**
- * PUT route
+ * PUT routes
  */
 router.put("/category/:id", rejectUnauthenticated, (req, res) => {
-  // Update this single task
+  // ⬇ This will update this single task
   const sqlText = `UPDATE "custom_names" SET "category" = $1 WHERE id = $2 AND "user_id" = $3;`;
   pool
     .query(sqlText, [
@@ -90,7 +89,7 @@ router.put("/category/:id", rejectUnauthenticated, (req, res) => {
  * PUT route
  */
  router.put("/:id", rejectUnauthenticated, (req, res) => {
-  // Update this single task
+  // ⬇ This will update this single task
   const sqlText = `UPDATE "taskList" SET "taskName" = $1, "color_id" = $2, "isComplete" = $3 WHERE id = $4 AND "user_id" = $5;`;
   pool
     .query(sqlText, [
@@ -111,7 +110,7 @@ router.put("/category/:id", rejectUnauthenticated, (req, res) => {
 });
 
 /**
- * DELETE route template
+ * DELETE route
  */
 router.delete("/delete/:id", rejectUnauthenticated, (req, res) => {
   // ⬇ This will grab the id of the task that we would like to delete

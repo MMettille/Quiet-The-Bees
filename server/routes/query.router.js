@@ -1,15 +1,14 @@
+const { Table } = require('@material-ui/core');
+const { SmsFailedSharp } = require('@material-ui/icons');
 const express = require('express');
 const pool = require('../modules/pool');
 const router = express.Router();
 
 /**
- * GET route template
+ * GET routes
  */
-
-// CANNOT SEND A DATE ON THE BODY
 router.get('/spoon', (req, res) => {
-    // GET route code here
-    console.log('date from /spoon get request', req.query.q)
+    // ⬇ This will get the spoon input by todays date.
     const sqlText = `
         SELECT "spoon_input".spoon FROM "spoon_input"
         WHERE "spoon_input".user_id = $1
@@ -23,7 +22,7 @@ router.get('/spoon', (req, res) => {
 });
 
 router.get('/spoongraph', (req, res) => {
-    // GET route code here
+    // ⬇ This will get the data for the spoon graph
     const sqlText = `
         SELECT "spoon_input".spoon, "spoon_input".date FROM "spoon_input"
         WHERE "spoon_input".user_id = $1
@@ -37,7 +36,7 @@ router.get('/spoongraph', (req, res) => {
 });
 
 router.get('/wordcloud', (req, res) => {
-    // GET route code here
+    // ⬇ This will get the data for the word cloud
     const sqlText = `
         SELECT trigger AS tag,
         COUNT(trigger) AS weight
@@ -53,7 +52,7 @@ router.get('/wordcloud', (req, res) => {
 });
 
 router.get('/trigger', (req, res) => {
-    // GET route code here
+    // ⬇ This will get the trigger input(s) by todays date.
     console.log('date from /trigger get request', req.query.q)
     const sqlText = `
         SELECT "trigger_input".trigger FROM "trigger_input"
@@ -71,9 +70,7 @@ router.get('/trigger', (req, res) => {
  * POST route template
  */
 router.post('/spoon', (req, res) => {
-    // POST route code here
-    console.log(req.body)
-    console.log(req.body.spoon)
+    // ⬇ This will post the user's spoon into the spoon_input table
     const insertSpoonQuery = `
         INSERT INTO "spoon_input" ("spoon", "user_id")
         VALUES ($1, $2)`;
@@ -86,7 +83,8 @@ router.post('/spoon', (req, res) => {
 });
 
 router.post('/trigger', async (req, res) => {
-    // POST route code here
+    // ⬇ This was a really fun one to make! An async/await function that will loop through our array of
+    // triggers and inset each into the trigger input Table. If one query fails, they all do an are rolledback
     const array = req.body;
     const connection = await pool.connect();
     try {

@@ -5,7 +5,7 @@ import * as am4core from "@amcharts/amcharts4/core";
 import * as am4plugins_wordCloud from "@amcharts/amcharts4/plugins/wordCloud";
 // ⬇ What Components we need to import
 import Header from "../Header/Header";
-
+import Fab from '../Fab/Fab';
 function WordCloud() {
 
   useEffect(() => {
@@ -56,7 +56,7 @@ function WordCloud() {
         entered that word or phrase.</h5>
       <div id="chartdiv"></div>
       </div>
-      
+      <Fab />
     </>
   );
 }

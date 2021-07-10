@@ -8,6 +8,7 @@ import Header from "../Header/Header";
 import AddNewTask from "../AddNewTask/AddNewTask";
 import StickyNote from "../StickyNote/StickyNote";
 import CategoryItem from "../CategoryItem/CategoryItem";
+import Fab from '../Fab/Fab';
 // ⬇ What we need from material-ui
 import ColorLensIcon from "@material-ui/icons/ColorLens";
 import IconButton from "@material-ui/core/IconButton";
@@ -241,6 +242,7 @@ function BrainDump() {
           </Button>
         </DialogActions>
       </Dialog>
+      <Fab />
     </>
   );
 }

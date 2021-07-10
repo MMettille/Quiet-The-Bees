@@ -1,11 +1,18 @@
 // ⬇ What we need to import for functionality
-import React from "react";
+import React, { useState } from "react";
 // ⬇ What we need from material-ui
 import { makeStyles } from "@material-ui/core/styles";
 import Fab from "@material-ui/core/Fab";
 import AddIcon from "@material-ui/icons/Add";
 import clsx from "clsx";
 import { green } from "@material-ui/core/colors";
+import Dialog from "@material-ui/core/Dialog";
+import DialogContent from "@material-ui/core/DialogContent";
+import DialogContentText from "@material-ui/core/DialogContentText"
+import DialogActions from '@material-ui/core/DialogActions';
+import Button from "@material-ui/core/Button";
+
+import AddNewTask from "../AddNewTask/AddNewTask";
 // ⬇ Custom styling for material-ui
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -15,8 +22,8 @@ const useStyles = makeStyles((theme) => ({
   },
   fab: {
     position: "fixed",
-    bottom: theme.spacing(2),
-    right: theme.spacing(2),
+    bottom: theme.spacing(3),
+    right: theme.spacing(3),
   },
   fabGreen: {
     color: theme.palette.common.white,
@@ -28,6 +35,8 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function Footer() {
+  // ⬇ Variables we need to declare and use in this component
+  const [open, setOpen] = useState(false);
   const classes = useStyles();
   const fabs = {
     color: "inherit",
@@ -36,8 +45,14 @@ function Footer() {
     label: "Expand",
   };
 
+  // ⬇ Function to close the dialog
+  const handleClose = () => {
+    setOpen(false);
+  };
+  // ⬇ Function to open the dialog
   const handleClick = (event) => {
     event.preventDefault();
+    setOpen(true);
     console.log("clicked");
   };
 
@@ -53,6 +68,17 @@ function Footer() {
           {fabs.icon}
         </Fab>
       </div>
+      <Dialog
+        open={open}
+        onClose={handleClose}
+      >
+        <DialogContent dividers={scroll === "paper"}>
+          <AddNewTask />
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleClose}>Close</Button>
+        </DialogActions>
+      </Dialog>
     </>
   );
 }

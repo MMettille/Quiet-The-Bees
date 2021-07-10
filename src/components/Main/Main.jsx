@@ -8,6 +8,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import Header from "../Header/Header";
 import AddNewTask from "../AddNewTask/AddNewTask";
 import StickyNote from "../StickyNote/StickyNote";
+import Fab from '../Fab/Fab';
 // ⬇ Custom styling for material-ui
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -128,6 +129,7 @@ function Main() {
           </Masonry>
         </div>
       </div>
+      <Fab />
     </>
   );
 }

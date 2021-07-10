@@ -1,6 +1,6 @@
+// ⬇ What we need to import for functionality
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-
 // ⬇ What Components we need to import
 import "./StickyNote.css";
 // ⬇ What we need from material ui
@@ -20,7 +20,7 @@ import { useLocation } from "react-router-dom";
 import DeleteIcon from "@material-ui/icons/Delete";
 import IconButton from "@material-ui/core/IconButton";
 import EditIcon from "@material-ui/icons/Edit";
-
+// ⬇ Custom styling for material-ui
 const useStyles = makeStyles((theme) => ({
   modal: {
     display: "flex",
@@ -28,7 +28,7 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: "center",
   },
 }));
-
+// ⬇ The custom Radio Color Buttons
 const RedRadio = withStyles({
   root: {
     color: "#e53935",
@@ -90,20 +90,23 @@ const GreyRadio = withStyles({
 })((props) => <Radio color="default" {...props} />);
 
 function StickyNote({ item }) {
-  // ⬇ Declaring the functions we want to use.
+  // ⬇ What functions we need to use in this component
   const classes = useStyles();
   const dispatch = useDispatch();
-  const [open, setOpen] = useState(false);
+  const location = useLocation();
+  // ⬇ Variables we need to declare and use in this component
   const taskToEdit = useSelector((store) => store.taskToEdit);
   const category = useSelector((store) => store.category);
-  const location = useLocation();
-
+  const [open, setOpen] = useState(false);
   const currentLocation = location.pathname;
-  // ⬇ Opens and closes the modal
+  const [isShown, setIsShown] = useState(false);
+
+  // ⬇ Opens and closes the Dialog
   const handleClose = () => {
     setOpen(false);
   };
 
+  // ⬇ On page load, fetch the categories from the database
   useEffect(() => {
     dispatch({ type: "FETCH_CATEGORY" });
   }, []);
@@ -123,20 +126,17 @@ function StickyNote({ item }) {
     });
   };
 
-  // ⬇
+  // ⬇ Send the changes to redux saga and to the database
   const handleSubmit = (event) => {
     event.preventDefault();
     // ⬇ PUT REQUEST to /task/:id
     dispatch({ type: "EDIT_TASK", payload: taskToEdit });
-    // ⬇ Close the Modal
+    // ⬇ Close the Dialog
     setOpen(false);
   };
 
-  const handleDelete = (event) => {
-    event.preventDefault();
-    dispatch({ type: "DELETE_TASK", payload: item });
-  };
-
+  // ⬇ Selects the task, sends that to redux, changes the isComplete status,
+  // and sends that to redux saga and to the database
   const handleCheck = (item) => {
     dispatch({ type: "TASK_TO_EDIT", payload: item });
     dispatch({
@@ -145,11 +145,15 @@ function StickyNote({ item }) {
     });
     dispatch({ type: "EDIT_TASK", payload: taskToEdit });
   };
-  const [isShown, setIsShown] = useState(false);
 
+  // ⬇ Send the to-be-deleted task to the redux saga and to the database for deletion
+  const handleDelete = (event) => {
+    event.preventDefault();
+    dispatch({ type: "DELETE_TASK", payload: item });
+  };
+  
   return (
     <>
-      {/* <Grid item> */}
       <div
         className={`note-box ${item.color_name}`}
         onMouseEnter={() => setIsShown(true)}
@@ -202,7 +206,6 @@ function StickyNote({ item }) {
           )}
         </section>
       </div>
-      {/* </Grid> */}
 
       <Dialog
         aria-labelledby="edit-dialog"

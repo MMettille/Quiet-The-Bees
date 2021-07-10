@@ -1,14 +1,14 @@
+// ⬇ What we need to import for functionality
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Masonry from "react-masonry-css";
 import Grid from "@material-ui/core/Grid";
 import { makeStyles } from "@material-ui/core/styles";
-
 // ⬇ What Components we need to import
 import Header from "../Header/Header";
 import AddNewTask from "../AddNewTask/AddNewTask";
 import StickyNote from "../StickyNote/StickyNote";
-
+// ⬇ Custom styling for material-ui
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
@@ -21,15 +21,20 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(2),
   },
 }));
+
 function Main() {
+  // ⬇ What functions we need to use in this component
   const classes = useStyles();
   const dispatch = useDispatch();
+  // ⬇ Variables we need to declare and use in this component
   const task = useSelector((store) => store.task);
 
+  // ⬇ On page load, fetch the tasks from the database
   useEffect(() => {
     dispatch({ type: "FETCH_TASK" });
   }, []);
 
+  // ⬇ Breakpoints for masonry css on the /braindump page
   const breakpoints = {
     default: 7,
     1100: 5,
@@ -38,6 +43,7 @@ function Main() {
     600: 2,
     400: 1,
   };
+  // ⬇ Breakpoints for masonry css on the /main Page
   const MainBreakpoints = {
     default: 3,
     1200: 2,

@@ -121,7 +121,7 @@ function BrainDump() {
     setOpen(true);
   };
 
-  // ⬇ Breakpoints for the masonry css
+  // ⬇ Breakpoints for masonry css
   const breakpoints = {
     default: 7,
     1100: 5,

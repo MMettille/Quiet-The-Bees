@@ -200,7 +200,6 @@ function BrainDump() {
         <IconButton className="custom_category_btn" aria-label="color-pallete-button" onClick={handleClick}>
             <ColorLensIcon fontSize="large" />
           </IconButton>
-      {/* </div> */}
       <div className={classes.root}>
         <Masonry
           breakpointCols={breakpoints}

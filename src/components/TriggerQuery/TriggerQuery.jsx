@@ -1,8 +1,8 @@
+// ⬇ What we need to import for functionality
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
-
-import { makeStyles } from "@material-ui/core/styles";
+// ⬇ What we need from material-ui
 import image from "../Images/just_bee_you.png";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
@@ -16,35 +16,35 @@ import DialogContentText from "@material-ui/core/DialogContentText"
 import DialogActions from '@material-ui/core/DialogActions';
 
 function TriggerQuery() {
-  
-  const history = useHistory("");
+  // ⬇ What functions we need to use in this component
+  const history = useHistory();
   const dispatch = useDispatch();
+  // ⬇ Variables we need to declare and use in this component
   const [open, setOpen] = useState(false);
   const [userInput, setUserInput] = useState([{ trigger: null }]);
-
+  // ⬇ Function to close the dialog
   const handleClose = () => {
     setOpen(false);
   };
-
+  // ⬇ Function to open the dialog
   const handleOpen = () => {
     setOpen(true);
   };
-
+  // ⬇ Will add a new object to our array
   const handleAdd = () => {
     const trigger = [...userInput];
     trigger.push({ trigger: null });
     setUserInput(trigger);
   };
-
+  // ⬇ Will change that specific iteration with the changes
   const handleChange = (i, event) => {
     const trigger = [...userInput];
     trigger[i].trigger = event.target.value;
     setUserInput(trigger);
   };
-
+  // ⬇ Will submit the changes to redux-saga and to the database
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(`User's Trigger Input is: `, userInput);
     dispatch({ type: "ADD_TRIGGER_INPUT", payload: userInput });
     // ⬇ Resets the value to 0
     setUserInput([{ trigger: null }]);

@@ -112,7 +112,7 @@ function AddNewTask() {
     <img className="image3" src={image} />
       {currentLocation.includes("/main" ) ? (
         <div className="main-add-box">
-          <h5>What Do You Need to Do Today?</h5>
+          <h4>What Do You Need to Do Today?</h4>
           <form onSubmit={handleSubmit}>
             <section className="add-body">
               <TextField
@@ -128,7 +128,7 @@ function AddNewTask() {
 
             
               <FormControl component="fieldset">
-                <h5>When Do You Have to Do It?</h5>
+                <h4>When Do You Have to Do It?</h4>
                 <RadioGroup
                   row
                   aria-label="priorityStatus"

@@ -224,26 +224,24 @@ function StickyNote({ item }) {
         BackdropProps={{
           timeout: 500,
         }}
-        
       >
         <DialogContent dividers={scroll === "paper"} >
         <img className="beeThree" src={image} />
           <div className="workspoon-add-box">
-            <h2>Update Task Here:</h2>
+            <h4>Update Task Here:</h4>
             <form onSubmit={handleSubmit}>
-              <section className="add-body">
+              <section className="edit-body">
                 <TextField
                   type="text"
                   multiline
+                  fullWidth
                   variant="outlined"
                   value={taskToEdit.taskName}
                   onChange={(event) => handleChange(event)}
                 />
               </section>
-              <section >
-                <FormControl component="fieldset">
-                  <h5>Update the Category Here:</h5>
-                  
+              <section>
+                <FormControl component="fieldset">                  
                   <RadioGroup
                     aria-label="priorityStatus"
                     row
@@ -258,75 +256,73 @@ function StickyNote({ item }) {
                       })
                     }
                   >
-                    <section>
-                      <FormControlLabel
-                          value="1"
-                          control={<RedRadio />}
-                          label="NOW"
-                          labelPlacement="top"
-                        />
-                        <FormControlLabel
-                          value="2"
-                          control={<OrangeRadio />}
-                          label="Soon-ish"
-                          labelPlacement="top"
-                        />
-                        <FormControlLabel
-                          value="3"
-                          control={<YellowRadio />}
-                          label="Later"
-                          labelPlacement="top"
-                        />
-                    </section>
-                    <section>
-                        <FormControlLabel
-                          value="4"
-                          control={<LightGreenRadio />}
-                          label={category[0]?.category}
-                          labelPlacement="top"
-                        />
-                        <FormControlLabel
-                          value="5"
-                          control={<GreenRadio />}
-                          label={category[1]?.category}
-                          labelPlacement="top"
-                        />
-                        <FormControlLabel
-                          value="6"
-                          control={<BlueRadio />}
-                          label={category[2]?.category}
-                          labelPlacement="top"
-                        />
-                        <FormControlLabel
-                          value="7"
-                          control={<DarkBlueRadio />}
-                          label={category[3]?.category}
-                          labelPlacement="top"
-                        />
-                        <FormControlLabel
-                          value="8"
-                          control={<PurpleRadio />}
-                          label={category[4]?.category}
-                          labelPlacement="top"
-                        />
-                        <FormControlLabel
-                          value="9"
-                          control={<TealRadio />}
-                          label={category[5]?.category}
-                          labelPlacement="top"
-                        />
-                        <FormControlLabel
-                          value="10"
-                          control={<GreyRadio />}
-                          label="Blank"
-                          labelPlacement="top"
-                        />Î
-                      </section>
-                     
+                      <section>
+                      <h4>Update Category Here:</h4>
+                    <FormControlLabel
+                      value="1"
+                      control={<RedRadio />}
+                      label="NOW"
+                      labelPlacement="top"
+                    />
+                    <FormControlLabel
+                      value="2"
+                      control={<OrangeRadio />}
+                      label="Soon-ish"
+                      labelPlacement="top"
+                    />
+                    <FormControlLabel
+                      value="3"
+                      control={<YellowRadio />}
+                      label="Later"
+                      labelPlacement="top"
+                    />
+                    <FormControlLabel
+                      value="4"
+                      control={<LightGreenRadio />}
+                      label={category[0]?.category}
+                      labelPlacement="top"
+                    />
+                    <FormControlLabel
+                      value="5"
+                      control={<GreenRadio />}
+                      label={category[1]?.category}
+                      labelPlacement="top"
+                    />
+                    <FormControlLabel
+                      value="6"
+                      control={<BlueRadio />}
+                      label={category[2]?.category}
+                      labelPlacement="top"
+                    />
+                    <FormControlLabel
+                      value="7"
+                      control={<DarkBlueRadio />}
+                      label={category[3]?.category}
+                      labelPlacement="top"
+                    />
+                    <FormControlLabel
+                      value="8"
+                      control={<PurpleRadio />}
+                      label={category[4]?.category}
+                      labelPlacement="top"
+                    />
+                    <FormControlLabel
+                      value="9"
+                      control={<TealRadio />}
+                      label={category[5]?.category}
+                      labelPlacement="top"
+                    />
+                    <FormControlLabel
+                      value="10"
+                      control={<GreyRadio />}
+                      label="Blank"
+                      labelPlacement="top"
+                    />
+                  </section>
                   </RadioGroup>
                 </FormControl>
               </section>
-              <section className="add-btn">
+              <section className="update-btn">
                 <Button variant="outlined" type="submit" size="small">
                   Update Note
                 </Button>

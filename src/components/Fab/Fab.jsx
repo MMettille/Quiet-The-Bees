@@ -168,7 +168,7 @@ function FabBtn() {
         </Fab>
       </div>
       
-      <Dialog open={open} onClose={handleClose}>
+      <Dialog open={open} onClose={handleClose} >
         <DialogContent dividers={scroll === "paper"}>
         <img className="beeThree" src={image} /> 
           <div className="workspoon-add-box">

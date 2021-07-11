@@ -14,6 +14,10 @@
 rgba(33,33,33,2);
 }
 
+.update-btn{
+    text-align: right;
+    margin-top: 10px;
+}
 .strikethrough{
     text-decoration: line-through;
 }
@@ -31,11 +35,19 @@ rgba(33,33,33,2);
     text-align: right;
     min-height: 40px;
 }
+.edit-body{
+    max-width: 80%;
+    margin: auto;
+    text-align: center;
+}
 .note-body{
     min-height: 40px;
     vertical-align: center;
 }
-
+.center-radio{
+    width: 40%;
+    margin: auto;
+}
 /* Style your items */
 .my-masonry-grid_column > note-box { /* change div to reference your elements you put in <Masonry> */
     background: grey;

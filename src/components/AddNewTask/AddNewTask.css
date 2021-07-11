@@ -24,7 +24,7 @@
 }
 
 .workspoon-add-box{
-    max-width: 85%;
+    max-width: 90%;
     min-height: 200px;
     max-height: 500px;
     padding: 10px;
@@ -40,7 +40,7 @@
     padding-top: 10px;
     min-height: 50px;
 }
- 
+
 .add-btn {
     text-align: right;
     min-height: 40px;

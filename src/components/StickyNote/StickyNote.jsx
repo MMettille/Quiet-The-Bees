@@ -223,13 +223,12 @@ function StickyNote({ item }) {
         }}
         
       >
-        
-        <img className="beeThree" src={image} /> 
-        <DialogContent />
+        <DialogContent dividers={scroll === "paper"} >
+        <img className="beeThree" src={image} />
           <div className="workspoon-add-box">
-            <h2>Update Task Here</h2>
+            <h2>Update Task Here:</h2>
             <form onSubmit={handleSubmit}>
-              <section className="note-body">
+              <section className="add-body">
                 <TextField
                   type="text"
                   multiline
@@ -238,8 +237,9 @@ function StickyNote({ item }) {
                   onChange={(event) => handleChange(event)}
                 />
               </section>
-              <section className="note-radio-group">
+              <section >
                 <FormControl component="fieldset">
+                  <h5>Update the Category Here:</h5>
                   <RadioGroup
                     aria-label="priorityStatus"
                     row
@@ -254,8 +254,31 @@ function StickyNote({ item }) {
                       })
                     }
                   >
-                    {currentLocation.includes("/braindump") ? (
-                      <>
+                    <section>
+                      <FormControlLabel
+                          value="1"
+                          control={<RedRadio />}
+                          label="NOW"
+                          labelPlacement="top"
+                        />
+                        <FormControlLabel
+                          value="2"
+                          control={<OrangeRadio />}
+                          label="Soon-ish"
+                          labelPlacement="top"
+                        />
+                        <FormControlLabel
+                          value="3"
+                          control={<YellowRadio />}
+                          label="Later"
+                          labelPlacement="top"
+                        />
+                        <FormControlLabel
+                          value="10"
+                          control={<GreyRadio />}
+                          label={category[6]?.category}
+                          labelPlacement="top"
+                        />
                         <FormControlLabel
                           value="4"
                           control={<LightGreenRadio />}
@@ -298,35 +321,7 @@ function StickyNote({ item }) {
                           label="Blank"
                           labelPlacement="top"
                         />
-                      </>
-                    ) : currentLocation.includes("/main") ? (
-                      <>
-                        <FormControlLabel
-                          value="1"
-                          control={<RedRadio />}
-                          label="NOW"
-                          labelPlacement="top"
-                        />
-                        <FormControlLabel
-                          value="2"
-                          control={<OrangeRadio />}
-                          label="Soon-ish"
-                          labelPlacement="top"
-                        />
-                        <FormControlLabel
-                          value="3"
-                          control={<YellowRadio />}
-                          label="Later"
-                          labelPlacement="top"
-                        />
-                        <FormControlLabel
-                          value="10"
-                          control={<GreyRadio />}
-                          label={category[6]?.category}
-                          labelPlacement="top"
-                        />
-                      </>
-                    ) : null}
+                      </section>
                   </RadioGroup>
                 </FormControl>
               </section>
@@ -338,7 +333,7 @@ function StickyNote({ item }) {
             </form>
           </div>
           <img className="bzz" src={imageTwo} />
-        </DialogContent>
+          </DialogContent>
         <DialogActions>
           <Button onClick={handleClose}>Close</Button>
         </DialogActions>

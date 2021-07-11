@@ -22,7 +22,6 @@ flying around in your brain.
 ## Screen Shot
 ![Image of the Header of the app - includes a the date and two boxes side by side that list out the user's failure triggers and daily spoon count](./Header.png)
 ![Image of the Brain Dump Screen where there is a box to enter things you do not want to forget with bees flying around the page](./Brain_Dump.png)
-![Image of a Word Cloud](./Word_Cloud.png)
 
 ## Installation
 

@@ -195,5 +195,15 @@ Setting the colors of each sticky note, based on it's priority/category status
 /* Style your items */
 .my-masonry-grid_column > div { /* change div to reference your elements you put in <Masonry> */
   margin-bottom: 15px;
-  
+}
+
+.bzz{
+  float: right;
+  width: 10%;
+}
+
+.beeThree {
+  float: center;
+  width: 30%;
+  transform: scaleX(1);
 }

@@ -19,8 +19,8 @@ import FormControlLabel from "@material-ui/core/FormControlLabel";
 import FormControl from "@material-ui/core/FormControl";
 import FormLabel from "@material-ui/core/FormLabel";
 import TextField from "@material-ui/core/TextField";
-import image from "../Images/bee_path_5.png";
-import imageTwo from "../Images/bee_path_1.png";
+import image from "../Images/bee_path_7.png";
+import imageTwo from "../Images/Bee_3.png";
 
 import AddNewTask from "../AddNewTask/AddNewTask";
 // ⬇ Custom styling for material-ui
@@ -171,7 +171,7 @@ function FabBtn() {
       
       <Dialog open={open} onClose={handleClose}>
         <DialogContent dividers={scroll === "paper"}>
-        <img className="image3" src={image} />
+        <img className="beeThree" src={image} /> 
           <div className="workspoon-add-box">
             <h5>What Do You Need Out of Your Head?</h5>
             <form onSubmit={handleSubmit}>
@@ -267,7 +267,8 @@ function FabBtn() {
               </section>
             </form>
           </div>
-          <img className="image4" src={imageTwo} />
+          <img className="bzz" src={imageTwo} />
+           
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose}>Close</Button>

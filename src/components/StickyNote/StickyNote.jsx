@@ -3,9 +3,13 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 // ⬇ What Components we need to import
 import "./StickyNote.css";
+import image from "../Images/bee_path_7.png";
+import imageTwo from "../Images/Bee_3.png";
 // ⬇ What we need from material ui
 import { makeStyles, withStyles } from "@material-ui/core/styles";
 import Dialog from "@material-ui/core/Dialog";
+import DialogContent from "@material-ui/core/DialogContent";
+import DialogActions from "@material-ui/core/DialogActions";
 import Backdrop from "@material-ui/core/Backdrop";
 import Fade from "@material-ui/core/Fade";
 import TextField from "@material-ui/core/TextField";
@@ -217,10 +221,12 @@ function StickyNote({ item }) {
         BackdropProps={{
           timeout: 500,
         }}
-        maxWidth={'lg'}
+        
       >
-        <Fade in={open}>
-          <div className="edit-note-box">
+        
+        <img className="beeThree" src={image} /> 
+        <DialogContent />
+          <div className="workspoon-add-box">
             <h2>Update Task Here</h2>
             <form onSubmit={handleSubmit}>
               <section className="note-body">
@@ -331,7 +337,11 @@ function StickyNote({ item }) {
               </section>
             </form>
           </div>
-        </Fade>
+          <img className="bzz" src={imageTwo} />
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleClose}>Close</Button>
+        </DialogActions>
       </Dialog>
     </>
   );

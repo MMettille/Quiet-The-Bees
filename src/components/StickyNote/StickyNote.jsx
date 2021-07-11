@@ -31,6 +31,9 @@ const useStyles = makeStyles((theme) => ({
     alignItems: "center",
     justifyContent: "center",
   },
+  root: {
+    flexGrow: 1,
+  },
 }));
 // ⬇ The custom Radio Color Buttons
 const RedRadio = withStyles({
@@ -240,6 +243,7 @@ function StickyNote({ item }) {
               <section >
                 <FormControl component="fieldset">
                   <h5>Update the Category Here:</h5>
+                  
                   <RadioGroup
                     aria-label="priorityStatus"
                     row
@@ -273,12 +277,8 @@ function StickyNote({ item }) {
                           label="Later"
                           labelPlacement="top"
                         />
-                        <FormControlLabel
-                          value="10"
-                          control={<GreyRadio />}
-                          label={category[6]?.category}
-                          labelPlacement="top"
-                        />
+                    </section>
+                    <section>
                         <FormControlLabel
                           value="4"
                           control={<LightGreenRadio />}
@@ -320,8 +320,9 @@ function StickyNote({ item }) {
                           control={<GreyRadio />}
                           label="Blank"
                           labelPlacement="top"
-                        />
+                        />Î
                       </section>
+                     
                   </RadioGroup>
                 </FormControl>
               </section>
@@ -329,8 +330,10 @@ function StickyNote({ item }) {
                 <Button variant="outlined" type="submit" size="small">
                   Update Note
                 </Button>
+                
               </section>
             </form>
+            
           </div>
           <img className="bzz" src={imageTwo} />
           </DialogContent>

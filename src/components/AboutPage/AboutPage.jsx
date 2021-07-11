@@ -7,7 +7,7 @@ function AboutPage() {
   return (
     <div className="container">
       <div>
-        <p>This applicaiton was made in two weeks with these technologies:</p>
+        <p>This appliciaton was made in two weeks with these technologies:</p>
         <List>
           <li>React</li>
           <li>Redux</li>

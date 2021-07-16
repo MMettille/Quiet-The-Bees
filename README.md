@@ -19,6 +19,8 @@ for a few days, maybe a week, then forget about it. This app solves that
 problem by providing one centralized location for all the those bees
 flying around in your brain.
 
+To visit the deployed app, please visit: [DEPLOYED VERSION OF APP](https://mmettille-quiet-the-bees.herokuapp.com/#/landingpage)
+
 ## Screen Shot
 ![Image of the Header of the app - includes a the date and two boxes side by side that list out the user's failure triggers and daily spoon count](./Header.png)
 ![Image of the Brain Dump Screen where there is a box to enter things you do not want to forget with bees flying around the page](./Brain_Dump.png)

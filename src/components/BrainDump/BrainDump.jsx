@@ -8,7 +8,7 @@ import Header from "../Header/Header";
 import AddNewTask from "../AddNewTask/AddNewTask";
 import StickyNote from "../StickyNote/StickyNote";
 import CategoryItem from "../CategoryItem/CategoryItem";
-import Fab from '../Fab/Fab';
+import Fab from "../Fab/Fab";
 // ⬇ What we need from material-ui
 import ColorLensIcon from "@material-ui/icons/ColorLens";
 import IconButton from "@material-ui/core/IconButton";
@@ -22,6 +22,7 @@ import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import Button from "@material-ui/core/Button";
+import RadioGroup from "@material-ui/core/RadioGroup";
 // ⬇ Custom styling for material-ui
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -106,10 +107,10 @@ function BrainDump() {
   const category = useSelector((store) => store.category);
   const [open, setOpen] = useState(false);
   const [newCategory, setNewCategory] = useState({});
+  const [value, setValue] = useState(0);
 
   // ⬇ On page load, fetch the task and categories from the database
   useEffect(() => {
-    dispatch({ type: "FETCH_TASK" });
     dispatch({ type: "FETCH_CATEGORY" });
   }, []);
 
@@ -132,75 +133,75 @@ function BrainDump() {
     400: 1,
   };
 
+  useEffect(() => {
+    dispatch({ type: "FETCH_TASK_BY_CATEGORY", payload: value });
+  }, [value]);
+
+  console.log("handle sorting...", value);
   return (
     <>
       <Header />
 
       <AddNewTask />
       {/* <div className="container important"> */}
-        {/* <h2>SORT HERE(COMING SOON)</h2>
-        <RadioGroup
-          row
-          aria-label="sort-by-category"
-          value={value}
-          onChange={(event) => setSort(event.target.value)}
-          onClick={handleSort}
-        >
-          <FormControlLabel
-            value="*"
-            control={<Radio color="default" />}
-            label="ALL"
-            labelPlacement="end"
-          />
-          <FormControlLabel
-            value="4"
-            control={<LightGreenRadio />}
-            label={category[0]?.category}
-            labelPlacement="end"
-          />
-          <FormControlLabel
-            value="5"
-            control={<GreenRadio />}
-            label={category[1]?.category}
-            labelPlacement="end"
-          />
-          <FormControlLabel
-            value="6"
-            control={<BlueRadio />}
-            label={category[2]?.category}
-            labelPlacement="end"
-          />
-          <FormControlLabel
-            value="7"
-            control={<DarkBlueRadio />}
-            label={category[3]?.category}
-            labelPlacement="end"
-          />
-          <FormControlLabel
-            value="8"
-            control={<PurpleRadio />}
-            label={category[4]?.category}
-            labelPlacement="end"
-          />
-          <FormControlLabel
-            value="9"
-            control={<TealRadio />}
-            label={category[5]?.category}
-            labelPlacement="end"
-          />
-          <FormControlLabel
-            value="10"
-            control={<GreyRadio />}
-            label="Blank"
-            labelPlacement="end"
-          />
-          <IconButton aria-label="color-pallete-button" onClick={handleClick}>
-            <ColorLensIcon fontSize="large" />
-          </IconButton>
-        </RadioGroup> */}
-        <IconButton className="custom_category_btn" aria-label="color-pallete-button" onClick={handleClick}>
-            <ColorLensIcon fontSize="large" />
-          </IconButton>
+      <RadioGroup
+        defaultValue="0"
+        row
+        aria-label="sort-by-category"
+        onChange={(event) => setValue(event.target.value)}
+      >
+        <FormControlLabel
+          value="0"
+          control={<Radio color="default" />}
+          label="ALL"
+          labelPlacement="end"
+        />
+        <FormControlLabel
+          value="4"
+          control={<LightGreenRadio />}
+          label={category[0]?.category}
+          labelPlacement="end"
+        />
+        <FormControlLabel
+          value="5"
+          control={<GreenRadio />}
+          label={category[1]?.category}
+          labelPlacement="end"
+        />
+        <FormControlLabel
+          value="6"
+          control={<BlueRadio />}
+          label={category[2]?.category}
+          labelPlacement="end"
+        />
+        <FormControlLabel
+          value="7"
+          control={<DarkBlueRadio />}
+          label={category[3]?.category}
+          labelPlacement="end"
+        />
+        <FormControlLabel
+          value="8"
+          control={<PurpleRadio />}
+          label={category[4]?.category}
+          labelPlacement="end"
+        />
+        <FormControlLabel
+          value="9"
+          control={<TealRadio />}
+          label={category[5]?.category}
+          labelPlacement="end"
+        />
+        <FormControlLabel
+          value="10"
+          control={<GreyRadio />}
+          label="Blank"
+          labelPlacement="end"
+        />
+        <IconButton aria-label="color-pallete-button" onClick={handleClick}>
+          <ColorLensIcon fontSize="large" />
+        </IconButton>
+      </RadioGroup>
       <div className={classes.root}>
         <Masonry
           breakpointCols={breakpoints}
@@ -221,14 +222,12 @@ function BrainDump() {
         aria-labelledby="form-dialog-title"
         className="category-dialogue"
       >
-        <DialogTitle id="form-dialog-title">
-          Custom Categories
-        </DialogTitle>
+        <DialogTitle id="form-dialog-title">Custom Categories</DialogTitle>
         <DialogContent>
           <DialogContentText>
             Customize your category labels below! If you would like to change
-            the category name, click on the edit button, type in your category name of
-            choice in the text box and click the save button.
+            the category name, click on the edit button, type in your category
+            name of choice in the text box and click the save button.
           </DialogContentText>
           <List>
             {category?.map((item) => {

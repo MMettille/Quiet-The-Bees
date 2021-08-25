@@ -49,8 +49,6 @@ function Header() {
     dispatch({ type: "FETCH_USER_TRIGGER", payload: date });
   };
 
-  console.log(spoonInput);
-
   // ⬇ Prints the spoons to the header section
   const printSpoons = () => {
     let rows = [];

@@ -12,7 +12,6 @@ function* inputSaga() {
 function* addSpoonInput(action){
     try{
         const newSpoon = action.payload;
-        console.log(newSpoon);
         yield axios.post('/api/query/spoon', newSpoon)
     } catch (err){
         console.log(err)
@@ -23,7 +22,6 @@ function* addSpoonInput(action){
 function* addTriggerInput(action){
     try{
         const newTrigger = action.payload;
-        console.log(newTrigger);
         yield axios.post('/api/query/trigger', newTrigger)
     } catch (err){
         console.log(err)
@@ -35,7 +33,6 @@ function* fetchUserSpoon(action){
     try{
         const today = action.payload;
         const response = yield axios.get('/api/query/spoon/?q=${today}')
-        console.log(response.data)
         yield put({type: 'SET_TODAY_SPOON', payload: response.data})
     } catch (err){
         console.log(err)
@@ -46,9 +43,7 @@ function* fetchUserSpoon(action){
 function* fetchUserTrigger(action){
     try{
         const today = action.payload;
-        console.log(today)
         const response = yield axios.get('/api/query/trigger/?q={today}')
-        console.log(response.data)
         yield put({type: 'SET_TODAY_TRIGGER', payload: response.data})
     } catch (err){
         console.log(err)

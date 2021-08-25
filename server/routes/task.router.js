@@ -25,6 +25,46 @@ router.get("/", rejectUnauthenticated, (req, res) => {
     });
 });
 
+router.get('/byCategory', rejectUnauthenticated, (req, res) => {
+  // ⬇ This will grab everything we need to start displaying tasks
+  console.log(req.query.q)
+  if(req.query.q == 0){
+    const query = `
+    SELECT "taskList".id, "taskName", "isComplete", "color_id", "taskList".user_id, "color_list".color_name from "color_list"
+    JOIN "taskList"
+    ON "color_list".id = "taskList".color_id
+    WHERE "taskList".user_id = $1
+    AND "color_id" > 3
+    ORDER BY "taskList".id DESC;`;
+    pool
+    .query(query, [req.user.id])
+    .then((result) => {
+      res.send(result.rows);
+    })
+    .catch((err) => {
+      console.log("ERROR: Get tasks by category", err);
+      res.sendStatus(500);
+    });
+  } else{
+    const query = `
+    SELECT "taskList".id, "taskName", "isComplete", "color_id", "taskList".user_id, "color_list".color_name from "color_list"
+    JOIN "taskList"
+    ON "color_list".id = "taskList".color_id
+    WHERE "taskList".user_id = $1
+    AND "color_id" = $2
+    ORDER BY "taskList".id DESC;`;
+    pool
+    .query(query, [req.user.id, req.query.q])
+    .then((result) => {
+      res.send(result.rows);
+    })
+    .catch((err) => {
+      console.log("ERROR: Get tasks by category", err);
+      res.sendStatus(500);
+    });
+  }
+});
+
 router.get("/category", rejectUnauthenticated, (req, res) => {
   // ⬇ This will update the category in question
   const query = `

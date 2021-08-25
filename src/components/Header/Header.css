@@ -43,3 +43,7 @@ max-header-height{
     display: inline-block;
     margin-right: 10px;
 }
+
+.pointer{
+    cursor: pointer;
+}

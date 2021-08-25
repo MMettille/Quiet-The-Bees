@@ -54,7 +54,7 @@ function TriggerDisplay() {
   return (
           <Grid item xs={12} sm={6}>
             <Paper className={classes.paper} alignItems="stretch">
-              <h3 onClick={() => history.push("/trigger")}>Failure Triggers</h3>
+              <h3 onClick={() => history.push("/trigger")} className="pointer">Failure Triggers</h3>
               <div className="minimum-height-trigger-box">
                 {triggerInput.map((item) => {
                   return <p key={item.trigger}>{item.trigger}</p>;

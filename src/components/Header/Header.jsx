@@ -50,17 +50,6 @@ function Header() {
   };
 
   console.log(spoonInput);
-  // ⬇ Sends the user to the spoon graph page
-  const goToGraph = (event) => {
-    event.preventDefault();
-    history.push("/spoongraph");
-  };
-
-  // ⬇ Sends the user to the word cloud page
-  const goToCloud = (event) => {
-    event.preventDefault();
-    history.push("/wordcloud");
-  };
 
   // ⬇ Prints the spoons to the header section
   const printSpoons = () => {

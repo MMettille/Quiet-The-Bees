@@ -107,7 +107,7 @@ function App() {
           <ProtectedRoute
             // logged in shows UserPage else shows LandingPage
             exact
-            path="/braindump"
+            path="/spoon"
           >
             <BrainDump />
           </ProtectedRoute>

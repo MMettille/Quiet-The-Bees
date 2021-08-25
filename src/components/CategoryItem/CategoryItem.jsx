@@ -12,52 +12,43 @@ function Category({ category }) {
   // ⬇ What functions we need to use in this component
   const dispatch = useDispatch();
   // ⬇ Variables we need to declare and use in this component
-  const taskToEdit = useSelector((store) => store.taskToEdit);
-  const [hidden, setHidden] = useState(false);
   const [disabled, setDisabled] = useState(true)
-  const [userInput, setUserInput] = useState('');
-
+  const [toEdit, setToEdit] = useState(category);
+  const [hidden, setHidden] = useState(true)
   // ⬇ Function to set which category is going to be edited and sent to redux
   const handleEdit = () => {
-    setHidden(true)
-    dispatch({type: 'TASK_TO_EDIT', payload: category})
-    setDisabled(false)
-  }
-  
-  // ⬇ Dispatches the changes to redux after each change
-  const handleChange = (event) => { 
-    setUserInput(event.target.value)
-    dispatch({ 
-      type: 'EDIT_ONCHANGE', 
-      payload: { property: 'category', value: event.target.value }
-    });
+    setHidden(!hidden)
+    setDisabled(!disabled)
   }
 
   // ⬇  Dispatches the changes to redux-saga and the database
   const handleSave = (event) => {
     event.preventDefault();
     // ⬇ PUT REQUEST to /task/:id
-    dispatch({type: 'EDIT_CATEGORY', payload: taskToEdit})
+    dispatch({type: 'EDIT_CATEGORY', payload: toEdit})
     // ⬇ Close the Modal 
-    setDisabled(true)
+    handleEdit()
   }
 
+  console.log(toEdit)
   return (
     <>
       <ListItem alignItems="center">
         <Checkbox
-          checked={true}
-          disabled={true}
+          checked={disabled}
+          onChange={handleEdit}
         />
         <RadioButtonUncheckedIcon className={category.color_name} />
         <TextField
           label={category.category}
-          value={userInput}
+          value={toEdit.category}
           variant="outlined"
           disabled={disabled}
-          onChange={(event) => handleChange(event)}
+          onChange={(event) =>
+            setToEdit({ ...category, category: event.target.value })
+            }
         />
-        {hidden ? (<Button variant="outlined" onClick={handleSave}>Save</Button>) : (<Button variant="outlined" onClick={handleEdit}>Edit</Button>)}
+        {hidden ? (<></>) : (<Button variant="outlined" onClick={handleSave}>Save</Button>)}
       </ListItem>
     </>
   );

@@ -137,13 +137,12 @@ function BrainDump() {
     dispatch({ type: "FETCH_TASK_BY_CATEGORY", payload: value });
   }, [value]);
 
-  console.log("handle sorting...", value);
   return (
     <>
       <Header />
 
       <AddNewTask />
-      {/* <div className="container important"> */}
+      <div className="container important">
       <RadioGroup
         defaultValue="0"
         row
@@ -202,6 +201,7 @@ function BrainDump() {
           <ColorLensIcon fontSize="large" />
         </IconButton>
       </RadioGroup>
+      </div>
       <div className={classes.root}>
         <Masonry
           breakpointCols={breakpoints}

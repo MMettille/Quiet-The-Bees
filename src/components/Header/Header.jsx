@@ -10,6 +10,8 @@ import Button from "@material-ui/core/Button";
 // ⬇ What Components we need to import
 import "./Header.css";
 import image from "../Images/spoon.png";
+import TriggerDisplay from "./TriggerDisplay";
+import SpoonDisplay from "./SpoonDisplay"
 // ⬇ Custom styling for material-ui
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -47,6 +49,7 @@ function Header() {
     dispatch({ type: "FETCH_USER_TRIGGER", payload: date });
   };
 
+  console.log(spoonInput);
   // ⬇ Sends the user to the spoon graph page
   const goToGraph = (event) => {
     event.preventDefault();
@@ -62,17 +65,17 @@ function Header() {
   // ⬇ Prints the spoons to the header section
   const printSpoons = () => {
     let rows = [];
-    for (let i = 0; i < spoonInput.spoon; i++) {
-      rows.push(
-        <img
-          src={image}
-          alt="Image of a Spoon"
-          className="spoon-image"
-          key={i}
-        />
-      );
-    }
-    return rows;
+      for (let i = 0; i < spoonInput.spoon; i++) {
+        rows.push(
+          <img
+            src={image}
+            alt="Image of a Spoon"
+            className="spoon-image"
+            key={i}
+          />
+        );
+      }
+      return rows;
   };
 
   // ⬇ Prints the days of the week to the top of the page and puts a circle around today
@@ -123,37 +126,8 @@ function Header() {
           justifyContent="center"
           alignItems="stretch"
         >
-          <Grid item xs={12} sm={6}>
-            <Paper className={classes.paper} alignItems="stretch">
-              <h3>Failure Triggers</h3>
-              <div className="minimum-height-trigger-box">
-                {triggerInput.map((item) => {
-                  return <p key={item.trigger}>{item.trigger}</p>;
-                })}
-              </div>
-
-              <div className="graph-btn">
-                <Button variant="contained" onClick={goToCloud}>
-                  Word Cloud
-                </Button>
-              </div>
-            </Paper>
-          </Grid>
-          <Grid item xs={12} sm={6}>
-            <Paper className={classes.paper} alignItems="stretch">
-              <h3>Spoon(s)</h3>
-              <div className="minimum-height-trigger-box">{printSpoons()}</div>
-              <div className="graph-btn">
-                <Button
-                  className="graph-btn"
-                  variant="contained"
-                  onClick={goToGraph}
-                >
-                  Spoon Graph
-                </Button>
-              </div>
-            </Paper>
-          </Grid>
+          <TriggerDisplay />
+          <SpoonDisplay />
         </Grid>
       </div>
     </div>

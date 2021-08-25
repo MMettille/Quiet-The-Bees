@@ -119,7 +119,7 @@ function App() {
             // - else shows LoginPage at /login
             exact
             path="/login"
-            authRedirect="/spoon"
+            authRedirect="/main"
           >
             <LoginPage />
           </ProtectedRoute>

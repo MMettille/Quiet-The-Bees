@@ -8,7 +8,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import Header from "../Header/Header";
 import AddNewTask from "../AddNewTask/AddNewTask";
 import StickyNote from "../StickyNote/StickyNote";
-import Fab from '../Fab/Fab';
+import Fab from "../Fab/Fab";
 // ⬇ Custom styling for material-ui
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -77,12 +77,13 @@ function Main() {
         </div>
         <Grid container className={classes.root} spacing={3}>
           <Grid item xs={6}>
-            <h2>Soon-ish</h2>
-            <h4>
-              These tasks don't need to happen immediately, but do need to
-              happen soon.
-            </h4>
-            <h5>HINT: Can you set a due date?</h5>
+              <h2>Soon-ish</h2>
+              <h4 className="equal-box">
+                These tasks don't need to happen immediately, but do need to
+                happen soon.
+              </h4>
+              <h5>HINT: Can you set a due date?</h5>
+
             <Masonry
               breakpointCols={MainBreakpoints}
               className="my-masonry-grid"
@@ -97,8 +98,8 @@ function Main() {
           </Grid>
           <Grid item xs={6}>
             <h2>Later</h2>
-            <h4>These tasks are on your radar for later.</h4>
-            <h5>HINT: Have a lot of spoons today? Tackle these!</h5>
+            <h4>These tasks are the ones you don't want to forget and are on your radar for later.</h4>
+            <h5>HINT: Do these if you have extra spoons!</h5>
             <Masonry
               breakpointCols={MainBreakpoints}
               className="my-masonry-grid"

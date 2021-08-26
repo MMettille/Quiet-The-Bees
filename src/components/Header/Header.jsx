@@ -97,7 +97,7 @@ function Header() {
           justifyContent="center"
           alignItems="stretch"
         >
-          <TriggerDisplay />
+          <TriggerDisplay triggerInput={triggerInput} />
           <SpoonDisplay spoonInput={spoonInput}/>
         </Grid>
       </div>

@@ -1,6 +1,5 @@
 // ⬇ What we need to import for functionality
-import { useDispatch, useSelector } from "react-redux";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useHistory } from "react-router-dom";
 // ⬇ What we need from material-ui
 import { makeStyles } from "@material-ui/core/styles";
@@ -12,9 +11,6 @@ import "./Header.css";
 import image from "../Images/spoon.png";
 // ⬇ Custom styling for material-ui
 const useStyles = makeStyles((theme) => ({
-  root: {
-    flexGrow: 1,
-  },
   paper: {
     padding: theme.spacing(2),
     textAlign: "center",
@@ -23,34 +19,16 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function Header() {
+function Header({spoonInput}) {
   // ⬇ What functions we need to use in this component
   const history = useHistory();
-  const dispatch = useDispatch();
   const classes = useStyles();
-  // ⬇ Variables we need to declare and use in this component
-  const spoonInput = useSelector((store) => store.spoonInput);
-  const dayDate = new Date();
-  const today = dayDate.getDate();
-
-  // ⬇ On page load, run this function
-  useEffect(() => {
-    fetchUserInput();
-  }, []);
-
-  const fetchUserInput = () => {
-    // Grabbing todays date as YYYY-MM-DD
-    const date = new Date().toISOString().substring(0, 10);
-    // Fetching the user inputs by date
-    dispatch({ type: "FETCH_USER_SPOON", payload: date });
-  };
 
   // ⬇ Sends the user to the spoon graph page
   const goToGraph = (event) => {
     event.preventDefault();
     history.push("/spoongraph");
   };
-
 
   // ⬇ Prints the spoons to the header section
   const printSpoons = () => {

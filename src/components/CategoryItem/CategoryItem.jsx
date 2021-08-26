@@ -30,7 +30,6 @@ function Category({ category }) {
     handleEdit()
   }
 
-  console.log(toEdit)
   return (
     <>
       <ListItem alignItems="center">

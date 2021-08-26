@@ -152,7 +152,6 @@ function FabBtn() {
   const handleClick = (event) => {
     event.preventDefault();
     setOpen(true);
-    console.log("clicked");
   };
 
   return (

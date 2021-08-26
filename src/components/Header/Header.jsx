@@ -49,22 +49,6 @@ function Header() {
     dispatch({ type: "FETCH_USER_TRIGGER", payload: date });
   };
 
-  // ⬇ Prints the spoons to the header section
-  const printSpoons = () => {
-    let rows = [];
-      for (let i = 0; i < spoonInput.spoon; i++) {
-        rows.push(
-          <img
-            src={image}
-            alt="Image of a Spoon"
-            className="spoon-image"
-            key={i}
-          />
-        );
-      }
-      return rows;
-  };
-
   // ⬇ Prints the days of the week to the top of the page and puts a circle around today
   const printWeekdays = () => {
     const array = [];
@@ -114,7 +98,7 @@ function Header() {
           alignItems="stretch"
         >
           <TriggerDisplay />
-          <SpoonDisplay />
+          <SpoonDisplay spoonInput={spoonInput}/>
         </Grid>
       </div>
     </div>

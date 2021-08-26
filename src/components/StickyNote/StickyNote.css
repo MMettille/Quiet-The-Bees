@@ -57,25 +57,23 @@ rgba(33,33,33,2);
 /* When the viewport is 900px or smaller - for smartphone users */
 @media screen and (max-width: 900px) {
     .note-box{
-        min-width: 140px;
-        max-width: 140px;
-        min-height: 140px;
-        max-height: 140px;
-        padding: 5px;
+        min-width: 80%;
+        max-width: 80%;
+        padding: 2%;
         border-radius: 10px;
         text-align: center;
-        margin: 10px;
+        margin: 1%;
         display: table;
     }
     .font-size{
         font-size: 12px;
     }
     .note-body{
-        min-height: 50px;
+        min-height: 20%;
         vertical-align: center;
     }    
     .note-btns {
-        min-height: 10px;
+        min-height: 5%;
         vertical-align: bottom;
     }
 }

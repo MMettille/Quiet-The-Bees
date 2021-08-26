@@ -250,7 +250,10 @@ function AddNewTask() {
           </form>
         </div>
       ) : null}
+      <section>
       <img className="image4" src={imageTwo} />
+      </section>
+      
     </>
   );
 }

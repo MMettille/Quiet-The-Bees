@@ -35,6 +35,10 @@ const useStyles = makeStyles((theme) => ({
   selectEmpty: {
     marginTop: theme.spacing(2),
   },
+  radioGroup: {
+    width: '95%',
+    margin: 'auto'
+  }
 }));
 
 // ⬇ The custom Radio Color Buttons
@@ -142,12 +146,12 @@ function BrainDump() {
       <Header />
 
       <AddNewTask />
-      <div className="container important">
       <RadioGroup
         defaultValue="0"
         row
         aria-label="sort-by-category"
         onChange={(event) => setValue(event.target.value)}
+        className={classes.radioGroup}
       >
         <FormControlLabel
           value="0"
@@ -200,8 +204,7 @@ function BrainDump() {
         <IconButton aria-label="color-pallete-button" onClick={handleClick}>
           <ColorLensIcon fontSize="large" />
         </IconButton>
-      </RadioGroup>
-      </div>
+      </RadioGroup>   
       <div className={classes.root}>
         <Masonry
           breakpointCols={breakpoints}

@@ -32,9 +32,14 @@
 .custom_category_btn{
     float: left
 }
+.radio-group {
+    width: 80%;
+    margin: auto;
+}
 /* When the viewport is 900px or smaller - for smartphone users */
 @media screen and (max-width: 900px) {
     .category-dialogue{
         max-width: 30%;
     }
+
 }

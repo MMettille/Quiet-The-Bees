@@ -52,7 +52,7 @@
 }
 
 .image4{
-    float: right;
+    margin-left: 90%;
     transform: scaleX(-1);
     width: 10%
 }
@@ -83,5 +83,11 @@
         margin-bottom: 25px;
         text-align: center;
         background-color: #eceff1;
+    }
+    .image4{
+        float: right;
+        transform: scaleX(-1);
+        width: 20%;
+        margin-bottom: 1%;
     }
   }

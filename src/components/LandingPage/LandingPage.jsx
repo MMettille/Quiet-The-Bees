@@ -51,7 +51,6 @@ function LandingPage() {
         <strong>Quiet The Bees and Stay on Task!</strong>
       </p>
       <br />
-      <p>Important Note - We recently launched version 2.0! Please Create a New Account.</p>
 
       <button className="btn btn_sizeSm" onClick={handleClick}>
         Register

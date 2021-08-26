@@ -57,3 +57,31 @@
     width: 10%
 }
 
+
+
+/* When the viewport is 800px or smaller - for smartphone users */
+@media screen and (max-width: 800px) {
+    .main-add-box{
+        max-width: 80%;
+        min-height: 150px;
+        max-height: 300px;
+        padding: 10px;
+        border-radius: 10px;
+        margin: auto;
+        margin-top: 25px;
+        margin-bottom: 25px;
+        text-align: center;
+        background-color: #eceff1;
+    }
+    .braindump-add-box{
+        max-width: 80%;
+        min-height: 200px;
+        padding: 10px;
+        border-radius: 10px;
+        margin: auto;
+        margin-top: 25px;
+        margin-bottom: 25px;
+        text-align: center;
+        background-color: #eceff1;
+    }
+  }

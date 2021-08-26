@@ -1,6 +1,6 @@
 .note-box{
-    min-width: 150px;
-    max-width: 150px;
+    min-width: 120px;
+    max-width: 120px;
     transition: box-shadow .3s;
     padding: 10px;
     border-radius: 10px;

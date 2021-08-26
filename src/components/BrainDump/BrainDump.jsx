@@ -129,12 +129,14 @@ function BrainDump() {
 
   // ⬇ Breakpoints for masonry css
   const breakpoints = {
-    default: 7,
-    1100: 5,
-    1000: 4,
-    800: 3,
-    600: 2,
-    400: 1,
+    default: 8,
+    1250: 7,
+    1100: 6,
+    1000: 5,
+    800: 4,
+    600: 3,
+    450: 2,
+    320: 1,
   };
 
   useEffect(() => {

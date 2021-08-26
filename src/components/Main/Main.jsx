@@ -37,17 +37,20 @@ function Main() {
 
   // ⬇ Breakpoints for masonry css on the /braindump page
   const breakpoints = {
-    default: 7,
-    1100: 5,
-    1000: 4,
-    800: 3,
-    600: 2,
-    400: 1,
+    default: 8,
+    1250: 7,
+    1100: 6,
+    1000: 5,
+    800: 4,
+    600: 3,
+    450: 2,
+    320: 1,
   };
   // ⬇ Breakpoints for masonry css on the /main Page
   const MainBreakpoints = {
-    default: 3,
-    1200: 2,
+    default: 4,
+    1300: 3,
+    1050: 2,
     750: 1,
   };
 

@@ -12,7 +12,7 @@ function Category({ category }) {
   // ⬇ What functions we need to use in this component
   const dispatch = useDispatch();
   // ⬇ Variables we need to declare and use in this component
-  const [disabled, setDisabled] = useState(category.isChecked)
+  const [disabled, setDisabled] = useState(true)
   const [toEdit, setToEdit] = useState(category);
   const [hidden, setHidden] = useState(true)
   // ⬇ Function to set which category is going to be edited and sent to redux
@@ -24,39 +24,30 @@ function Category({ category }) {
   // ⬇  Dispatches the changes to redux-saga and the database
   const handleSave = (event) => {
     event.preventDefault();
-    setToEdit({ ...category, category: event.target.value })
     // ⬇ PUT REQUEST to /task/:id
     dispatch({type: 'EDIT_CATEGORY', payload: toEdit})
     // ⬇ Close the Modal 
     handleEdit()
   }
 
-    // ⬇  Dispatches the changes to redux-saga and the database
-    const handleCheck = (event) => {
-      event.preventDefault();
-      setToEdit({ ...category, isChecked: !disabled })
-      // ⬇ PUT REQUEST to /task/:id
-      dispatch({type: 'EDIT_CATEGORY', payload: toEdit})
-      // ⬇ Close the Modal 
-      handleEdit()
-    }
-
   return (
     <>
       <ListItem alignItems="center">
         <Checkbox
           checked={disabled}
-          onChange={handleCheck}
+          onChange={handleEdit}
         />
         <RadioButtonUncheckedIcon className={category.color_name} />
         <TextField
           label={category.category}
           value={toEdit.category}
           variant="outlined"
-          disabled={!disabled}
-          onChange={handleSave}
+          disabled={disabled}
+          onChange={(event) =>
+            setToEdit({ ...category, category: event.target.value })
+            }
         />
-        {/* {hidden ? (<></>) : (<Button variant="outlined" onClick={handleSave}>Save</Button>)} */}
+        {hidden ? (<></>) : (<Button variant="outlined" onClick={handleSave}>Save</Button>)}
       </ListItem>
     </>
   );

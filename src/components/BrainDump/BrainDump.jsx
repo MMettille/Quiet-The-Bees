@@ -231,7 +231,7 @@ function BrainDump() {
         <DialogContent>
           <DialogContentText>
             Customize your category labels below! If you would like to change
-            the category name, click on the checkbox, type in your category
+            the category name, click on the edit button, type in your category
             name of choice in the text box and click the save button.
           </DialogContentText>
           <List>

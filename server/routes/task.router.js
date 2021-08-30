@@ -108,10 +108,11 @@ router.post("/", rejectUnauthenticated, (req, res) => {
  */
 router.put("/category/:id", rejectUnauthenticated, (req, res) => {
   // ⬇ This will update this single task
-  const sqlText = `UPDATE "custom_names" SET "category" = $1 WHERE id = $2 AND "user_id" = $3;`;
+  const sqlText = `UPDATE "custom_names" SET "category" = $1, "isChecked" = $2 WHERE id = $3 AND "user_id" = $4;`;
   pool
     .query(sqlText, [
       req.body.category,
+      req.body.isChecked,
       req.body.id,
       req.user.id,
     ])

@@ -47,10 +47,12 @@ function Header({spoonInput}) {
   };
 
   return (
-
         <Grid item xs={12} sm={6}>
         <Paper className={classes.paper} alignItems="stretch">
-          <h3 onClick={() => history.push("/spoon")} className="pointer">Spoon(s)</h3>
+        <h3 className="title">Failure Triggers</h3>
+              <h5 className="less-margin">Click <span className="bold pointer less-margin" onClick={() => history.push("/spoon")}>here </span>
+                to record the number of spoons you have today.
+               </h5>
           <div className="minimum-height-trigger-box">{printSpoons()}</div>
           <div className="graph-btn">
             <Button className="graph-btn" variant="contained" onClick={goToGraph}>

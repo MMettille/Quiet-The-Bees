@@ -120,7 +120,7 @@ function SpoonQuery() {
     // ⬇ Resets the value to 0
     setSpoonInput(null);
     // ⬇ Will send user to a new page
-    history.push("/trigger");
+    history.push("/main");
   };
 
   return (

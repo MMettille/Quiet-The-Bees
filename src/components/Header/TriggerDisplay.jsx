@@ -28,11 +28,13 @@ function TriggerDisplay({triggerInput}) {
     event.preventDefault();
     history.push("/wordcloud");
   };
-
   return (
           <Grid item xs={12} sm={6}>
             <Paper className={classes.paper} alignItems="stretch">
-              <h3 onClick={() => history.push("/trigger")} className="pointer">Failure Triggers</h3>
+              <h3 className="title">Failure Triggers</h3>
+              <h5 className="less-margin">Click <span className="bold pointer less-margin" onClick={() => history.push("/trigger")}>here </span>
+                to record your triggers of the day.
+               </h5>
               <div className="minimum-height-trigger-box">
                 {triggerInput.map((item) => {
                   return <p key={item.trigger}>{item.trigger}</p>;

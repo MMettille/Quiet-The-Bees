@@ -28,6 +28,7 @@ max-header-height{
     width: 2%;
     display: inline-block;
     margin-right: 1%;
+    font-size: 0.75em;
 }
 
 .now-circle{
@@ -41,10 +42,23 @@ max-header-height{
     width: 7%;
     display: inline-block;
     margin-right: 1%;
+    font-size: 0.75em;
 }
 
 .pointer{
     cursor: pointer;
+}
+
+.title{
+    font-size: 1em;
+}
+
+.bold{
+    font-style: italic;
+}
+
+.less-margin{
+    margin-top: 0.5%;
 }
 
 /* The width is 100%, when the viewport is 800px or smaller - for smartphone users */

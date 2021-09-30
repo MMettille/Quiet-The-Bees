@@ -130,7 +130,7 @@ function App() {
             // - else shows RegisterPage at "/registration"
             exact
             path="/registration"
-            authRedirect="/spoon"
+            authRedirect="/main"
           >
             <RegisterPage />
           </ProtectedRoute>
